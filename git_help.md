@@ -1,6 +1,6 @@
 # Git Notes 
    
-| Description   | Command |
+| Description   | Commands |
 |--------------- | --------------- |
 |configure name | `git config --global "[username]"` |
 | configure email | `git config --global "[email address]"` |
