@@ -1,0 +1,495 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Poppins;
+    color: white;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+a{
+    text-decoration: none;
+}
+.fullpage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.part1{
+    height: 100vh;
+    width: 15vw;
+    border: 1px solid black;
+    background-color: black;
+    box-shadow: 0px 0px 90px 1px #1c5978e9;
+    /* z-index: 0; */
+    margin-top: -600px;
+    position:sticky;
+    top: 0;
+}
+
+.part2{
+    height: 100%;
+    width: 84.5vw;
+    /* border: 1px solid black; */
+    background-color: #141820;
+    /* background:  radial-gradient(ellipse at top, #373838 10%, #000000 80%); */
+    background-image: url("Assets/Frame\ 24updatedbg.jpg");
+    /* box-sizing: ; */
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+}
+/* .part2 > .bg-img {
+    object-position: bottom right;
+    object-fit: conatin; 
+} */
+
+.web-logo{
+    height: 4rem;
+    width: 15vw;
+    margin-left: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* text-align: center; */
+    /* border: 1px solid white; */
+}
+
+
+.web-logo > img{
+    height: 3rem;
+    width: 12vw;
+}
+
+.profile-part1{
+    height: 5rem;
+    width: 15vw;
+    /* border: 1px solid white; */
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-family: Poppins;
+    margin-left: -10px;
+    
+}
+
+.profile-part1-pic > img{
+    height: 3rem;
+    /* border: 1px solid white; */
+}
+
+
+.options-part1{
+    margin-top: 2rem;
+    /* border: 1px solid white; */
+    height: 50vh;
+}
+
+.part2 > nav{
+    /* border: 1px solid white; */
+    width: 85vw;
+    height: 3rem;
+    /* position: sticky;
+    top: 0; */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.heading{
+    text-align: center;
+    color: white;
+    margin: 2rem;
+    font-size: 3rem;
+    /* border: 1px solid white; */
+}
+
+.first-row{
+    height: 50vh;
+    width: 85vw;
+    /* border: 1px solid white; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 4vh;
+}
+.first-card{
+    min-height: 10vh;
+    width: 19vw;
+    /* border: 0.5px solid rgba(250, 250, 250, 0.658) ; */
+    text-align: center;
+    /* border: 1px solid rgb(25 26 26 / 30%); */
+    /* backdrop-filter: blur(50px) saturate(202%);
+    -webkit-backdrop-filter: blur(0px) saturate(78%); */
+    /* background-color: rgba(124, 129, 141, 0.424); */
+    /* background-color: #191c24; */
+    border-radius: 1rem;
+    box-shadow: 10px 10px 10px #000000;
+    overflow: hidden;
+    transition: 3s;
+
+
+    background: rgb(145,223,187);
+    background: linear-gradient(59deg, rgb(47, 157, 106) 0%, rgba(255, 246, 246, 0.199) 30%);
+
+    /* z-index: 7; */
+}
+
+#left-shadow{
+    box-shadow: -6px 8px 11px 8px rgba(0,0,0,0.75);
+}
+
+/*card ingoing effect*/
+.first-card:hover{
+    transform: scale3d(0.9,0.9,1);
+}
+
+
+.car-cleaning-img > img{
+    height: 10rem;
+    width: 19vw;
+    border-radius: 10px;
+}
+
+.first-card > p{
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9rem;
+    margin: 0.5rem;
+    color: white;
+    font-family: Baloo Bhai 2;
+}
+
+.first-card > h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid black; */
+    margin-top: 0.3rem;
+    color: white;
+    font-family: Poppins;
+}
+
+
+.cleaning-price{
+    font-size: 1.4rem;
+    background-color: #f18701;
+    /* border: 1px solid black; */
+    /* margin-top: 0px; */
+    height: 3.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 1rem;
+    color: white;
+    border-bottom-right-radius: 1rem;
+    transform: translateY(100%);
+    transition: all 1s ease;
+    /* visibility: hidden; */
+}
+
+.ev-charging-price{
+    font-size: 1.4rem;
+    background-color: rgb(255, 0, 0);
+    /* border: 1px solid black; */
+    /* margin-top: 0px; */
+    height: 3.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    color: white;
+    transform: translateY(100%);
+    transition: all 1s ease;
+}
+
+.parking-price{
+    font-size: 1.4rem;
+    background-color: rgb(255, 0, 187);
+    /* border: 1px solid black; */
+    /* margin-top: 0px; */
+    height: 3.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    color: white;
+    transform: translateY(100%);
+    transition: all 1s ease;
+}
+
+
+
+
+.second-row{
+    height: 50vh;
+    width: 85vw;
+    margin-top: 4vh;
+    /* border:1px solid white; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15vw;
+    margin-bottom: 6vh;
+}
+
+
+.inspection-price{
+    font-size: 1.4rem;
+    background-color: #00d25b;
+    /* border: 1px solid black; */
+    /* margin-top: 0px; */
+    height: 3.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 1rem;
+    color: white;
+    border-bottom-right-radius: 1rem;
+    transform: translateY(100%);
+    transition: all 1s ease;
+}
+
+
+
+.painting-price{
+    font-size: 1.4rem;
+    background-color: #8f5fe8;
+    /* border: 1px solid black; */
+    /* margin-top: 0px; */
+    height: 3.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 1rem;
+    color: white;
+    border-bottom-right-radius: 1rem;
+    transform: translateY(100%);
+    transition: all 1s ease;
+}
+
+.book-now-cards1{
+    font-size: 1.4rem;
+    background-color: #f18701;
+    /* border: 1px solid black; */
+    /* margin-top: 0px; */
+    margin-bottom: -54px;
+    height: 3.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 1rem;
+    color: white;
+    border-bottom-right-radius: 1rem;
+}
+
+.book-now-cards2{
+    font-size: 1.4rem;
+    background-color: rgb(255, 0, 0);
+    /* border: 1px solid black; */
+    /* margin-top: 0px; */
+    margin-bottom: -54px;
+    height: 3.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 1rem;
+    color: white;
+    border-bottom-right-radius: 1rem;
+}
+
+.book-now-cards3{
+    font-size: 1.4rem;
+    background-color: rgb(255, 0, 187);
+    /* border: 1px solid black; */
+    /* margin-top: 0px; */
+    margin-bottom: -54px;
+    height: 3.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 1rem;
+    color: white;
+    border-bottom-right-radius: 1rem;
+}
+
+.book-now-cards4{
+    font-size: 1.4rem;
+    background-color: #00d25b;
+    /* border: 1px solid black; */
+    /* margin-top: 0px; */
+    margin-bottom: -54px;
+    height: 3.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 1rem;
+    color: white;
+    border-bottom-right-radius: 1rem;
+}
+
+.book-now-cards5{
+    font-size: 1.4rem;
+    background-color: #8f5fe8;
+    /* border: 1px solid black; */
+    /* margin-top: 0px; */
+    margin-bottom: -54px;
+    height: 3.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 1rem;
+    color: white;
+    border-bottom-right-radius: 1rem;
+}
+
+
+.first-card:hover .cleaning-price{
+    transform: translateY(0);
+}
+
+
+
+.first-card:hover .ev-charging-price{
+    transform: translateY(0);
+}
+
+.first-card:hover .parking-price{
+    transform: translateY(0);
+}
+
+.first-card:hover .inspection-price{
+    transform: translateY(0);
+}
+
+.first-card:hover .painting-price{
+    transform: translateY(0);
+}
+
+.first-card:hover > .book-now-cards1{
+    display: none;
+}
+.first-card:hover > .book-now-cards2{
+    display: none;
+}
+.first-card:hover > .book-now-cards3{
+    display: none;
+}
+.first-card:hover > .book-now-cards4{
+    display: none;
+}
+.first-card:hover > .book-now-cards5{
+    display: none;
+}
+
+
+
+.options-part1{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 0px; 
+}
+
+.element{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 13.5px;
+  gap:13px;
+  padding: 10px;
+ padding-left: 20px;
+}
+.elewrap:hover{
+    background-color: #141820;
+    border-radius: 20px;
+}
+
+.selected{
+    background-color: #262939;
+    border-radius: 20px;
+}
+
+
+.colfoot{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    gap:15px
+}
+
+
+#logofoot{
+    height:50px;
+    width:180px;
+    margin:30px 60px;
+    padding: 0;
+ 
+}
+.foottext{
+   
+    font-size: 17px;
+    align-self: flex-start;
+    margin-left: 50px;
+    padding-left: px;
+
+}
+#social{
+    display: flex;
+ /* justify-content:space-evenly; */
+    gap:10px;
+    margin-left: 50px;
+}
+
+.foothead{
+font-size:30px;
+font-weight: 600;
+margin-left:70px;
+margin-top:20px;
+}
+
+#foottext{
+    margin-left:70px;
+   
+}
+
+.line-space{
+    letter-spacing: 0.0001em;
+}
+
+.cont{
+    display: flex;
+    flex-direction: row;
+    gap:5px;
+    align-items: center;
+}
+
+#footer{
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: space-between; */
+    margin:4px;
+    padding: 0;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    background-color:#191C24;
+    min-height:260px;
+    margin-left:20px;
+    margin-right: 20px;
+    /* border: 1px solid white; */
+
+}

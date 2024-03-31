@@ -10,7 +10,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    carRegistrationNumber: {
+    license: {
+        type: String,
+        required: true
+    },
+    vehicle: {
         type: String,
         required: true
     },
@@ -23,10 +27,14 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    carDescription: {
+    address: {
         type: String,
         required:true
 
+    },
+    car_description:{
+        type: String,
+        required: true
     }
 });
 
