@@ -156,7 +156,7 @@ nav h4:hover a {
 }
 
 #services input {
-  width: 18vw;
+  width: 19vw;
   /* margin-bottom: 3vh; */
   margin-left: 0.7vw;
   color: rgba(255, 255, 255, 0.827);
@@ -181,6 +181,14 @@ nav h4:hover a {
 
 .hidden {
   display: none;
+}
+
+.denting {
+  margin-left: 0.7vw;
+  font-size: 18px;
+  background-color: black;
+  color: rgba(255, 255, 255, 0.511);
+  border: 2px solid gray;
 }
 
 #add-service-btn {
