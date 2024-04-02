@@ -52,13 +52,12 @@ nav .page2 {
 }
 
 nav .page2 h4 {
-  padding: 10px 20px;
-  border: 2px solid rgb(106, 98, 98); /*change here*/
+  padding: 1vh 1vw;
+  border: 2px solid rgb(106, 98, 98);
   border-radius: 50px;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 380;
   /* color: rgb(36, 33, 33); */
-  /* color: green; */
   position: relative;
   transition: all ease 0.4s;
   overflow: hidden;

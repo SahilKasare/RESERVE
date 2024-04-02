@@ -37,7 +37,7 @@
     </nav>
     <div class="mainpage">
       <div class="part1">
-        <div class="heading">Personal Info</div>
+        <div class="heading">Business Info</div>
         <div class="info1">
           <div class="info">
             <label for="Name">Name</label><br />
@@ -46,22 +46,41 @@
               type="text"
               name="name"
               id="name"
-              placeholder="Your Name"
+              placeholder="Your Full Name"
             />
           </div>
-         
           <div class="info">
-            <label for="phone">Phone Number</label><br />
+            <label for="email">Office Email</label><br />
+            <input
+              style="background-color: transparent; border: none"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Office Email ID"
+            />
+          </div>
+          <div class="info">
+            <label for="phone">Contact Number</label><br />
             <input
               style="background-color: transparent; border: none"
               type="tel"
               name="phone"
               id="phone"
-              placeholder="Your Phone Number"
+              placeholder="Office Contact"
             />
           </div>
           <div class="info">
-            <label for="address">Address</label><br />
+            <label for="service">Service Centre</label><br />
+            <input
+              style="background-color: transparent; border: none; width: 25vw"
+              type="text"
+              name="address"
+              id="address"
+              placeholder="Service Centre Name"
+            />
+          </div>
+          <div class="info">
+            <label for="address">Office Address</label><br />
             <input
               style="background-color: transparent; border: none; width: 25vw"
               type="text"
@@ -70,7 +89,16 @@
               placeholder="Your Address"
             />
           </div>
-          
+          <div class="info">
+            <label for="location">Location</label><br />
+            <input
+              style="background-color: transparent; border: none; width: 25vw"
+              type="text"
+              name="address"
+              id="address"
+              placeholder="Your Address"
+            />
+          </div>
         </div>
       </div>
       <div id="form-container">
@@ -89,36 +117,6 @@
           for="heading"
           >Car Parking</label
         >
-        <br />
-        <label>Service Center</label><br />
-        <input
-          style="background-color: transparent; border: none"
-          type="text"
-          name="option1Label1"
-          placeholder="Service Center Name"
-        /><br />
-        <label>Location</label><br />
-        <input
-          style="background-color: transparent; border: none"
-          type="text"
-          name="option1Label2"
-          placeholder="Office Address"
-        /><br />
-        <label>Contact Number</label><br />
-        <input
-          style="background-color: transparent; border: none"
-          type="text"
-          name="option1Label3"
-          placeholder="Contact Number"
-        />
-        <br />
-        <label>Office Email</label><br />
-        <input
-          style="background-color: transparent; border: none"
-          type="email"
-          name="option1Label4"
-          placeholder="Your Office Mail"
-        />
         <br />
         <label>Number of slots</label><br />
         <input
@@ -152,36 +150,6 @@
           >Car Cleaning</label
         >
         <br />
-        <label>Service Center</label><br />
-        <input
-          style="background-color: transparent; border: none"
-          type="text"
-          name="option1Label1"
-          placeholder="Service Center Name"
-        /><br />
-        <label>Location</label><br />
-        <input
-          style="background-color: transparent; border: none"
-          type="text"
-          name="option1Label2"
-          placeholder="Address"
-        /><br />
-        <label>Contact Number</label><br />
-        <input
-          style="background-color: transparent; border: none"
-          type="text"
-          name="option1Label3"
-          placeholder="Contact Number"
-        />
-        <br />
-        <label>Office Email</label><br />
-        <input
-          style="background-color: transparent; border: none"
-          type="email"
-          name="option1Label4"
-          placeholder="Your Office Mail"
-        />
-        <br />
         <label>Price (only car wash)</label><br />
         <input
           style="background-color: transparent; border: none"
@@ -206,36 +174,6 @@
           >EV Charging</label
         >
         <br />
-        <label>Service Center</label><br />
-        <input
-          style="background-color: transparent; border: none"
-          type="text"
-          name="option1Label1"
-          placeholder="Service Center Name"
-        /><br />
-        <label>Location</label><br />
-        <input
-          style="background-color: transparent; border: none"
-          type="text"
-          name="option1Label2"
-          placeholder="Address"
-        /><br />
-        <label>Contact Number</label><br />
-        <input
-          style="background-color: transparent; border: none"
-          type="text"
-          name="option1Label3"
-          placeholder="Contact Number"
-        />
-        <br />
-        <label>Office Email</label><br />
-        <input
-          style="background-color: transparent; border: none"
-          type="email"
-          name="option1Label4"
-          placeholder="Your Office Mail"
-        />
-        <br />
         <label>Price (per hour)</label><br />
         <input
           style="background-color: transparent; border: none"
@@ -252,36 +190,6 @@
           >Vehicle Inspection</label
         >
         <br />
-        <label>Service Center</label><br />
-        <input
-          style="background-color: transparent; border: none"
-          type="text"
-          name="option1Label1"
-          placeholder="Service Center Name"
-        /><br />
-        <label>Location</label><br />
-        <input
-          style="background-color: transparent; border: none"
-          type="text"
-          name="option1Label2"
-          placeholder="Address"
-        /><br />
-        <label>Contact Number</label><br />
-        <input
-          style="background-color: transparent; border: none"
-          type="text"
-          name="option1Label3"
-          placeholder="Contact Number"
-        />
-        <br />
-        <label>Office Email</label><br />
-        <input
-          style="background-color: transparent; border: none"
-          type="email"
-          name="option1Label4"
-          placeholder="Your Office Mail"
-        />
-        <br />
         <label>Price (base price)</label><br />
         <input
           style="background-color: transparent; border: none; width: 23vw"
@@ -297,36 +205,6 @@
           for="heading"
           >Painting & Denting</label
         >
-        <br />
-        <label>Service Center</label><br />
-        <input
-          style="background-color: transparent; border: none"
-          type="text"
-          name="option1Label1"
-          placeholder="Service Center Name"
-        /><br />
-        <label>Location</label><br />
-        <input
-          style="background-color: transparent; border: none"
-          type="text"
-          name="option1Label2"
-          placeholder="Address"
-        /><br />
-        <label>Contact Number</label><br />
-        <input
-          style="background-color: transparent; border: none"
-          type="text"
-          name="option1Label3"
-          placeholder="Contact Number"
-        />
-        <br />
-        <label>Office Email</label><br />
-        <input
-          style="background-color: transparent; border: none"
-          type="email"
-          name="option1Label4"
-          placeholder="Your Office Mail"
-        />
         <br />
         <label>Price (painting)</label><br />
         <input
