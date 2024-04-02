@@ -1,4 +1,3 @@
-// const centerdetails = [
 //     {
 //         center_image:,
 //         center_name : "CarRepairs Pvt.Ltd.",

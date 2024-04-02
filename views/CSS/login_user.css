@@ -38,6 +38,10 @@ img {
   min-height: 480px;
 }
 
+.container h1 {
+  margin-bottom: 5vh;
+}
+
 .container p {
   font-size: 14px;
   line-height: 20px;
