@@ -4,30 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Manager Details</title>
-    <link rel="stylesheet" href="../public/CSS/form_manager.css" />
+    <link rel="stylesheet" href="./CSS/form_manager.css" />
     <link
       rel="apple-touch-icon"
       sizes="180x180"
-      href="../public/Images/favicon_io/apple-touch-icon.png"
+      href="./Images/favicon_io/apple-touch-icon.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="../public/Images/favicon_io/favicon-32x32.png"
+      href="./Images/favicon_io/favicon-32x32.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="16x16"
-      href="../public/Images/favicon_io/favicon-16x16.png"
+      href="./Images/favicon_io/favicon-16x16.png"
     />
-    <link rel="manifest" href="../public/Images/favicon_io/site.webmanifest" />
+    <link rel="manifest" href="./Images/favicon_io/site.webmanifest" />
   </head>
   <body>
     <nav id="navbar">
       <a href="./index.html"
-        ><img src="../public/Images/logo_orange.png" alt="Logo"
+        ><img src="./Images/logo_orange.png" alt="Logo"
       /></a>
       <!-- <div class="page2">
         <h4><a href="./index.html">Home</a></h4>
@@ -37,7 +37,7 @@
     </nav>
     <div class="mainpage">
       <div class="part1">
-        <div class="heading">Personal Info</div>
+        <div class="heading">Business Info</div>
         <div class="info1">
           <div class="info">
             <label for="Name">Name</label><br />
@@ -46,31 +46,41 @@
               type="text"
               name="name"
               id="name"
-              placeholder="Your Name"
+              placeholder="Your Full Name"
             />
           </div>
           <div class="info">
-            <label for="email">Email ID</label><br />
+            <label for="email">Office Email</label><br />
             <input
               style="background-color: transparent; border: none"
               type="email"
               name="email"
               id="email"
-              placeholder="Your Email ID"
+              placeholder="Office Email ID"
             />
           </div>
           <div class="info">
-            <label for="phone">Phone Number</label><br />
+            <label for="phone">Contact Number</label><br />
             <input
               style="background-color: transparent; border: none"
               type="tel"
               name="phone"
               id="phone"
-              placeholder="Your Phone Number"
+              placeholder="Office Contact"
             />
           </div>
           <div class="info">
-            <label for="address">Address</label><br />
+            <label for="service">Service Centre</label><br />
+            <input
+              style="background-color: transparent; border: none; width: 25vw"
+              type="text"
+              name="address"
+              id="address"
+              placeholder="Service Centre Name"
+            />
+          </div>
+          <div class="info">
+            <label for="address">Office Address</label><br />
             <input
               style="background-color: transparent; border: none; width: 25vw"
               type="text"
@@ -80,13 +90,13 @@
             />
           </div>
           <div class="info">
-            <label for="contact">Emergency Number</label><br />
+            <label for="location">Location</label><br />
             <input
-              style="background-color: transparent; border: none"
-              type="tel"
-              name="emergency"
-              id="emergency"
-              placeholder="Emergency Number"
+              style="background-color: transparent; border: none; width: 25vw"
+              type="text"
+              name="address"
+              id="address"
+              placeholder="Your Address"
             />
           </div>
         </div>
@@ -97,48 +107,120 @@
         <button id="add-service-btn">Add Service</button>
       </div>
 
+      <form id="Select" class="hidden">
+        <label>Choose the Service from above</label>
+      </form>
+
       <form id="park" class="hidden">
-        <label>Service Center</label><br />
+        <label
+          style="color: rgb(0, 186, 0); font-size: 30px; margin-left: 18vw"
+          for="heading"
+          >Car Parking</label
+        >
+        <br />
+        <label>Number of slots</label><br />
         <input
           style="background-color: transparent; border: none"
-          type="text"
-          name="option1Label1"
-          placeholder="Service Center Name"
-        /><br />
-        <label>Location</label><br />
+          type="number"
+          name="option1Label5"
+          placeholder="Number of parking slots"
+        />
+        <br />
+        <label>Price (per hour)</label><br />
         <input
           style="background-color: transparent; border: none"
-          type="text"
-          name="option1Label2"
-          placeholder="Address"
-        /><br />
-        <label>Contact Number</label><br />
+          type="number"
+          name="option1Label6"
+          placeholder="Price per hour in rupees"
+        />
+        <br />
+        <label>Price (per day)</label><br />
         <input
           style="background-color: transparent; border: none"
-          type="text"
-          name="option1Label3"
-          placeholder="Contact Number"
+          type="number"
+          name="option1Label7"
+          placeholder="Price per day in rupees"
         />
       </form>
 
       <form id="clean" class="hidden">
-        <label>Label A: <input type="text" name="option2LabelA" /></label><br />
-        <label>Label B: <input type="text" name="option2LabelB" /></label>
+        <label
+          style="color: rgb(0, 186, 0); font-size: 30px; margin-left: 17vw"
+          for="heading"
+          >Car Cleaning</label
+        >
+        <br />
+        <label>Price (only car wash)</label><br />
+        <input
+          style="background-color: transparent; border: none"
+          type="number"
+          name="option1Label5"
+          placeholder="Price for carwash in rupees"
+        />
+        <br />
+        <label>Price (complete cleaning)</label><br />
+        <input
+          style="background-color: transparent; border: none; width: 25vw"
+          type="number"
+          name="option1Label6"
+          placeholder="Price for complete cleaning in rupees"
+        />
       </form>
 
       <form id="charge" class="hidden">
-        <label>Single Label: <input type="text" name="option3Label" /></label>
+        <label
+          style="color: rgb(0, 186, 0); font-size: 30px; margin-left: 17vw"
+          for="heading"
+          >EV Charging</label
+        >
+        <br />
+        <label>Price (per hour)</label><br />
+        <input
+          style="background-color: transparent; border: none"
+          type="number"
+          name="option1Label5"
+          placeholder="Price per hour in rupees"
+        />
       </form>
 
       <form id="inspection" class="hidden">
-        <label>Single Label: <input type="text" name="option3Label" /></label>
+        <label
+          style="color: rgb(0, 186, 0); font-size: 30px; margin-left: 15vw"
+          for="heading"
+          >Vehicle Inspection</label
+        >
+        <br />
+        <label>Price (base price)</label><br />
+        <input
+          style="background-color: transparent; border: none; width: 23vw"
+          type="number"
+          name="option1Label5"
+          placeholder="Base price for inspection in rupees"
+        />
       </form>
 
       <form id="paint" class="hidden">
-        <label>Single Label: <input type="text" name="option3Label" /></label>
+        <label
+          style="color: rgb(0, 186, 0); font-size: 30px; margin-left: 14vw"
+          for="heading"
+          >Painting & Denting</label
+        >
+        <br />
+        <label>Price (painting)</label><br />
+        <input
+          style="background-color: transparent; border: none; width: 28vw"
+          type="number"
+          name="option1Label5"
+          placeholder="Price for complete car painting in rupees"
+        />
+        <br />
+        <label>Denting Service provided</label><br />
+        <select class="denting" name="option1Label6" id="">
+          <option value="yes">YES</option>
+          <option value="no">NO</option>
+        </select>
       </form>
 
-      <!-- //ASHFKJA //ASKDJLAF -->
       <button id="update" type="submit">
         <a
           style="text-decoration: none; color: white"
@@ -150,7 +232,7 @@
     <div id="footer">
       <div id="gen">
         <div class="colfoot">
-          <img id="logofoot" src="../public/Images/logo_orange.png" alt="" />
+          <img id="logofoot" src="./Images/logo_orange.png" alt="" />
           <div class="foottext">
             Curious about new developments and updates?<br />Follow us on socail
             media
@@ -375,6 +457,6 @@
         </div>
       </div>
     </div>
-    <script src="../public/JS/form_manager.js"></script>
+    <script src="./JS/form_manager.js"></script>
   </body>
 </html>

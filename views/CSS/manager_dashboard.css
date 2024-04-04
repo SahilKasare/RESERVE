@@ -474,6 +474,7 @@ header {
   height: 65px;
   font-size: 20px;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .services-table .table-selected {
