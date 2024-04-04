@@ -17,7 +17,7 @@ a {
 }
 
 .cb-part1 {
-  height: 198vh;
+  height: 194vh;
   width: 14vw;
   border: 1px solid black;
   background-color: black;
@@ -32,7 +32,7 @@ a {
   height: 100%;
   width: 86vw;
   background-color: #16191d;
-  background-image: url("Assets/Frame\ 24updatedbg.jpg");
+  background-image: url("/RESERVE/views/Images/Frame\ 24updatedbg.jpg");
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;

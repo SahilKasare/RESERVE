@@ -35,7 +35,7 @@ function sccreatecard(title , location , phno , email , price){
     <div class="sc-card-center"> 
 
             <div class="sc-center-image">
-            <img src="Assets/center_img2.jpg" alt="" />
+            <img src="./Images/center_img2.jpg" alt="" />
             </div>
 
         <div class="sc-center-text">
