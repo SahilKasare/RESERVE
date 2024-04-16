@@ -1,8 +1,7 @@
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken"
-import User from "../models/User.js"
-import Manager from "../models/Manager.js"
-import Admin from "../models/Admin.js"
+const jwt = require('jsonwebtoken');
+const User = require('../models/User.js');
+const Manager = require('../models/Manager.js');
+const Admin = require('../models/Admin.js');
 
 
 //USER AUTH 

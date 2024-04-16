@@ -1,4 +1,4 @@
-import Manager from "../models/Manager.js"
+const Manager = require('../models/Manager.js');
 
 export const getManager=async(req,res)=>{
     try{

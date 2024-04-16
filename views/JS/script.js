@@ -15,6 +15,9 @@ function toggleNav() {
   }
 }
 
+const signinup=document.getElementById('signinup');
+
+
 const reviews = [
   {
     stars: 4,
