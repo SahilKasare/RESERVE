@@ -118,6 +118,7 @@ exports.userLogin=async(req,res)=>{
 
     //MANAGER LOGIN
 
+    
     exports.ManagerLogin=async(req,res)=>{
         try{
           const {email,password}=req.body;
