@@ -39,3 +39,7 @@ app.get('/userLogin', (req, res) => {
 
 app.post('/userLogin',userLogin);
 app.post('/registerUser',registerUser);
+app.get('/userDetails',(req,res)=>{
+    res.render('form_user');
+
+})
