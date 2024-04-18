@@ -8,6 +8,7 @@ const ManagerRoutes=require('./routes/Manager')
 const AdminRoutes=require('./routes/Admin');
 const { verifyToken } = require('./middleware/auth');
 const {userLogin}=require('./controllers/auth')
+const {registerUser}=require('./controllers/auth')
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use('/css', express.static(path.join(__dirname, 'views', 'CSS')));
@@ -37,3 +38,4 @@ app.get('/userLogin', (req, res) => {
 });
 
 app.post('/userLogin',userLogin);
+app.post('/registerUser',registerUser);
