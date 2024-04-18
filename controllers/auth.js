@@ -7,44 +7,43 @@ const Admin = require('../models/Admin.js');
 //USER AUTH 
 
 //USER SIGNUP
-exports.registerUser=async(req,res)=>{
+exports.registerUser = async (req, res) => {
+  try {
+    const { username, password, email } = req;
+    const {
+      name,
+      license,
+      vehicle,
+      contact,
+      address,
+      brand,
+      model,
+      description
+    } = req.body;
 
-try{
-    
-    const {username,
-    password,
-    name,
-    license,
-    vehicle,
-    contact,
-    email,
-    address,
-    car_description,
-}=req.body;
+    const car_description = `${description} ${brand} ${model}`;
 
-const salt=await bcrypt.genSalt();
-const passwordHash=await bcrypt.hash(password,salt);
+    const salt = await bcrypt.genSalt();
+    const passwordHash = await bcrypt.hash(password, salt);
 
-const newUser=new User({
-    username,
-    password:passwordHash,
-    name,
-    license,
-    vehicle,
-    contact,
-    email,
-    address,
-    car_description,
+    const newUser = new User({
+      username,
+      password: passwordHash,
+      name,
+      license,
+      vehicle,
+      contact,
+      email,
+      address,
+      car_description,
+    });
 
-})
-
-const savedUser=await newUser.save();
-res.status(201).json(savedUser);
-  }catch(error){
-   res.status(500).json({error:error.message});
-  }  
-
-}
+    const savedUser = await newUser.save();
+    res.redirect('/userLogin');
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 
 //USER LOGIN
 exports.userLogin=async(req,res)=>{
