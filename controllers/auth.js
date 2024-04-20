@@ -7,47 +7,46 @@ const Admin = require('../models/Admin.js');
 //USER AUTH 
 
 //USER SIGNUP
-export const registerUser=async(req,res)=>{
+exports.registerUser = async (req, res) => {
+  try {
+    const { username, password, email } = req;
+    const {
+      name,
+      license,
+      vehicle,
+      contact,
+      address,
+      brand,
+      model,
+      description
+    } = req.body;
 
-try{
-    
-    const {username,
-    password,
-    name,
-    license,
-    vehicle,
-    contact,
-    email,
-    address,
-    car_description,
-}=req.body;
+    const car_description = `${description} ${brand} ${model}`;
 
-const salt=await bcrypt.genSalt();
-const passwordHash=await bcrypt.hash(password,salt);
+    const salt = await bcrypt.genSalt();
+    const passwordHash = await bcrypt.hash(password, salt);
 
-const newUser=new User({
-    username,
-    password:passwordHash,
-    name,
-    license,
-    vehicle,
-    contact,
-    email,
-    address,
-    car_description,
+    const newUser = new User({
+      username,
+      password: passwordHash,
+      name,
+      license,
+      vehicle,
+      contact,
+      email,
+      address,
+      car_description,
+    });
 
-})
-
-const savedUser=await newUser.save();
-res.status(201).json(savedUser);
-  }catch(error){
-   res.status(500).json({error:error.message});
-  }  
-
-}
+    const savedUser = await newUser.save();
+    res.redirect('/userLogin');
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 
 //USER LOGIN
-export const userLogin=async(req,res)=>{
+exports.userLogin=async(req,res)=>{
     try{
       const {email,password}=req.body;
       const user=await User.findOne({email:email});
@@ -58,7 +57,15 @@ export const userLogin=async(req,res)=>{
     return res.status(400).json({msg:"Invalid Credentials"});
   const token=jwt.sign({id:user._id},process.env.JWT_SECRET);
   delete user.password;
-  res.status(200).json({token,user});
+  res.cookie('authorization', token, {
+    httpOnly: true,
+    maxAge: 24 * 60 * 60 * 1000, 
+  });
+
+ 
+   res.redirect('/users/profile');
+
+ 
     }catch(error){
      res.status(500).json({error:error.message});
     }  
@@ -69,7 +76,7 @@ export const userLogin=async(req,res)=>{
 
   //MANAGER SIGNUP
 
-  export const registerManager=async(req,res)=>{
+  exports.registerManager=async(req,res)=>{
 
     try{
         
@@ -110,7 +117,8 @@ export const userLogin=async(req,res)=>{
 
     //MANAGER LOGIN
 
-    export const ManagerLogin=async(req,res)=>{
+    
+    exports.ManagerLogin=async(req,res)=>{
         try{
           const {email,password}=req.body;
           const user=await Manager.findOne({email:email});
@@ -131,7 +139,7 @@ export const userLogin=async(req,res)=>{
       //ADMIN AUTH
 
       //ADMIN LOGIN
-      export const AdminLogin=async(req,res)=>{
+      exports.AdminLogin=async(req,res)=>{
         try{
           const {email,password}=req.body;
           const user=await Admin.findOne({email:email});

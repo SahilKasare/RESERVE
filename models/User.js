@@ -40,6 +40,10 @@ const userSchema = new mongoose.Schema({
     car_description:{
         type: String,
         required: true
+    },
+
+    profile_pic:{
+      type:String,
     }
 });
 

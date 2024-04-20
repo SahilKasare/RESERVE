@@ -1,5 +1,6 @@
 const User = require('../models/User.js');
 
+
 export const getUser=async(req,res)=>{
     try{
      const {id}=req.params;

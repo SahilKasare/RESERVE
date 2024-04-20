@@ -1,10 +1,11 @@
-import jwt from "jsonwebtoken";
-import dotenv from "dotenv"
+const jwt = require("jsonwebtoken");
+const dotenv = require("dotenv");
+
 
 dotenv.config();
-export const verifyToken=async(req,res,next)=>{
+exports.verifyToken=async(req,res,next)=>{
     try{
-        let token=req.cookies("Authorization");
+        let token=req.cookies("authorization");
         
         if(!token){
             res.status(403).json("Access Denied");
