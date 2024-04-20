@@ -61,31 +61,43 @@ exports.registerUser = async (req, res) => {
 
 
 //USER LOGIN
-exports.userLogin=async(req,res)=>{
-    try{
-      const {email,password}=req.body;
-      const user=await User.findOne({email:email});
-      if(!user)
-      return res.status(400).json({msg:"User does not exist"});
-    const isMatch=await bcrypt.compare(password,user.password);
-    if(!isMatch)
-    return res.status(400).json({msg:"Invalid Credentials"});
-  const token=jwt.sign({id:user._id},process.env.JWT_SECRET);
-  delete user.password;
-  res.cookie('authorization', token, {
-    httpOnly: true,
-    maxAge: 24 * 60 * 60 * 1000, 
-  });
+exports.userLogin = async (req, res) => {
+  try {
+    const { email, password } = req.body;
 
- 
-   res.redirect('/users/profile');
 
- 
-    }catch(error){
-     res.status(500).json({error:error.message});
-    }  
-  
+
+    const user = await User.findOne({ email: email });
+
+    
+
+    if (!user) {
+      return res.status(400).json({ msg: "User does not exist" });
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if (!isMatch) {
+      return res.status(400).json({ msg: "Invalid Credentials" });
+    }
+
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+
+    delete user.password;
+
+    res.cookie('authorization', token, {
+      httpOnly: true,
+      maxAge: 24 * 60 * 60 * 1000,
+    });
+
+    res.redirect('/users/profile');
+
+  } catch (error) {
+    console.error('Login Error:', error);
+    res.status(500).json({ error: error.message });
   }
+};
+
 
   //MANAGER AUTH
 
