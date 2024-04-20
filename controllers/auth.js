@@ -3,14 +3,25 @@ const User = require('../models/User.js');
 const Manager = require('../models/Manager.js');
 const Admin = require('../models/Admin.js');
 
-
+const bcrypt = require('bcrypt');
 //USER AUTH 
 
 //USER SIGNUP
+
+
+
+
+
+
+
+
 exports.registerUser = async (req, res) => {
   try {
-    const { username, password, email } = req;
+   
     const {
+      username,
+      email,
+      password,
       name,
       license,
       vehicle,
@@ -44,6 +55,10 @@ exports.registerUser = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+
+
+
 
 //USER LOGIN
 exports.userLogin=async(req,res)=>{
