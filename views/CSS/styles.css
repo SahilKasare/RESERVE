@@ -519,10 +519,10 @@ nav h4:hover a {
   25%{
       transform: translateY(-30%);
   }
-  35%{
+  30%{
       transform: translateY(-28%);
   }
-  68%{
+  75%{
       transform: translateY(-142%);
   }
   100%{
