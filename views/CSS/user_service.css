@@ -86,8 +86,14 @@ a{
     height: 3rem;
     /* border: 1px solid white; */
 }
+/*  */
+.profile-pic-rel{
+    position:relative;
+}
 
 
+
+/*  */
 .options-part1{
     margin-top: 2rem;
     /* border: 1px solid white; */

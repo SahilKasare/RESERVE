@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ReServe</title>
-    <link rel="stylesheet" href="CSS/user_wallet.css" />
+    <link rel="stylesheet" href="/CSS/user_wallet.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       rel="apple-touch-icon"
@@ -36,15 +36,17 @@
         <div id="colflex">
           <!-- <div id="site"> -->
           <div id="logo">
-            <img id="logoimg" src="./Images/logo_orange.webp" alt="" />
+            <img id="logoimg" src="/Images/logo_orange.webp" alt="" />
           </div>
 
           <!-- </div> -->
           <div id="optionprofile">
-            <div class="profile-pic">
-              <img id="img2" src="./Images/profilepic.png" />
-            </div>
-            <div class="profile-name">Hrishikesh Dongre</div>
+            <div style="position: relative;">
+              <div style="width: 4rem; height: 4rem; border-radius: 9999px; background-color: #fff; overflow: hidden;">
+                  <img style="width: 100%; height: 100%; object-fit: cover;" src="/Images/Uploads/<%= user.profile_pic %>" alt="">
+              </div>
+           </div>
+            <div class="pk-profile-part1-name"><%= user.name %></div>
           </div>
         </div>
 
@@ -103,7 +105,7 @@
                 </g></svg
               ><a
                 style="text-decoration: none; color: white"
-                href="user_service.html"
+                href="/users/profile"
                 ><div>Services</div></a
               >
             </div>
@@ -132,7 +134,7 @@
                 </g></svg
               ><a
                 style="text-decoration: none; color: white"
-                href="user_parking.html"
+                href="/users/user_park"
                 ><div>Parking</div></a
               >
             </div>
@@ -170,7 +172,7 @@
                 </g></svg
               ><a
                 style="text-decoration: none; color: white"
-                href="user_current-bookings.html"
+                href="/users/user_current_bookings"
                 ><div>Current Bookings</div></a
               >
             </div>
@@ -254,10 +256,10 @@
 
       <div id="bod">
         <div id="profile">
-          <div class="profile-pic">
-            <img id="img1" src="./Images/profilepic.png" />
+          <div style="width: 3rem; height: 3rem; border-radius: 9999px; background-color: #fff; overflow: hidden;">
+            <img style="width: 100%; height: 100%; object-fit: cover;" src="/Images/Uploads/<%= user.profile_pic %>" alt="">
           </div>
-          <div class="profile-name">Hrishikesh Dongre</div>
+          <div class="pk-profile-part1-name"><%= user.name %></div>
         </div>
         <div id="slidehead">
           <div id="header">
@@ -276,7 +278,7 @@
                   <button>+</button>
                 </div>
                 <img
-                  src="./Images/e-wall2.png"
+                  src="/Images/e-wall2.png"
                   alt=""
                   style="margin-left: 50px; margin-right: 10px"
                 />
@@ -355,7 +357,7 @@
         <div id="footer">
           <div id="gen">
             <div class="colfoot">
-              <img id="logofoot" src="./Images/logo_orange.webp" alt="" />
+              <img id="logofoot" src="/Images/logo_orange.webp" alt="" />
               <div class="foottext">
                 Curious about new developments and updates?<br />Follow us on
                 social media.
@@ -586,5 +588,5 @@
       </div>
     </div>
   </body>
-  <script src="./JS/user_wallet.js"></script>
+  <script src="/JS/user_wallet.js"></script>
 </html>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Current-Bookings</title>
     
-    <link rel="stylesheet" href="./CSS/user_current-bookings.css" />
+    <link rel="stylesheet" href="/CSS/user_current-bookings.css" />
     <link
   rel="icon"
   type="image/png"
@@ -26,15 +26,17 @@
     <div class="cb-part1">
       <!-- logo part -->
       <div class="cb-web-logo">
-        <img src="./Images/finallogo.png" alt="" />
+        <img src="/Images/finallogo.png" alt="" />
       </div>
 
       <!-- profile_part -->
       <div class="cb-profile-part1">
-        <div class="cb-profile-part1-pic">
-          <img src="./Images/profilepic.png" alt="" />
+        <div style="position: relative;">
+            <div style="width: 4rem; height: 4rem; border-radius: 9999px; background-color: #fff; overflow: hidden;">
+                <img style="width: 100%; height: 100%; object-fit: cover;" src="/Images/Uploads/<%= user.profile_pic %>" alt="">
+            </div>
         </div>
-        <div class="cb-profile-part1-name">Hrishikesh Dongre</div>
+        <div class="cb-profile-part1-name"><%= user.name %></div>
       </div>
 
       <!-- oprtions_part -->
@@ -93,7 +95,7 @@
                   ></path>
                 </g>
               </svg>
-              <div><a href="user_service.html">Services</a></div>
+              <div><a href="/users/profile">Services</a></div>
             </div>
           </div>
           <div class="cb-elewrap">
@@ -119,7 +121,7 @@
                   ></path>
                 </g>
               </svg>
-              <div><a href="user_parking.html">Parking</a></div>
+              <div><a href="/users/user_park">Parking</a></div>
             </div>
           </div>
           <div class="cb-selected cb-elewrap">
@@ -182,7 +184,7 @@
                   ></path>
                 </g>
               </svg>
-              <div><a href="user_wallet.html">Wallet</a></div>
+              <div><a href="/users/user_wallet">Wallet</a></div>
             </div>
           </div>
           <div class="cb-elewrap">
@@ -235,10 +237,10 @@
       <!-- profile -->
       <nav>
         <div class="cb-profile-part1">
-          <div class="cb-profile-part1-pic">
-            <img src="./Images/profilepic.png" alt="" />
+          <div style="width: 3rem; height: 3rem; border-radius: 9999px; background-color: #fff; overflow: hidden;">
+            <img style="width: 100%; height: 100%; object-fit: cover;" src="/Images/Uploads/<%= user.profile_pic %>" alt="">
           </div>
-          <div class="cb-profile-part1-name">Hrishikesh Dongre</div>
+          <div class="pk-profile-part1-name"><%= user.name %></div>
         </div>
       </nav>
 
@@ -278,7 +280,7 @@
         <div id="cb-footer">
           <div id="cb-gen">
             <div class="cb-colfoot">
-              <img id="cb-logofoot" src="./Images/finallogo.png" alt="" />
+              <img id="cb-logofoot" src="/Images/finallogo.png" alt="" />
               <div class="cb-foottext">
                 Curious about new developments and updates?<br />Follow us on
                 socail media
@@ -509,6 +511,6 @@
       </footer>
     </div>
 
-    <script src="./JS/user_current-bookings.js"></script>
+    <script src="/JS/user_current-bookings.js"></script>
   </body>
 </html>

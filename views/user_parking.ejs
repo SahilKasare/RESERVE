@@ -6,7 +6,7 @@
     <title>Parking</title>
     <!-- <link rel="stylesheet" href="style.css" /> -->
 
-    <link rel="stylesheet" href="./CSS/user_parking.css" />
+    <link rel="stylesheet" href="/CSS/user_parking.css" />
     <link
       rel="icon"
       type="image/png"
@@ -26,15 +26,17 @@
     <div class="pk-part1">
       <!-- logo part -->
       <div class="pk-web-logo">
-        <img src="./Images/finallogo.png" alt="" />
+        <img src="/Images/finallogo.png" alt="" />
       </div>
 
       <!-- profile_part -->
       <div class="pk-profile-part1">
-        <div class="pk-profile-part1-pic">
-          <img src="./Images/profilepic.png" alt="" />
-        </div>
-        <div class="pk-profile-part1-name">Hrishikesh Dongre</div>
+        <div style="position: relative;">
+          <div style="width: 4rem; height: 4rem; border-radius: 9999px; background-color: #fff; overflow: hidden;">
+              <img style="width: 100%; height: 100%; object-fit: cover;" src="/Images/Uploads/<%= user.profile_pic %>" alt="">
+          </div>
+       </div>
+        <div class="pk-profile-part1-name"><%= user.name %></div>
       </div>
 
       <!-- oprtions_part -->
@@ -94,7 +96,7 @@
                 </g>
               </svg>
               <div>
-                <a href="user_service.html">Service</a>
+                <a href="/users/profile">Service</a>
               </div>
             </div>
           </div>
@@ -157,7 +159,7 @@
                 </g>
               </svg>
               <div>
-                <a href="user_current-bookings.html">Current-Bookings</a>
+                <a href="/users/user_current_bookings">Current-Bookings</a>
               </div>
             </div>
           </div>
@@ -187,7 +189,7 @@
                 </g>
               </svg>
               <div>
-                <a href="user_wallet.html">Wallet</a>
+                <a href="/users/user_wallet">Wallet</a>
               </div>
             </div>
           </div>
@@ -240,10 +242,10 @@
     <div class="pk-part2">
       <nav>
         <div class="pk-profile-part1">
-          <div class="pk-profile-part1-pic">
-            <img src="./Images/profilepic.png" alt="" />
+          <div style="width: 3rem; height: 3rem; border-radius: 9999px; background-color: #fff; overflow: hidden;">
+            <img style="width: 100%; height: 100%; object-fit: cover;" src="/Images/Uploads/<%= user.profile_pic %>" alt="">
           </div>
-          <div class="pk-profile-part1-name">Hrishikesh Dongre</div>
+          <div class="pk-profile-part1-name"><%= user.name %></div>
         </div>
       </nav>
 
@@ -260,7 +262,7 @@
           <td class="pk-table-selected">
             <img
               style="height: 50px; width: 85px"
-              src="./Images/car_upscaled.png"
+              src="/Images/car_upscaled.png"
               alt=""
             />
           </td>
@@ -272,7 +274,7 @@
           <td>
             <img
               style="height: 50px; width: 85px"
-              src="./Images/car_upscaled.png"
+              src="/Images/car_upscaled.png"
               alt=""
             />
           </td>
@@ -285,7 +287,7 @@
           <td>
             <img
               style="height: 50px; width: 85px"
-              src="./Images/car_upscaled.png"
+              src="/Images/car_upscaled.png"
               alt=""
             />
           </td>
@@ -294,7 +296,7 @@
           <td>
             <img
               style="height: 50px; width: 85px"
-              src="./Images/car_upscaled.png"
+              src="/Images/car_upscaled.png"
               alt=""
             />
           </td>

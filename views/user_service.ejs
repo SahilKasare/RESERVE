@@ -15,6 +15,10 @@
       href="https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&family=Baloo+Bhai+2&family=Poppins&display=swap"
       rel="stylesheet"
     />
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+    rel="stylesheet"
+    />
   </head>
   <body>
     <main>
@@ -24,8 +28,18 @@
             <img src="/Images/finallogo.png" alt="" />
           </div>
           <div class="profile-part1">
-            <div class="profile-part1-pic">
-              <img src="/Images/profilepic.png" alt="" />
+
+            <form id="uploadform" style="display: none;" action="/users/fileupload" method="post" enctype="multipart/form-data">
+              <input type="file" name="image" style="display: block; margin-bottom: 10px;">
+            </form>
+          
+            <div style="position: relative;">
+                <span id="uploadicon" style="width: 1.5rem; height: 1.5rem; position: absolute; bottom: 0; right: 0; display: flex; align-items: center; justify-content: center; background-color: #bfc5cd; border-radius: 9999px; cursor: pointer;">
+                    <i class="text-zinc-800 ri-edit-fill"></i>
+                </span>
+                <div style="width: 4rem; height: 4rem; border-radius: 9999px; background-color: #fff; overflow: hidden;">
+                    <img style="width: 100%; height: 100%; object-fit: cover;" src="/Images/Uploads/<%= user.profile_pic %>" alt="">
+                </div>
             </div>
             <div class="profile-part1-name"><%= user.name %></div>
           </div>
@@ -112,7 +126,7 @@
                       ></path>
                     </g>
                   </svg>
-                  <div><a href="user_parking.html">Parking</a></div>
+                  <div><a href="/users/user_park">Parking</a></div>
                 </div>
               </div>
               <div class="elewrap">
@@ -147,7 +161,7 @@
                       ></path>
                     </g>
                   </svg>
-                  <div><a href="user_current-bookings.html">Current-Bookings</a></div>
+                  <div><a href="/users/user_current_bookings">Current-Bookings</a></div>
                 </div>
               </div>
               <div class="elewrap">
@@ -175,7 +189,7 @@
                       ></path>
                     </g>
                   </svg>
-                  <div><a href="user_wallet.html">Wallet</a></div>
+                  <div><a href="/users/user_wallet">Wallet</a></div>
                 </div>
               </div>
               <div class="elewrap">
@@ -227,17 +241,17 @@
         <div class="part2">
           <nav>
             <div class="profile-part1">
-              <div class="profile-part1-pic">
-                <img src="./Images/profilepic.png" alt="" />
+              <div style="width: 3rem; height: 3rem; border-radius: 9999px; background-color: #fff; overflow: hidden;">
+                  <img style="width: 100%; height: 100%; object-fit: cover;" src="/Images/Uploads/<%= user.profile_pic %>" alt="">
               </div>
-              <div class="profile-part1-name">Hrishikesh Dongre</div>
+              <div class="profile-part1-name"><%= user.name %></div>
             </div>
           </nav>
           <div class="heading">Select Service</div>
           <div class="first-row">
             <div class="first-card">
               <div class="car-cleaning-img">
-                <img src="./Images/Carcleaning.jpg" alt="" />
+                <img src="/Images/Carcleaning.jpg" alt="" />
               </div>
               <h2>Car Cleaning</h2>
               <p>
@@ -253,7 +267,7 @@
 
             <div class="first-card">
               <div class="car-cleaning-img">
-                <img src="./Images/ev-charging.jpg" alt="" />
+                <img src="/Images/ev-charging.jpg" alt="" />
               </div>
               <h2>EV CHarging</h2>
               <p>
@@ -269,7 +283,7 @@
 
             <div class="first-card" id="left-shadow">
               <div class="car-cleaning-img">
-                <img src="./Images/car-parking.webp" alt="" />
+                <img src="/Images/car-parking.webp" alt="" />
               </div>
               <h2>Car Parking</h2>
               <p>
@@ -287,7 +301,7 @@
           <div class="second-row">
             <div class="first-card" id="left-shadow">
               <div class="car-cleaning-img">
-                <img src="./Images/inspection.jpg" alt="" />
+                <img src="/Images/inspection.jpg" alt="" />
               </div>
               <h2>Vehicle Inspection</h2>
               <p>
@@ -303,7 +317,7 @@
 
             <div class="first-card" id="left-shadow">
               <div class="car-cleaning-img">
-                <img src="./Images/painting.jpg" alt="" />
+                <img src="/Images/painting.jpg" alt="" />
               </div>
               <h2>Painting & denting</h2>
               <p>
@@ -323,7 +337,7 @@
             <div id="footer">
               <div id="gen">
                 <div class="colfoot">
-                  <img id="logofoot" src="./Images/finallogo.png" alt="" />
+                  <img id="logofoot" src="/Images/finallogo.png" alt="" />
                   <div class="foottext">
                     Curious about new developments and updates?<br />Follow us
                     on socail media
@@ -555,6 +569,14 @@
         </div>
       </div>
     </main>
-    <!-- <script src="app.js"></script> -->
+    <script>
+        document.querySelector("#uploadicon").addEventListener("click",function(){
+          document.querySelector("#uploadform input").click();
+        });
+
+        document.querySelector("#uploadform input").addEventListener("change",function(){
+            document.querySelector("#uploadform").submit();
+        });
+    </script>
   </body>
 </html>
