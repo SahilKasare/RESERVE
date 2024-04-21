@@ -9,7 +9,7 @@ exports.verifyToken=async(req,res,next)=>{
         
         if(!token){
             res.status(403).json("Access Denied");
-        }
+        } 
 
       if(token.startsWith("Bearer ")){
             token.slice(7,token.length).trim
