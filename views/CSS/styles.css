@@ -571,11 +571,12 @@ nav h4:hover a {
 .register div {
   height: 5vh;
   width: 14vw;
-  font-size: 15px;
+  font-size: 17px;
   text-align: center;
   padding-top: 10px;
-  background-color: rgb(255, 255, 255);
-  color: black;
+  /* background-color: rgb(255, 255, 255); */
+  background-color: #228b22;
+  color: white;
   border-radius: 8px;
   font-weight: 600;
 }
