@@ -497,6 +497,39 @@ nav h4:hover a {
   font-size: 40px;
   color: rgba(255, 255, 255, 0.886);
 }
+
+.part5_second .column1 .txt1 div{
+  background-color: none;
+  height: 45px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  font-weight: 600;
+  overflow: hidden;
+}
+.part5_second .column1 .txt1 div span{
+  display: block;
+  height: 100%;
+  color: red;
+  margin-bottom: 10px;
+  animation: spin_words 3s infinite;
+}
+
+@keyframes spin_words{
+  25%{
+      transform: translateY(-30%);
+  }
+  35%{
+      transform: translateY(-28%);
+  }
+  68%{
+      transform: translateY(-142%);
+  }
+  100%{
+      transform: translateY(-140%);
+  }
+}
+
 .part5_second .column1 .txt2 {
   margin-top: 2vh;
   font-size: 20px;
