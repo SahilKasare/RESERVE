@@ -38,15 +38,47 @@
     <div class="mainpage">
       <form action="/userDetails" method="POST">
       <div class="part1">
+
         <div class="heading">Personal Info</div>
         <div class="info1">
+          <div class="info">
+            <label for="username">Username</label><br />
+            <input
+              style="background-color: transparent; border: none"
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Username"
+            />
+          </div>
+          <div class="info">
+            <label for="email">Email id</label><br />
+            <input
+              style="background-color: transparent; border: none"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email id"
+            />
+
+          </div>
+          <div class="info">
+            <label for="password">Password</label><br />
+            <input
+              style="background-color: transparent; border: none"
+              type="password"
+              name="password"
+              id="password"
+              placeholder="password"
+            />
+          </div>
           <div class="info">
             <label for="name">Name</label><br />
             <input
               style="background-color: transparent; border: none"
               type="text"
               name="name"
-              id="name"
+              id="contact"
               placeholder="Your Name"
             />
           </div>
@@ -138,12 +170,8 @@
           </div>
         </div>
       </div>
-      <button id="update" type="submit">
-        <a
-          style="text-decoration: none; color: white"
-          href="./user_dashboard.html"
-          >Submit</a
-        >
+      <button id="update" type="submit" style="text-decoration: none; color: white">
+       Submit
       </button>
     </form>
     </div>

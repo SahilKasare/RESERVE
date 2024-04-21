@@ -9,7 +9,9 @@ const AdminRoutes=require('./routes/Admin');
 const { verifyToken } = require('./middleware/auth');
 const {userLogin}=require('./controllers/auth')
 const {registerUser}=require('./controllers/auth')
-const {getDetails}=require('./middleware/register')
+const cookieParser = require('cookie-parser');
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use('/css', express.static(path.join(__dirname, 'views', 'CSS')));
@@ -17,6 +19,7 @@ app.use('/Fonts', express.static(path.join(__dirname, 'views', 'Fonts')));
 app.use('/Images', express.static(path.join(__dirname, 'views', 'Images')));
 app.use('/JS', express.static(path.join(__dirname, 'views', 'JS')));
 dotenv.config();
+app.use(cookieParser());
 const port= process.env.PORT ||3001;
 mongoose.connect(process.env.MONGOURL).then(()=>{
     app.listen(port,()=>console.log(`Server Port:${port}`));
@@ -39,12 +42,9 @@ app.get('/userLogin', (req, res) => {
 });
 
 app.post('/userLogin',userLogin);
-app.post('/userDetails',getDetails,registerUser);
+app.post('/userDetails',registerUser);
 app.get('/userDetails',(req,res)=>{
     res.render('form_user');
 
 })
 
-app.post('/registerDetails',(req,res)=>{
-    res.redirect('/userDetails');
-})

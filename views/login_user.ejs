@@ -36,17 +36,14 @@
       <div class="form-container sign-in">
         <form action="/userLogin" method="POST">
           <h1>Sign In</h1>
-          <input type="text" placeholder="Username" />
-          <input type="password" placeholder="Password" />
+          <input type="email" name="email" placeholder="Email" />
+          <input type="password" name="password" placeholder="Password" />
           <a href="#">Forget Your Password?</a>
-          <button>
-            <a
-              style="color: white"
-              href="./user_dashboard.html"
-              style="text-decoration: none"
-              >Sign In</a
-            >
+          <button type="submit" style="color: white; text-decoration: none; border: none; cursor: pointer;">
+            Sign In
           </button>
+        </form>
+        
         </form>
       </div>
       <div class="toggle-container">
@@ -56,7 +53,9 @@
             <p style="font-size: 18px">
               Don't have an account? <br />Create your <b>ReServe</b> account.
             </p>
-            <button class="hidden" id="register"><a style="color: white" href="./form_user.html">Sign Up</a></button>
+            
+              <button type="submit" class="hidden" id="register"><a style="color: white" href="/userDetails" >Sign Up</a></button>
+
           </div>
         </div>
       </div>
