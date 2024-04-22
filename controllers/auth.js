@@ -135,7 +135,7 @@ exports.userLogin = async (req, res) => {
     })
     
     const savedManager=await newManager.save();
-    res.status(201).json(savedManager);
+    res.redirect('/managerLogin')
       }catch(error){
        res.status(500).json({error:error.message});
       }  
@@ -145,28 +145,48 @@ exports.userLogin = async (req, res) => {
     //MANAGER LOGIN
 
     
-    exports.ManagerLogin=async(req,res)=>{
-        try{
-          const {email,password}=req.body;
-          const user=await Manager.findOne({email:email});
-          if(!user)
-          return res.status(400).json({msg:"User does not exist"});
-        const isMatch=await bcrypt.compare(password,user.password);
-        if(!isMatch)
-        return res.status(400).json({msg:"Invalid Credentials"});
-      const token=jwt.sign({id:user._id},process.env.JWT_SECRET);
-      delete user.password;
-      res.status(200).json({token,user});
-        }catch(error){
-         res.status(500).json({error:error.message});
-        }  
+    exports.managerLogin=async(req,res)=>{
+      try {
+        const { email, password } = req.body;
+    
+    
+    
+        const manager = await Manager.findOne({ email: email });
+    
+        
+    
+        if (!manager) {
+          return res.status(400).json({ msg: "User does not exist" });
+        }
+    
+        const isMatch = await bcrypt.compare(password, manager.password);
+    
+        if (!isMatch) {
+          return res.status(400).json({ msg: "Invalid Credentials" });
+        }
+    
+        const token = jwt.sign({ id: manager._id }, process.env.JWT_SECRET);
+    
+        delete manager.password;
+    
+        res.cookie('authorization', token, {
+          httpOnly: true,
+          maxAge: 24 * 60 * 60 * 1000,
+        });
+    
+        res.redirect('/managers/dashboard');
+    
+      } catch (error) {
+        console.error('Login Error:', error);
+        res.status(500).json({ error: error.message });
+      }
       
       }
 
       //ADMIN AUTH
 
       //ADMIN LOGIN
-      exports.AdminLogin=async(req,res)=>{
+      exports.adminLogin=async(req,res)=>{
         try{
           const {email,password}=req.body;
           const user=await Admin.findOne({email:email});

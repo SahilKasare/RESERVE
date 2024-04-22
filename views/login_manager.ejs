@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./Images/favicon_io/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./Images/favicon_io/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./Images/favicon_io/favicon-16x16.png"
+    />
+    <link rel="manifest" href="./Images/favicon_io/site.webmanifest" />
+    <link rel="stylesheet" href="./CSS/login_user.css" />
+    <title>User Login</title>
+  </head>
+
+  <body>
+    <img src="./Images/logo_blueslogan.png" alt="Logo" />
+    <div class="container" id="container">
+      <div class="form-container sign-in">
+        <form action="/managerLogin" method="POST">
+          <h1>Sign In</h1>
+          <input type="email" name="email" placeholder="Email" />
+          <input type="password" name="password" placeholder="Password" />
+          <a href="#">Forget Your Password?</a>
+          <button type="submit" style="color: white; text-decoration: none; border: none; cursor: pointer;">
+            Sign In
+          </button>
+        </form>
+        
+        </form>
+      </div>
+      <div class="toggle-container">
+        <div class="toggle">
+          <div class="toggle-panel toggle-right">
+            <h1>Welcome to ReServe !</h1>
+            <p style="font-size: 18px">
+              Don't have an account? <br />Create your <b>ReServe</b> account.
+            </p>
+            
+              <button type="submit" class="hidden" id="register"><a style="color: white" href="/managerDetails" >Sign Up</a></button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./JS/login_user.js"></script>
+  </body>
+</html>
