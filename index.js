@@ -36,6 +36,10 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
+app.get('/access-account', (req, res) => {
+    res.render('junction');
+})
+
 app.get('/userLogin', (req, res) => {
    
     res.render('login_user');
