@@ -62,22 +62,22 @@
             />
           </div>
           <div class="info">
-            <label for="phone">Contact Number</label><br />
+            <label for="contact">Contact Number</label><br />
             <input
               style="background-color: transparent; border: none"
               type="tel"
-              name="phone"
-              id="phone"
+              name="contact"
+              id="contact"
               placeholder="Office Contact"
             />
           </div>
           <div class="info">
-            <label for="service">Service Centre</label><br />
+            <label for="companyName">Service Centre</label><br />
             <input
               style="background-color: transparent; border: none; width: 25vw"
               type="text"
-              name="address"
-              id="address"
+              name="companyName"
+              id="companyName"
               placeholder="Service Centre Name"
             />
           </div>
@@ -106,14 +106,14 @@
       <div id="form-container">
         <div class="heading">Service Info</div>
         <div id="services"></div>
-        <button id="add-service-btn">Add Service</button>
+        <button id="add-service-btn" type="button">Add Service</button>
       </div>
 
-      <form id="Select" class="hidden">
+      <div id="Select" class="hidden">
         <label>Choose the Service from above</label>
-      </form>
+      </div>
 
-      <form id="park" class="hidden">
+      <div id="park" class="hidden">
         <label
           style="color: rgb(0, 186, 0); font-size: 30px; margin-left: 18vw"
           for="heading"
@@ -124,7 +124,7 @@
         <input
           style="background-color: transparent; border: none"
           type="number"
-          name="option1Label5"
+          name="parking_slots"
           placeholder="Number of parking slots"
         />
         <br />
@@ -132,20 +132,12 @@
         <input
           style="background-color: transparent; border: none"
           type="number"
-          name="option1Label6"
+          name="parking_price"
           placeholder="Price per hour in rupees"
         />
         <br />
-        <label>Price (per day)</label><br />
-        <input
-          style="background-color: transparent; border: none"
-          type="number"
-          name="option1Label7"
-          placeholder="Price per day in rupees"
-        />
-      </form>
 
-      <form id="clean" class="hidden">
+      <div id="clean" class="hidden">
         <label
           style="color: rgb(0, 186, 0); font-size: 30px; margin-left: 17vw"
           for="heading"
@@ -156,7 +148,7 @@
         <input
           style="background-color: transparent; border: none"
           type="number"
-          name="option1Label5"
+          name="price_carwash"
           placeholder="Price for carwash in rupees"
         />
         <br />
@@ -164,12 +156,12 @@
         <input
           style="background-color: transparent; border: none; width: 25vw"
           type="number"
-          name="option1Label6"
+          name="price_full"
           placeholder="Price for complete cleaning in rupees"
         />
-      </form>
+      </div>
 
-      <form id="charge" class="hidden">
+      <div id="charge" class="hidden">
         <label
           style="color: rgb(0, 186, 0); font-size: 30px; margin-left: 17vw"
           for="heading"
@@ -180,12 +172,20 @@
         <input
           style="background-color: transparent; border: none"
           type="number"
-          name="option1Label5"
+          name="charging_price"
           placeholder="Price per hour in rupees"
         />
-      </form>
+        <br>
+        <label>Number of slots</label><br />
+        <input
+          style="background-color: transparent; border: none"
+          type="number"
+          name="charging_slots"
+          placeholder="Number of parking slots"
+        />
+      </div>
 
-      <form id="inspection" class="hidden">
+      <div id="inspection" class="hidden">
         <label
           style="color: rgb(0, 186, 0); font-size: 30px; margin-left: 15vw"
           for="heading"
@@ -196,12 +196,12 @@
         <input
           style="background-color: transparent; border: none; width: 23vw"
           type="number"
-          name="option1Label5"
+          name="inspection_price"
           placeholder="Base price for inspection in rupees"
         />
-      </form>
+      </div>
 
-      <form id="paint" class="hidden">
+      <div id="paint" class="hidden">
         <label
           style="color: rgb(0, 186, 0); font-size: 30px; margin-left: 14vw"
           for="heading"
@@ -212,16 +212,16 @@
         <input
           style="background-color: transparent; border: none; width: 28vw"
           type="number"
-          name="option1Label5"
+          name="painting_price"
           placeholder="Price for complete car painting in rupees"
         />
         <br />
         <label>Denting Service provided</label><br />
-        <select class="denting" name="option1Label6" id="">
+        <select class="denting" name="denting" id="denting">
           <option value="yes">YES</option>
           <option value="no">NO</option>
         </select>
-      </form>
+      </div>
 
       <button id="update" type="submit">
         <a

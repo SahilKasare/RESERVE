@@ -83,3 +83,12 @@ app.get('/adminLogin',(req,res)=>{
 })
 app.post('/adminLogin',adminLogin);
 
+
+
+
+
+
+//temp manager_dashboard
+app.get('/managerProfile', (req, res)=>{
+    res.render('manager_dashboard');
+})
