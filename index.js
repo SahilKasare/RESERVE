@@ -8,6 +8,7 @@ const ManagerRoutes=require('./routes/Manager')
 const AdminRoutes=require('./routes/Admin');
 const { verifyToken } = require('./middleware/auth');
 const {userLogin}=require('./controllers/auth')
+const {adminLogin}=require('./controllers/auth')
 const {managerLogin}=require('./controllers/auth')
 const {registerUser}=require('./controllers/auth')
 const {registerManager}=require('./controllers/auth')
@@ -65,3 +66,8 @@ app.get('/managerDetails',(req,res)=>{
 })
 
 app.post('/managerDetails',registerManager);
+
+app.get('/adminLogin',(req,res)=>{
+    res.render('login_admin');
+})
+app.post('/adminLogin',adminLogin);
