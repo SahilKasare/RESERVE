@@ -92,7 +92,11 @@ const managerSchema = new mongoose.Schema({
       },
       wallet:{
         type:Number,
-      }
+      },
+      transactions: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Transaction'
+    }]
 
 });
 

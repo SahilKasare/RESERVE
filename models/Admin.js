@@ -36,7 +36,13 @@ const adminSchema = new mongoose.Schema({
     isAdmin:{
    type:Boolean,
    required:true,
-    }
+    },
+    
+    transactions: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Transaction'
+    }]
+
 });
 
 const Admin = mongoose.model('Admin', adminSchema);
