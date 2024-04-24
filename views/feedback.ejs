@@ -3,9 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Junction Page</title>
-    <link rel="stylesheet" href="./CSS/junction.css" />
-
+    <title>Feedback</title>
+    <link rel="stylesheet" href="./CSS/feedback.css" />
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -30,50 +29,50 @@
       <a href="/"
         ><img src="./Images/logo_orange.png" alt="Logo"
       /></a>
-      <div class="page2">
-        <h4><a href="/">Home</a></h4>
-        <h4><a href="/">Services</a></h4>
-        <h4><a href="#">Contact Us</a></h4>
-      </div>
     </nav>
     <div class="mainpage">
-      <div id="page1">
-        <div id="tag1">BUSINESS</div>
-        <div class="heading">For Managers</div>
-        <div>Unlock global opportunities with our<br> cutting-edge platform, elevating<br> your business to new heights.</div><br>
+      <form action="/feedback" method="POST">
+      <div class="part1">
 
-        <div class="info">
-          <div>Reserve brings to you</div>
-          <div class="rotate">
-            <span>Validated Users</span>
-            <span>Attract more clients.</span>
-            <span>Real time Analytics</span>
-            <span>Customized Reporting</span>
-            <span>Validated Users</span>
+        <div class="heading">Contact Us</div>
+        <div class="info1">
+          <div class="info">
+            <label for="name">Name</label><br />
+            <input
+              style="background-color: transparent; border: none"
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Name"
+            />
+          </div>
+          <div class="info">
+            <label for="email">Email id</label><br />
+            <input
+              style="background-color: transparent; border: none"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email id"
+            />
+
+          </div>
+          <div class="info">
+            <label for="feedback">Feedback</label><br />
+            <input
+              style="background-color: transparent; border: none; width: 38vw;"
+              type="text"
+              name="feedback"
+              id="feedback"
+              placeholder="Feedback / Queries"
+            />
           </div>
         </div>
-        <a href="/managerLogin"><button id="login1">Login</button></a>
-        <div>Don't have an account?</div>
-        <a style="text-decoration: none; color: #228b22;" href="managerSignUp"><b>Register</b></a>
       </div>
-      <div id="page2">
-        <br>
-        <div class="heading">For Customers</div>
-        <div>Your premier destination for<br> seamless car parking and<br> top tier services.</div><br>
-        <div class="info">
-          <div>Reserve brings to you</div>
-          <div class="rotate">
-            <span>Variety of Services</span>
-            <span>Transparency</span>
-            <span>User Satisfaction</span>
-            <span>Refund Policy</span>
-            <span>Certified Providers</span>
-          </div>
-        </div>
-        <a href="/userLogin"><button id="login2">Login</button></a>
-        <div>Don't have an account?</div>
-        <a style="text-decoration: none; color: #228b22; " href="/userSignUp"><b>Sign Up</b></a>
-      </div>
+      <button id="update" type="submit" style="text-decoration: none; color: white">
+       Submit
+      </button>
+    </form>
     </div>
     <div id="footer">
       <div id="gen">
@@ -300,10 +299,8 @@
             </svg>
             <div>abcdefg@gmail.com</div>
           </div>
-          <a style="text-decoration: none; color: #228b22; text-align: end; font-weight:800;" href="/adminLogin">Admin Login</a>
         </div>
       </div>
     </div>
-    <script src="./JS/junction.js"></script>
   </body>
 </html>

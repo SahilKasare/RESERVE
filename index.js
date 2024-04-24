@@ -40,6 +40,16 @@ app.get('/access-account', (req, res) => {
     res.render('junction');
 })
 
+app.get('/FAQs', (req, res) => {
+    res.render('faq');
+})
+
+app.get('/feedback', (req, res) => {
+    res.render('feedback');
+})
+
+// app.post('/feedback', feedback);
+
 app.get('/userLogin', (req, res) => {
    
     res.render('login_user');

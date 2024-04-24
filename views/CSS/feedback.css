@@ -1,0 +1,215 @@
+@font-face {
+    font-family: Poppins_Regular;
+    src: url(../fonts/Poppins/Poppins-Regular.ttf);
+  }
+  
+  body {
+    font-family: Poppins_Regular;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
+    background: rgb(17, 17, 17);
+    background: linear-gradient(
+      90deg,
+      rgba(17, 17, 17, 1) 60%,
+      rgba(3, 3, 64, 1) 98%
+    );
+    background-image: url(../Images/background.png);
+    background-attachment: fixed;
+    /* background-color: black; */
+    /* background-color: #191c24; */
+    color: white;
+    font-family: Poppins_Regular;
+  }
+  #navbar {
+    height: 10vh;
+    width: 100%;
+    border-bottom: 3px solid #2e2938;
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* background-color: #191a21; */
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    z-index: 2;
+  }
+  
+  #navbar img {
+    padding: 1vh 2vw;
+    width: 190px;
+    height: 50px;
+  }
+  
+  nav .page2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-right: 1vw;
+  }
+  
+  nav .page2 h4 {
+    padding: 10px 20px;
+    border: 2px solid rgb(106, 98, 98); /*change here*/
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 380;
+    /* color: rgb(36, 33, 33); */
+    /* color: green; */
+    position: relative;
+    transition: all ease 0.4s;
+    overflow: hidden;
+  }
+  
+  nav h4::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: white; /* change here*/
+    left: 0;
+    bottom: -100%;
+  }
+  
+  nav h4:hover::after {
+    bottom: 0;
+    border-radius: 50px;
+    transition: all ease 0.4s;
+  }
+  nav h4 a {
+    text-decoration: none;
+    color: white;
+    position: relative;
+    z-index: 9;
+  }
+  
+  nav h4:hover a {
+    color: black; /*change here*/
+  }
+  
+  .mainpage {
+    display: flex;
+    flex-direction: column;
+    /* height: 100vh; */
+    margin: 12vh 0;
+  }
+  
+  .mainpage .part1 {
+    width: 40vw;
+    /* margin-left: 25vw; */
+    margin: 0 30vw;
+    font-size: 40px;
+    border-top-right-radius: 150px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 10px 10px 10px #0000008c;
+
+  }
+  
+  .mainpage .part1 .heading {
+    font-weight: 600;
+    color: red;
+    margin: 1vh 0 3vh 0;
+  }
+  
+  .mainpage .part1 .info1 {
+    margin-top: 3vh;
+    font-size: 25px;
+  }
+  
+  .info1 .info {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.389);
+    margin-top: 2vh;
+}
+
+.info1 input {
+    width: 15vw;
+    height: 10vh;
+    margin-bottom: 3vh;
+    margin-left: 0.7vw;
+    color: rgba(255, 255, 255, 0.827);
+    font-size: 22px;
+  }
+  
+  .info1 input:focus {
+    outline: none;
+  }
+
+  
+  #update {
+    margin-top: 5vh;
+    margin-left: 63vw;
+    font-size: 20px;
+    font-weight: 400;
+    height: 5vh;
+    width: 7vw;
+    background-color: red;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px #0000008c;
+  }
+  #update:hover{
+    cursor: pointer;
+  }
+  
+
+  
+#footer {
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-around;
+  padding-top: 2vh;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  background-color: #191c24;
+  min-height: 260px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.colfoot {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  gap: 15px;
+}
+
+#logofoot {
+  height: 50px;
+  width: 180px;
+  margin: 30px 60px;
+  padding: 0;
+}
+.foottext {
+  font-size: 17px;
+  align-self: flex-start;
+  margin-left: 50px;
+  padding-left: px;
+}
+#social {
+  display: flex;
+  /* justify-content:space-evenly; */
+  gap: 10px;
+  margin-left: 50px;
+}
+
+.foothead {
+  font-size: 30px;
+  font-weight: 600;
+  margin-left: 70px;
+  margin-top: 20px;
+}
+
+#foottext {
+  margin-left: 70px;
+}
+
+.line-space {
+  letter-spacing: 0.0001em;
+}
+
+.cont {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+}

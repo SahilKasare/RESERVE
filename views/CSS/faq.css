@@ -1,0 +1,192 @@
+@font-face {
+    font-family: Poppins_Regular;
+    src: url(../fonts/Poppins/Poppins-Regular.ttf);
+  }
+  
+  body {
+    background: rgb(2,0,15);
+    background: linear-gradient(90deg, rgba(2,0,15,1) 2%, rgba(3,0,39,1) 50%, rgba(5,0,57,1) 84%);
+    font-family: Poppins_Regular;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
+  }
+  #navbar {
+    height: 10vh;
+    width: 100%;
+    border-bottom: 3px solid #111017;
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* background-color: #191a21; */
+    /* background-color: #191c24; */
+    background-color: #191c24;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    z-index: 2;
+    box-shadow: 0px 3px 13px 0px rgba(0, 0, 0, 0.927);
+  }
+  
+  #navbar img {
+    padding: 1vh 2vw;
+    width: 160px;
+    height: 40px;
+  }
+  
+  nav .page2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-right: 1vw;
+  }
+  
+  nav .page2 h4 {
+    padding: 6px 16px;
+    border: 2px solid rgb(106, 98, 98); /*change here*/
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 380;
+    /* color: rgb(36, 33, 33); */
+    /* color: green; */
+    position: relative;
+    transition: all ease 0.4s;
+    overflow: hidden;
+  }
+  
+  nav h4::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: white; /* change here*/
+    left: 0;
+    bottom: -100%;
+  }
+  
+  nav h4:hover::after {
+    bottom: 0;
+    border-radius: 50px;
+    transition: all ease 0.4s;
+  }
+  nav h4 a {
+    text-decoration: none;
+    color: white;
+    position: relative;
+    z-index: 9;
+  }
+  
+  nav h4:hover a {
+    color: black; /*change here*/
+  }
+
+
+
+
+
+  .faq-section {
+    width: 70vw;
+    margin: 0 12vw;
+    margin-top: 7vh;
+    padding: 30px;
+    font-size: 35px;
+    /* border: 1px solid #ccc; */
+    border-radius: 10px;
+  }
+  
+  .faq-item {
+    margin-bottom: 20px;
+    /* border: 2px solid white; */
+    border-bottom: 2px solid #5c5b5b;
+    background-color: rgba(5, 0, 40, 0.505);
+    border-radius: 10px;
+    padding: 3vh 2vw;
+  }
+
+  .faq-item:hover{
+    background-color: rgba(14, 0, 106, 0.242);
+  }
+  
+  .question {
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 500;
+  }
+
+  .question:hover{
+    cursor: pointer;
+  }
+  
+  .answer {
+    color: #dadadbd1;
+    font-size: 20px;
+    display: none; /* Initially hide answers */
+  }
+  
+  .show-answer {
+    display: block; /* Show answer when toggled */
+  }
+  
+
+
+  #footer {
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-around;
+    padding-top: 2vh;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    background-color: #191c24;
+    min-height: 260px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  
+  .colfoot {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    gap: 15px;
+  }
+  
+  #logofoot {
+    height: 50px;
+    width: 180px;
+    margin: 30px 60px;
+    padding: 0;
+  }
+  .foottext {
+    font-size: 17px;
+    align-self: flex-start;
+    margin-left: 50px;
+    padding-left: px;
+  }
+  #social {
+    display: flex;
+    /* justify-content:space-evenly; */
+    gap: 10px;
+    margin-left: 50px;
+  }
+  
+  .foothead {
+    font-size: 30px;
+    font-weight: 600;
+    margin-left: 70px;
+    margin-top: 20px;
+  }
+  
+  #foottext {
+    margin-left: 70px;
+  }
+  
+  .line-space {
+    letter-spacing: 0.0001em;
+  }
+  
+  .cont {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+  }
+  

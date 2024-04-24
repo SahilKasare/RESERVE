@@ -121,12 +121,14 @@ nav h4:hover a {
 #mySidebar .menu-item {
   display: flex;
   align-items: center;
+  height: 6.5vh;
+  margin-bottom: 8px;
 }
 .material-icons {
   font-size: 30px;
   color: #d9d9d9;
   margin-left: 8px;
-  margin-top: 1vh;
+  /* margin-top: 1vh; */
 }
 
 #mySidebar .text {
@@ -143,12 +145,17 @@ nav h4:hover a {
   color: #f1f1f1;
 }
 
+#mySidebar .menu-item:hover{
+  background-color: #81818179;
+  border-radius: 10px;
+}
+
 .openbtn {
   font-size: 20px;
   cursor: pointer;
   background-color: #191c24;
   color: white;
-  margin: 15px;
+  margin: 13px;
   padding: 5px 10px;
   border: none;
   border-radius: 10px;
