@@ -86,7 +86,10 @@ const managerSchema = new mongoose.Schema({
       profile_pic:{
         type:String,
       },
-
+      
+      service_pic:{
+        type:String,
+      },
       wallet:{
         type:Number,
       }
