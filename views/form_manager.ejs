@@ -36,231 +36,216 @@
       </div> -->
     </nav>
     <div class="mainpage">
-
-<form action="/managerDetails" method="POST">
+      <form action="/managerDetails" method="POST">
         <div class="part1">
-        <div class="heading">Business Info</div>
-        <div class="info1">
-          <label for="username">Username</label><br />
+          <div class="heading">Business Info</div>
+          <div class="info1">
+            <div class="info">
+              <label for="username">Username</label><br />
+              <input
+                style="background-color: transparent; border: none"
+                type="text"
+                name="username"
+                id="username"
+                placeholder="Username"
+              />
+            </div>
+            <div class="info">
+              <label for="email">Email id</label><br />
+              <input
+                style="background-color: transparent; border: none"
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email id"
+              />
+            </div>
+            <div class="info">
+              <label for="password">Password</label><br />
+              <input
+                style="background-color: transparent; border: none"
+                type="password"
+                name="password"
+                id="password"
+                placeholder="password"
+              />
+            </div>
+            <div class="info">
+              <label for="Name">Name</label><br />
+              <input
+                style="background-color: transparent; border: none"
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Your Full Name"
+              />
+            </div>
+            <div class="info">
+              <label for="contact">Contact Number</label><br />
+              <input
+                style="background-color: transparent; border: none"
+                type="tel"
+                name="contact"
+                id="contact"
+                placeholder="Office Contact"
+              />
+            </div>
+            <div class="info">
+              <label for="companyName">Service Centre</label><br />
+              <input
+                style="background-color: transparent; border: none; width: 25vw"
+                type="text"
+                name="companyName"
+                id="companyName"
+                placeholder="Service Centre Name"
+              />
+            </div>
+            <div class="info">
+              <label for="address">Office Address</label><br />
+              <input
+                style="background-color: transparent; border: none; width: 25vw"
+                type="text"
+                name="address"
+                id="address"
+                placeholder="Your Address"
+              />
+            </div>
+            <div class="info">
+              <label for="location">Location</label><br />
+              <input
+                style="background-color: transparent; border: none; width: 25vw"
+                type="text"
+                name="address"
+                id="address"
+                placeholder="Your Address"
+              />
+            </div>
+          </div>
+        </div>
+        <div id="form-container">
+          <div class="heading">Service Info</div>
+          <div id="services"></div>
+          <button id="add-service-btn" type="button">Add Service</button>
+        </div>
+
+        <div id="Select" class="hidden">
+          <label>Choose the Service from above</label>
+        </div>
+
+        <div id="park" class="hidden">
+          <label
+            style="color: rgb(0, 186, 0); font-size: 30px; margin-left: 18vw"
+            for="heading"
+            >Car Parking</label
+          >
+          <br />
+          <label>Number of slots</label><br />
           <input
             style="background-color: transparent; border: none"
-            type="text"
-            name="username"
-            id="username"
-            placeholder="Username"
+            type="number"
+            name="parking_slots"
+            placeholder="Number of parking slots"
           />
-        </div>
-        <div class="info">
-          <label for="email">Email id</label><br />
+          <br />
+          <label>Price (per hour)</label><br />
           <input
             style="background-color: transparent; border: none"
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Email id"
+            type="number"
+            name="parking_price"
+            placeholder="Price per hour in rupees"
           />
-
+          <br />
         </div>
-        <div class="info">
-          <label for="password">Password</label><br />
+        <div id="clean" class="hidden">
+          <label
+            style="color: rgb(0, 186, 0); font-size: 30px; margin-left: 17vw"
+            for="heading"
+            >Car Cleaning</label
+          >
+          <br />
+          <label>Price (only car wash)</label><br />
           <input
             style="background-color: transparent; border: none"
-            type="password"
-            name="password"
-            id="password"
-            placeholder="password"
+            type="number"
+            name="price_carwash"
+            placeholder="Price for carwash in rupees"
+          />
+          <br />
+          <label>Price (complete cleaning)</label><br />
+          <input
+            style="background-color: transparent; border: none; width: 25vw"
+            type="number"
+            name="price_full"
+            placeholder="Price for complete cleaning in rupees"
           />
         </div>
-          <div class="info">
-            <label for="Name">Name</label><br />
-            <input
-              style="background-color: transparent; border: none"
-              type="text"
-              name="name"
-              id="name"
-              placeholder="Your Full Name"
-            />
-          </div>
-          <div class="info">
-            <label for="email">Office Email</label><br />
-            <input
-              style="background-color: transparent; border: none"
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Office Email ID"
-            />
-          </div>
-          <div class="info">
-            <label for="contact">Contact Number</label><br />
-            <input
-              style="background-color: transparent; border: none"
-              type="tel"
-              name="contact"
-              id="contact"
-              placeholder="Office Contact"
-            />
-          </div>
-          <div class="info">
-            <label for="companyName">Service Centre</label><br />
-            <input
-              style="background-color: transparent; border: none; width: 25vw"
-              type="text"
-              name="companyName"
-              id="companyName"
-              placeholder="Service Centre Name"
-            />
-          </div>
-          <div class="info">
-            <label for="address">Office Address</label><br />
-            <input
-              style="background-color: transparent; border: none; width: 25vw"
-              type="text"
-              name="address"
-              id="address"
-              placeholder="Your Address"
-            />
-          </div>
-          <div class="info">
-            <label for="location">Location</label><br />
-            <input
-              style="background-color: transparent; border: none; width: 25vw"
-              type="text"
-              name="address"
-              id="address"
-              placeholder="Your Address"
-            />
-          </div>
+
+        <div id="charge" class="hidden">
+          <label
+            style="color: rgb(0, 186, 0); font-size: 30px; margin-left: 17vw"
+            for="heading"
+            >EV Charging</label
+          >
+          <br />
+          <label>Price (per hour)</label><br />
+          <input
+            style="background-color: transparent; border: none"
+            type="number"
+            name="charging_price"
+            placeholder="Price per hour in rupees"
+          />
+          <br />
+          <label>Number of slots</label><br />
+          <input
+            style="background-color: transparent; border: none"
+            type="number"
+            name="charging_slots"
+            placeholder="Number of parking slots"
+          />
         </div>
-      </div>
-      <div id="form-container">
-        <div class="heading">Service Info</div>
-        <div id="services"></div>
-        <button id="add-service-btn" type="button">Add Service</button>
-      </div>
 
-      <div id="Select" class="hidden">
-        <label>Choose the Service from above</label>
-      </div>
+        <div id="inspection" class="hidden">
+          <label
+            style="color: rgb(0, 186, 0); font-size: 30px; margin-left: 15vw"
+            for="heading"
+            >Vehicle Inspection</label
+          >
+          <br />
+          <label>Price (base price)</label><br />
+          <input
+            style="background-color: transparent; border: none; width: 23vw"
+            type="number"
+            name="inspection_price"
+            placeholder="Base price for inspection in rupees"
+          />
+        </div>
 
-      <div id="park" class="hidden">
-        <label
-          style="color: rgb(0, 186, 0); font-size: 30px; margin-left: 18vw"
-          for="heading"
-          >Car Parking</label
-        >
-        <br />
-        <label>Number of slots</label><br />
-        <input
-          style="background-color: transparent; border: none"
-          type="number"
-          name="parking_slots"
-          placeholder="Number of parking slots"
-        />
-        <br />
-        <label>Price (per hour)</label><br />
-        <input
-          style="background-color: transparent; border: none"
-          type="number"
-          name="parking_price"
-          placeholder="Price per hour in rupees"
-        />
-        <br />
-      </div>
-      <div id="clean" class="hidden">
-        <label
-          style="color: rgb(0, 186, 0); font-size: 30px; margin-left: 17vw"
-          for="heading"
-          >Car Cleaning</label
-        >
-        <br />
-        <label>Price (only car wash)</label><br />
-        <input
-          style="background-color: transparent; border: none"
-          type="number"
-          name="price_carwash"
-          placeholder="Price for carwash in rupees"
-        />
-        <br />
-        <label>Price (complete cleaning)</label><br />
-        <input
-          style="background-color: transparent; border: none; width: 25vw"
-          type="number"
-          name="price_full"
-          placeholder="Price for complete cleaning in rupees"
-        />
-      </div>
+        <div id="paint" class="hidden">
+          <label
+            style="color: rgb(0, 186, 0); font-size: 30px; margin-left: 14vw"
+            for="heading"
+            >Painting & Denting</label
+          >
+          <br />
+          <label>Price (painting)</label><br />
+          <input
+            style="background-color: transparent; border: none; width: 28vw"
+            type="number"
+            name="painting_price"
+            placeholder="Price for complete car painting in rupees"
+          />
+          <br />
+          <label>Denting Service provided</label><br />
+          <select class="denting" name="denting" id="denting">
+            <option value="yes">YES</option>
+            <option value="no">NO</option>
+          </select>
+        </div>
 
-      <div id="charge" class="hidden">
-        <label
-          style="color: rgb(0, 186, 0); font-size: 30px; margin-left: 17vw"
-          for="heading"
-          >EV Charging</label
-        >
-        <br />
-        <label>Price (per hour)</label><br />
-        <input
-          style="background-color: transparent; border: none"
-          type="number"
-          name="charging_price"
-          placeholder="Price per hour in rupees"
-        />
-        <br>
-        <label>Number of slots</label><br />
-        <input
-          style="background-color: transparent; border: none"
-          type="number"
-          name="charging_slots"
-          placeholder="Number of parking slots"
-        />
-      </div>
-
-      <div id="inspection" class="hidden">
-        <label
-          style="color: rgb(0, 186, 0); font-size: 30px; margin-left: 15vw"
-          for="heading"
-          >Vehicle Inspection</label
-        >
-        <br />
-        <label>Price (base price)</label><br />
-        <input
-          style="background-color: transparent; border: none; width: 23vw"
-          type="number"
-          name="inspection_price"
-          placeholder="Base price for inspection in rupees"
-        />
-      </div>
-
-      <div id="paint" class="hidden">
-        <label
-          style="color: rgb(0, 186, 0); font-size: 30px; margin-left: 14vw"
-          for="heading"
-          >Painting & Denting</label
-        >
-        <br />
-        <label>Price (painting)</label><br />
-        <input
-          style="background-color: transparent; border: none; width: 28vw"
-          type="number"
-          name="painting_price"
-          placeholder="Price for complete car painting in rupees"
-        />
-        <br />
-        <label>Denting Service provided</label><br />
-        <select class="denting" name="denting" id="denting">
-          <option value="yes">YES</option>
-          <option value="no">NO</option>
-        </select>
-      </div>
-
-      <button id="update" type="submit">
-        <a
-          style="text-decoration: none; color: white"
-
-          >Submit</a
-        >
-      </button>
-    </form> 
+        <button id="update" type="submit">
+          <a style="text-decoration: none; color: white">Submit</a>
+        </button>
+      </form>
     </div>
     <div id="footer">
       <div id="gen">

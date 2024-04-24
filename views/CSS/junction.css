@@ -87,7 +87,7 @@ nav h4:hover a {
 
 .mainpage #page1, #page2 {
   padding-top: 15vh;
-  font-size: 21px;
+  font-size: 18px;
   text-align: center;
   height: 85vh;
   width: 50vw;
@@ -101,7 +101,7 @@ nav h4:hover a {
 }
 
 #page1 .heading, #page2 .heading {
-  font-size: 45px;
+  font-size: 38px;
   font-weight: 600;
   color: rgb(34,139,34);
   color: linear-gradient(90deg, rgba(34,139,34,1) 19%, rgba(255,255,255,1) 2%);
@@ -114,7 +114,7 @@ nav h4:hover a {
 #page1 .info, #page2 .info {
   margin-left: 14vw;
   text-align: left;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .rotate{
