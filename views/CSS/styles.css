@@ -52,13 +52,12 @@ nav .page2 {
 }
 
 nav .page2 h4 {
-  padding: 10px 20px;
-  border: 2px solid rgb(106, 98, 98); /*change here*/
+  padding: 1vh 1vw;
+  border: 2px solid rgb(106, 98, 98);
   border-radius: 50px;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 380;
   /* color: rgb(36, 33, 33); */
-  /* color: green; */
   position: relative;
   transition: all ease 0.4s;
   overflow: hidden;
@@ -498,6 +497,39 @@ nav h4:hover a {
   font-size: 40px;
   color: rgba(255, 255, 255, 0.886);
 }
+
+.part5_second .column1 .txt1 div{
+  background-color: none;
+  height: 45px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  font-weight: 600;
+  overflow: hidden;
+}
+.part5_second .column1 .txt1 div span{
+  display: block;
+  height: 100%;
+  color: red;
+  margin-bottom: 10px;
+  animation: spin_words 3s infinite;
+}
+
+@keyframes spin_words{
+  25%{
+      transform: translateY(-30%);
+  }
+  30%{
+      transform: translateY(-28%);
+  }
+  75%{
+      transform: translateY(-142%);
+  }
+  100%{
+      transform: translateY(-140%);
+  }
+}
+
 .part5_second .column1 .txt2 {
   margin-top: 2vh;
   font-size: 20px;
@@ -539,11 +571,12 @@ nav h4:hover a {
 .register div {
   height: 5vh;
   width: 14vw;
-  font-size: 15px;
+  font-size: 17px;
   text-align: center;
   padding-top: 10px;
-  background-color: rgb(255, 255, 255);
-  color: black;
+  /* background-color: rgb(255, 255, 255); */
+  background-color: #228b22;
+  color: white;
   border-radius: 8px;
   font-weight: 600;
 }

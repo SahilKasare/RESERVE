@@ -10,6 +10,11 @@ const adminSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+
+    name:{
+        type: String,
+        required: true
+    },
    
     contact: {
         type: String,
@@ -20,7 +25,11 @@ const adminSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
- 
+    
+    isAdmin:{
+   type:Boolean,
+   required:true,
+    }
 });
 
 const Admin = mongoose.model('Admin', adminSchema);

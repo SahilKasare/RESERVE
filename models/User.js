@@ -10,6 +10,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+
+    name:{
+        type: String,
+        required: true
+    },
     license: {
         type: String,
         required: true
@@ -35,6 +40,10 @@ const userSchema = new mongoose.Schema({
     car_description:{
         type: String,
         required: true
+    },
+
+    profile_pic:{
+      type:String,
     }
 });
 
