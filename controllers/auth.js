@@ -103,27 +103,76 @@ exports.userLogin = async (req, res) => {
 
   //MANAGER SIGNUP
 
-  exports.registerManager=async(req,res)=>{
-
-    try{
-        
-        const {username,
-            password,
-            name,
-            companyName,
-            location,
-            address,
-            contact,
-            email,
-            services,
-    }=req.body;
-    
-    const salt=await bcrypt.genSalt();
-    const passwordHash=await bcrypt.hash(password,salt);
-    
-    const newManager=new Manager({
+  exports.registerManager = async (req, res) => {
+    try {
+      const {
         username,
-        password:passwordHash,
+        password,
+        name,
+        companyName,
+        location,
+        address,
+        contact,
+        email,
+        parking_slots,
+        parking_price,
+        price_carwash,
+        price_full,
+        charging_price,
+        charging_slots,
+        inspection_price,
+        painting_price,
+        denting,
+        service_pic
+      } = req.body;
+  
+
+      let services = {};
+  
+
+      if (parking_slots && parking_price) {
+        services.parking = {
+          parking_slots: parseInt(parking_slots),
+          parking_price: parseFloat(parking_price)
+        };
+      }
+  
+
+      if (price_carwash && price_full) {
+        services.cleaning = {
+          price_carwash: parseFloat(price_carwash),
+          price_full: parseFloat(price_full)
+        };
+      }
+  
+
+      if (charging_price && charging_slots) {
+        services.charging = {
+          charging_price: parseFloat(charging_price),
+          charging_slots: parseInt(charging_slots)
+        };
+      }
+  
+
+      if (inspection_price) {
+        services.inspection = {
+          inspection_price: parseFloat(inspection_price)
+        };
+      }
+  
+      if (painting_price && denting) {
+        services.painting = {
+          painting_price: parseFloat(painting_price),
+          denting: denting === 'yes' ? true : false
+        };
+      }
+  
+      const salt = await bcrypt.genSalt();
+      const passwordHash = await bcrypt.hash(password, salt);
+  
+      const newManager = new Manager({
+        username,
+        password: passwordHash,
         name,
         companyName,
         location,
@@ -131,17 +180,16 @@ exports.userLogin = async (req, res) => {
         contact,
         email,
         services,
-    
-    })
-    
-    const savedManager=await newManager.save();
-    res.redirect('/managerLogin')
-      }catch(error){
-       res.status(500).json({error:error.message});
-      }  
-    
+        service_pic
+      });
+  
+      const savedManager = await newManager.save();
+      res.redirect('/managerLogin');
+    } catch (error) {
+      res.status(500).json({ error: error.message });
     }
-
+  };
+  
     //MANAGER LOGIN
 
     
