@@ -99,6 +99,19 @@ exports.userLogin = async (req, res) => {
 };
 
 
+//USER LOGOUT 
+exports.userLogout = async (req, res) => {
+  try {
+   
+    res.clearCookie('authorization');
+
+    
+    res.redirect('/');
+  } catch (error) {
+    console.error('Logout Error:', error);
+    res.status(500).json({ error: error.message });
+  }
+};
   //MANAGER AUTH
 
   //MANAGER SIGNUP
@@ -231,6 +244,20 @@ exports.userLogin = async (req, res) => {
       
       }
 
+      //MANAGER LOGOUT 
+      exports.managerLogout = async (req, res) => {
+        try {
+         
+          res.clearCookie('authorization');
+      
+          
+          res.redirect('/');
+        } catch (error) {
+          console.error('Logout Error:', error);
+          res.status(500).json({ error: error.message });
+        }
+      };
+
       //ADMIN AUTH
 
       //ADMIN LOGIN
@@ -271,3 +298,17 @@ exports.userLogin = async (req, res) => {
         }
       
       }
+
+      //ADMIN LOGOUT 
+      exports.adminLogout = async (req, res) => {
+        try {
+         
+          res.clearCookie('authorization');
+      
+          
+          res.redirect('/');
+        } catch (error) {
+          console.error('Logout Error:', error);
+          res.status(500).json({ error: error.message });
+        }
+      };
