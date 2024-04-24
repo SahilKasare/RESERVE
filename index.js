@@ -73,3 +73,6 @@ app.get('/adminLogin',(req,res)=>{
 })
 app.post('/adminLogin',adminLogin);
 
+app.get('/ManagerProfile',(req,res)=>{
+    res.render('manager_dashboard');
+})

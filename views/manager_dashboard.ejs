@@ -28,9 +28,9 @@
       <div class="profile-sidebar">
         <img src="./Images/profile face.jpg" alt="Profile Picture" />
         <div class="pmanager">
-          <span style="font-size: 20px; padding-left: 10px; padding-bottom: 3px;">
-            <%= manager.name %>
-        </span>
+          <span style="font-size: 20px; padding-left: 10px; padding-bottom: 3px"
+            >Yadnyesh</span
+          >
           <span
             style="
               font-size: 14px;
@@ -349,8 +349,13 @@
 
     <div class="content-below">
       <div class="graph">
-        <img src="./Images/graph.png" />
+        <div>
+          <canvas id="myChart1" aria-label="chart" role="img"></canvas>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="JS/chart1.js"></script>
       </div>
+      
       <div class="services">
         <div class="top">Recent Services</div>
         <div class="time-ago-elements">
@@ -647,6 +652,7 @@
           <div class="elements"></div>
         </div>
       </div>
+      
     </div>
   </body>
 </html>
