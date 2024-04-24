@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
+    
     username: {
         type: String,
         required: true,
@@ -44,7 +45,15 @@ const userSchema = new mongoose.Schema({
 
     profile_pic:{
       type:String,
-    }
+    },
+    wallet:{
+        type:Number,
+      },
+
+    transactions: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Transaction'
+    }]
 });
 
 const User = mongoose.model('User', userSchema);
