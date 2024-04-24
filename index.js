@@ -8,8 +8,12 @@ const ManagerRoutes=require('./routes/Manager')
 const AdminRoutes=require('./routes/Admin');
 const { verifyToken } = require('./middleware/auth');
 const {userLogin}=require('./controllers/auth')
+const {adminLogin}=require('./controllers/auth')
+const {managerLogin}=require('./controllers/auth')
 const {registerUser}=require('./controllers/auth')
+const {registerManager}=require('./controllers/auth')
 const cookieParser = require('cookie-parser');
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
@@ -61,4 +65,21 @@ app.get('/userDetails',(req,res)=>{
     res.render('form_user');
 
 })
+
+app.get('/managerLogin',(req,res)=>{
+    res.render('login_manager')
+})
+
+app.post('/managerLogin',managerLogin);
+
+app.get('/managerDetails',(req,res)=>{
+    res.render('form_manager')
+})
+
+app.post('/managerDetails',registerManager);
+
+app.get('/adminLogin',(req,res)=>{
+    res.render('login_admin');
+})
+app.post('/adminLogin',adminLogin);
 

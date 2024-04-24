@@ -25,7 +25,11 @@ const adminSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
- 
+    
+    isAdmin:{
+   type:Boolean,
+   required:true,
+    }
 });
 
 const Admin = mongoose.model('Admin', adminSchema);

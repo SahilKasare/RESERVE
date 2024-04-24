@@ -268,7 +268,8 @@ td {
     height: 50px;
 }
 
-td:hover, th:hover {
+.tdthhover:hover{
     transform: scale(1.2);
     transition: transform 0.3s;
+    cursor: pointer;
 }
