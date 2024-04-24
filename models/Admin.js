@@ -25,7 +25,14 @@ const adminSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
+    profile_pic:{
+        type:String,
+      },
     
+      wallet:{
+        type:Number,
+      },
+
     isAdmin:{
    type:Boolean,
    required:true,

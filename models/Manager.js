@@ -44,6 +44,14 @@ const managerSchema = new mongoose.Schema({
         type: String,
         enum: ['parking', 'ev charging', 'painting & denting', 'car wash', 'car inspection']
       }],
+
+      profile_pic:{
+        type:String,
+      },
+
+      wallet:{
+        type:Number,
+      }
 });
 
 const Manager = mongoose.model('Manager', managerSchema);
