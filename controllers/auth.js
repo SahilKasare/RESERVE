@@ -63,11 +63,11 @@ exports.registerUser = async (req, res) => {
 //USER LOGIN
 exports.userLogin = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { username, password } = req.body;
 
 
 
-    const user = await User.findOne({ email: email });
+    const user = await User.findOne({ username: username });
 
     
 
@@ -147,11 +147,11 @@ exports.userLogin = async (req, res) => {
     
     exports.managerLogin=async(req,res)=>{
       try {
-        const { email, password } = req.body;
+        const {username, password } = req.body;
     
     
     
-        const manager = await Manager.findOne({ email: email });
+        const manager = await Manager.findOne({ username: username });
     
         
     
@@ -188,11 +188,11 @@ exports.userLogin = async (req, res) => {
       //ADMIN LOGIN
       exports.adminLogin=async(req,res)=>{
         try {
-          const { email, password } = req.body;
+          const { username, password } = req.body;
       
       
       
-          const admin = await Manager.findOne({ email: email });
+          const admin = await Admin.findOne({ username:username});
       
           
       

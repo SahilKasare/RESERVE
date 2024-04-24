@@ -13,6 +13,7 @@ const {managerLogin}=require('./controllers/auth')
 const {registerUser}=require('./controllers/auth')
 const {registerManager}=require('./controllers/auth')
 const cookieParser = require('cookie-parser');
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
@@ -71,3 +72,4 @@ app.get('/adminLogin',(req,res)=>{
     res.render('login_admin');
 })
 app.post('/adminLogin',adminLogin);
+
