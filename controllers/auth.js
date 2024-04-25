@@ -36,7 +36,7 @@ exports.registerUser = async (req, res) => {
 
     const salt = await bcrypt.genSalt();
     const passwordHash = await bcrypt.hash(password, salt);
-
+   
     const newUser = new User({
       username,
       password: passwordHash,
@@ -47,6 +47,7 @@ exports.registerUser = async (req, res) => {
       email,
       address,
       car_description,
+      
     });
 
     const savedUser = await newUser.save();
@@ -182,7 +183,7 @@ exports.userLogout = async (req, res) => {
   
       const salt = await bcrypt.genSalt();
       const passwordHash = await bcrypt.hash(password, salt);
-  
+      
       const newManager = new Manager({
         username,
         password: passwordHash,
@@ -193,7 +194,8 @@ exports.userLogout = async (req, res) => {
         contact,
         email,
         services,
-        service_pic
+        service_pic,
+        
       });
   
       const savedManager = await newManager.save();

@@ -31,6 +31,7 @@ const adminSchema = new mongoose.Schema({
     
       wallet:{
         type:Number,
+        default: 0
       },
 
     isAdmin:{
