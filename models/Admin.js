@@ -34,8 +34,8 @@ const adminSchema = new mongoose.Schema({
       },
 
     isAdmin:{
-   type:Boolean,
-   required:true,
+        type:Boolean,
+        required:true,
     },
     
     transactions: [{
