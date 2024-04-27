@@ -1,0 +1,246 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+  }
+  
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+  
+  #sidebar {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    width: 244px;
+    height: 100%;
+    background-color: #191c24;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 12px;
+    transform: translateX(-50px);
+    animation: fadeInLeft 0.3s ease-in-out forwards;
+  }
+  
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  #sidebar .logo {
+    text-align: left;
+    padding-left: 30px;
+    margin-bottom: 30px;
+  }
+  
+  #sidebar .logo img {
+    width: 155px;
+    height: auto;
+  }
+  
+  #sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+  }
+  
+  #sidebar ul li {
+    font-weight: 400;
+    font-size: 18px;
+    vertical-align: middle;
+    text-align: center;
+    height: 40px;
+    margin: 5px 0;
+    padding-bottom: 10px;
+  }
+  
+  .sidebar-1-selected {
+    background-color: #0f1015;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    padding-top: 6px;
+    padding-left: 11px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-left: 4px solid #0090e7;
+  }
+  
+  .sidebar-2-selected {
+    background-color: #0f1015;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    padding-top: 8px;
+    padding-left: 21px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-left: 4px solid #0090e7;
+  }
+  
+  .sidebar-3-selected {
+    background-color: #0f1015;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    padding-top: 8px;
+    padding-left: 21px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-left: 4px solid #0090e7;
+  }
+  
+  .sidebar-update-selected {
+    background-color: #0f1015;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    padding-top: 8px;
+    padding-left: 21px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-left: 4px solid #0090e7;
+  }
+  
+  .sidebar-4-selected {
+    background-color: #0f1015;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    padding-top: 8px;
+    padding-left: 21px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-left: 4px solid #0090e7;
+  }
+  
+  .sidebar-1 {
+    padding-top: 6px;
+    padding-left: 15px;
+    color: #6c7293;
+  }
+  
+  .sidebar-2 {
+    padding-top: 8px;
+    padding-left: 25px;
+    color: #6c7293;
+  }
+  
+  .sidebar-3 {
+    padding-top: 8px;
+    padding-left: 25px;
+    color: #6c7293;
+  }
+  
+  .sidebar-update{
+    padding-top: 8px;
+    padding-left: 25px;
+    color: #6c7293;
+  }
+  
+  .sidebar-4 {
+    padding-top: 6px;
+    padding-left: 25px;
+    color: #6c7293;
+  }
+  
+  .side-align-1 {
+    margin-left: 15px;
+    margin-top: 7px;
+  }
+  
+  .side-align-2 {
+    margin-left: 20px;
+  }
+  
+  .side-align-3 {
+    margin-left: 20px;
+  }
+  
+  .side-align-4 {
+    margin-left: 22px;
+  }
+  
+  .side-align-update{
+    margin-left: 22px;
+  }
+  
+  #sidebar ul li:hover {
+    background-color: #0f1015;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+  }
+  
+  li {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+  
+  header {
+    background-color: #191c24;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    margin-left: 74px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.402);
+    animation: fadeIn 0.3s ease-in-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .profile {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-left: 1250px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.402);
+  }
+  
+  .profile-sidebar {
+    display: flex;
+    align-items: center;
+  }
+  .profile-sidebar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.402);
+  }
+  
+  .profile-sidebar span {
+    display: flex;
+    flex-direction: column;
+  }

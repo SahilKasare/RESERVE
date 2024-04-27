@@ -103,6 +103,17 @@ header {
   border-left: 4px solid #0090e7;
 }
 
+.sidebar-update-selected {
+  background-color: #0f1015;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  padding-top: 8px;
+  padding-left: 21px;
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-left: 4px solid #0090e7;
+}
+
 .sidebar-4-selected {
   background-color: #0f1015;
   border-top-right-radius: 30px;
@@ -132,6 +143,12 @@ header {
   color: #6c7293;
 }
 
+.sidebar-update{
+  padding-top: 8px;
+  padding-left: 25px;
+  color: #6c7293;
+}
+
 .sidebar-4 {
   padding-top: 6px;
   padding-left: 25px;
@@ -152,6 +169,10 @@ header {
 }
 
 .side-align-4 {
+  margin-left: 22px;
+}
+
+.side-align-update{
   margin-left: 22px;
 }
 
@@ -607,4 +628,195 @@ header {
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
   box-shadow: 0px 0px 2px rgba(255, 255, 255, 0.402);
+}
+
+
+
+
+/* manager update css starts here */
+@font-face {
+  font-family: Poppins_Regular;
+  src: url(../fonts/Poppins/Poppins-Regular.ttf);
+}
+
+
+
+
+.mainpage {
+  display: flex;
+  flex-direction: column;
+  /* height: 100vh; */
+  margin-top: 15vh;
+}
+
+.mainpage .part1 {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 50vw;
+  margin-left: 25vw;
+  font-size: 40px;
+  border-top-right-radius: 150px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 0px 0px 4px rgba(255, 255, 255, 0.402);
+}
+
+.mainpage .part1 .heading {
+  font-weight: 600;
+  color: red;
+}
+
+.mainpage .part1 .info1 {
+  margin-top: 3vh;
+  font-size: 25px;
+}
+
+.info1 .info {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.389);
+  margin-top: 2vh;
+}
+
+.info1 input {
+  width: 15vw;
+  margin-bottom: 3vh;
+  margin-left: 0.7vw;
+  color: rgba(255, 255, 255, 0.827);
+  font-size: 22px;
+}
+
+.info1 input:focus {
+  outline: none;
+}
+.mainpage #form-container {
+  margin-top: 10vh;
+  width: 50vw;
+  margin-left: 25vw;
+  font-size: 40px;
+  border-top-right-radius: 150px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 10px 10px 10px 5px #0000008c;
+}
+
+.mainpage #form-container .heading {
+  font-weight: 600;
+  color: red;
+}
+
+.form-fields {
+  margin-top: 2vh;
+  font-size: 22px;
+}
+
+#updateService {
+  margin-top: 3vh;
+  font-size: 25px;
+}
+
+#updateService input {
+  width: 19vw;
+  /* margin-bottom: 3vh; */
+  margin-left: 0.7vw;
+  color: rgba(255, 255, 255, 0.827);
+  font-size: 22px;
+}
+
+#updateService input:focus {
+  outline: none;
+}
+
+#update {
+  margin-top: 5vh;
+  margin-left: 68.4vw;
+  font-size: 20px;
+  font-weight: 400;
+  height: 5vh;
+  width: 7vw;
+  background-color: red;
+  border-radius: 10px;
+  box-shadow: 10px 10px 10px #0000008c;
+}
+
+.hidden {
+  display: none;
+}
+
+.denting {
+  margin-left: 0.7vw;
+  font-size: 18px;
+  background-color: black;
+  color: rgba(255, 255, 255, 0.511);
+  border: 2px solid gray;
+}
+
+#add-service-btn {
+  display: block;
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  background-color: rgb(0, 186, 0);
+  border-radius: 8px;
+}
+
+#footer {
+  margin-top: 10vh;
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-around;
+  padding-top: 2vh;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  background-color: #191c24;
+  min-height: 260px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-right: 60px;
+}
+
+.colfoot {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  gap: 15px;
+}
+
+#logofoot {
+  height: 50px;
+  width: 180px;
+  margin: 30px 60px;
+  padding: 0;
+}
+.foottext {
+  font-size: 17px;
+  align-self: flex-start;
+  margin-left: 50px;
+  padding-left: px;
+}
+#social {
+  display: flex;
+  /* justify-content:space-evenly; */
+  gap: 10px;
+  margin-left: 50px;
+}
+
+.foothead {
+  font-size: 30px;
+  font-weight: 600;
+  margin-left: 70px;
+  margin-top: 20px;
+}
+
+#foottext {
+  margin-left: 70px;
+}
+
+.line-space {
+  letter-spacing: 0.0001em;
+}
+
+.cont {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
 }
