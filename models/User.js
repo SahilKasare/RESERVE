@@ -53,7 +53,11 @@ const userSchema = new mongoose.Schema({
     transactions: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Transaction'
-    }]
+    }],
+    forgot_token: {
+        type: String,
+        default: ''
+    }
 });
 
 const User = mongoose.model('User', userSchema);
