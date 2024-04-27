@@ -136,7 +136,17 @@ router.get("/carpaint",verifyToken,async function(req,res){
   res.render("searchpaint",{user});
 });
 
+router.get("/got_centers",verifyToken,async function(req,res){
+  const token = req.cookies.authorization;
+  const decoded = jwt.verify(token,process.env.JWT_SECRET);
 
+  const user = await User.findById(decoded.id).select("-password");
+
+  if(!user){
+    return res.status(404).json({error : "User not found"});
+  }
+  res.render("user_got_centers",{user});
+});
 
 
 module.exports = router;
