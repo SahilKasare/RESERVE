@@ -69,9 +69,12 @@ body {
 .remember-forgot a {
   color: #fff;
   text-decoration: none;
+  margin-left: 14vw;
 }
 .remember-forgot a:hover {
   text-decoration: underline;
+  color: orangered;
+  transition: 0.2s;
 }
 .wrapper .btn {
   width: 100%;

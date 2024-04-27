@@ -12,6 +12,13 @@ const {adminLogin}=require('./controllers/auth')
 const {managerLogin}=require('./controllers/auth')
 const {registerUser}=require('./controllers/auth')
 const {registerManager}=require('./controllers/auth')
+const {feedbackSent}=require('./controllers/Feedback')
+// const {forgotLoad}=require('./controllers/User')
+// const {forgotVerify}=require('./controllers/User')
+const {forgetpassword} = require('./controllers/User');
+const {forgetverify} = require('./controllers/User');
+const {forgetpaswordload} = require('./controllers/User');
+const {resetpassword} = require('./controllers/User');
 const cookieParser = require('cookie-parser');
 
 app.use(express.json());
@@ -40,6 +47,8 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
+// Landing page routes
+
 app.get('/access-account', (req, res) => {
     res.render('junction');
 })
@@ -52,7 +61,21 @@ app.get('/feedback', (req, res) => {
     res.render('feedback');
 })
 
-// app.post('/feedback', feedback);
+app.post('/feedback', feedbackSent);
+
+
+//Forget Password
+// app.get('/forgotPassword', forgotLoad);
+// app.post('/forgotPassword', forgotVerify);
+
+
+// forgot password for user
+app.get('/forget', forgetpassword);
+app.post('/forget',forgetverify);
+
+app.get('/forget-password',forgetpaswordload);
+app.post('/forget-password',resetpassword);
+
 
 app.get('/userLogin', (req, res) => {
    

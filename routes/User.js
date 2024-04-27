@@ -75,4 +75,78 @@ router.get("/user_wallet",verifyToken,async function(req,res){
   res.render("user_wallet",{user});
 });
 
+
+router.get("/carwash",verifyToken,async function(req,res){
+  const token = req.cookies.authorization;
+  const decoded = jwt.verify(token,process.env.JWT_SECRET);
+
+  const user = await User.findById(decoded.id).select("-password");
+
+  if(!user){
+    return res.status(404).json({error : "User not found"});
+  }
+  res.render("searcwash",{user});
+});
+
+router.get("/carevcharge",verifyToken,async function(req,res){
+  const token = req.cookies.authorization;
+  const decoded = jwt.verify(token,process.env.JWT_SECRET);
+
+  const user = await User.findById(decoded.id).select("-password");
+
+  if(!user){
+    return res.status(404).json({error : "User not found"});
+  }
+  res.render("searchev",{user});
+});
+
+router.get("/carpark",verifyToken,async function(req,res){
+  const token = req.cookies.authorization;
+  const decoded = jwt.verify(token,process.env.JWT_SECRET);
+
+  const user = await User.findById(decoded.id).select("-password");
+
+  if(!user){
+    return res.status(404).json({error : "User not found"});
+  }
+  res.render("searchpark",{user});
+});
+
+router.get("/carinsp",verifyToken,async function(req,res){
+  const token = req.cookies.authorization;
+  const decoded = jwt.verify(token,process.env.JWT_SECRET);
+
+  const user = await User.findById(decoded.id).select("-password");
+
+  if(!user){
+    return res.status(404).json({error : "User not found"});
+  }
+  res.render("searchinsp",{user});
+});
+
+router.get("/carpaint",verifyToken,async function(req,res){
+  const token = req.cookies.authorization;
+  const decoded = jwt.verify(token,process.env.JWT_SECRET);
+
+  const user = await User.findById(decoded.id).select("-password");
+
+  if(!user){
+    return res.status(404).json({error : "User not found"});
+  }
+  res.render("searchpaint",{user});
+});
+
+router.get("/got_centers",verifyToken,async function(req,res){
+  const token = req.cookies.authorization;
+  const decoded = jwt.verify(token,process.env.JWT_SECRET);
+
+  const user = await User.findById(decoded.id).select("-password");
+
+  if(!user){
+    return res.status(404).json({error : "User not found"});
+  }
+  res.render("user_got_centers",{user});
+});
+
+
 module.exports = router;
