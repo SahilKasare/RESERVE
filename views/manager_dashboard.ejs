@@ -5,28 +5,43 @@
     <meta name="viewport" content="width=1920, initial-scale=1" />
 
     <title>Dashboard</title>
-    <link rel="stylesheet" href="./CSS/manager_dashboard.css" />
+    <link rel="stylesheet" href="/CSS/manager_dashboard.css" />
     <link
   rel="icon"
   type="image/png"
   sizes="16x16"
   href="../public/Images/favicon_io/favicon-16x16.png"
 />
+<link
+href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+rel="stylesheet"
+/>
   </head>
   <body>
     <header>
       <div class="profile">
-        <img src="./Images/profile face.jpg" alt="Profile Picture" />
-        <span>Yadnyesh</span>
+        <img src="/Images/Uploads/<%= manager.profile_pic %>" alt="" />
+        <span> <%= manager.name %> </span>
       </div>
     </header>
 
     <div id="sidebar">
       <div class="logo">
-        <img src="./Images/newlogog.png" alt="Logo" />
+        <img src="/Images/newlogog.png" alt="Logo" />
       </div>
       <div class="profile-sidebar">
-        <img src="./Images/profile face.jpg" alt="Profile Picture" />
+        <form id="uploadform" style="display: none;" action="/managers/fileupload" method="post" enctype="multipart/form-data">
+          <input type="file" name="image" style="display: block; margin-bottom: 10px;">
+        </form>
+      
+        <div style="position: relative;">
+            <span id="uploadicon" style="width: 1.5rem; height: 1.5rem; position: absolute; bottom: 0; right: 0; display: flex; align-items: center; justify-content: center; background-color: #bfc5cd; border-radius: 9999px; cursor: pointer;">
+                <i class="text-black-800 ri-edit-fill"></i>
+            </span>
+            <div style="width: 4rem; height: 4rem; border-radius: 9999px; background-color: #fff; overflow: hidden;">
+                <img style="width: 100%; height: 100%; object-fit: cover;" src="/Images/Uploads/<%= manager.profile_pic %>" alt="">
+            </div>
+        </div>
         <div class="pmanager">
           <span style="font-size: 20px; padding-left: 10px; padding-bottom: 3px;">
             <%= manager.name %>
@@ -648,5 +663,14 @@
         </div>
       </div>
     </div>
+    <script>
+      document.querySelector("#uploadicon").addEventListener("click",function(){
+        document.querySelector("#uploadform input").click();
+      });
+
+      document.querySelector("#uploadform input").addEventListener("change",function(){
+          document.querySelector("#uploadform").submit();
+      });
+  </script>
   </body>
 </html>
