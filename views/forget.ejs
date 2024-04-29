@@ -27,24 +27,23 @@
     />
     <link rel="manifest" href="./Images/favicon_io/site.webmanifest" />
     <link rel="stylesheet" href="./CSS/login_user.css" />
-    <title>User Login</title>
+    <title>Forgot Password</title>
   </head>
 
   <body>
     <img src="./Images/logo_blueslogan.png" alt="Logo" />
     <div class="container" id="container">
       <div class="form-container sign-in">
-        <form action="/userLogin" method="POST">
-          <h1>Sign In</h1>
-          <input type="text" name="username" placeholder="Username" />
-          <input type="password" name="password" placeholder="Password" />
-          <a href="/forget">Forget Your Password?</a>
-          <button type="submit" style="color: white; text-decoration: none; border: none; cursor: pointer;">
-            Sign In
+        <form action="/forget" method="POST">
+          <h1>Forgot Password</h1>
+          <input type="email" name="email" placeholder="Enter registered email" />
+          <button type="submit" style="color: white; text-decoration: none; border: none; cursor: pointer; margin-top: 4vh;">
+            Submit
           </button>
         </form>
-        
-        </form>
+        <% if (typeof message !== 'undefined') { %>
+          <h4><%= message %></h4>
+        <% } %>
       </div>
       <div class="toggle-container">
         <div class="toggle">
