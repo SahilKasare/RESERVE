@@ -50,7 +50,13 @@ const managerSchema = new mongoose.Schema({
 
             parking_price:{
                 type: Number
-            }
+            },
+            booked_slots:[
+              
+                {
+                type: Number
+                
+            }]
         },
         cleaning:{
             price_carwash:{

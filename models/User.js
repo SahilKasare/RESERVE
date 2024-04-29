@@ -55,7 +55,7 @@ const userSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Transaction'
     }],
-    forgot_token: {
+    forget_token: {
         type: String,
         default: ''
     }

@@ -3,15 +3,6 @@ const randomString = require('randomstring');
 const nodemailer = require("nodemailer");
 const bcrypt = require('bcrypt');
 
-exports.getUser=async(req,res)=>{
-    try{
-     const {id}=req.params;
-     const user=await User.findById(id);
-     res.status(200).json(user)
-    }catch(error){
-        res.status(404),json({message:error.message});
-    }
-}
 
 
 //For Mail send
@@ -41,7 +32,7 @@ const sendresetpasswordmail = async (name, email, forget_token) => {
           from: 'reserve.carservice10@gmail.com',
           to: email,
           subject: 'For Reset Password', 
-          html:'<p> Hi '+name+', please click here to <a href="http://localhost:3000/forget-password?token='+forget_token+'"> Reset </a> your password. </p>'
+          html:'<p> Hi '+name+', please click here to <a href="http://localhost:3000/forget-password?email='+email+'"> Reset </a> your password. </p>'
       }
   
       transporter.sendMail(mailoptions, function(err, info){
@@ -71,6 +62,7 @@ const sendresetpasswordmail = async (name, email, forget_token) => {
       console.log(randomstring);
       const updatedata = await User.updateOne({email},{$set:{forget_token:randomstring}});
       sendresetpasswordmail(userdata.name, userdata.email, randomstring);
+      console.log(userdata.name, userdata.email, randomstring);
       // res.render('forget', {message:"Please check your mail to reset your password."})
       res.status(200).send('Please check your mail to reset your password.');
       
@@ -80,20 +72,14 @@ const sendresetpasswordmail = async (name, email, forget_token) => {
     }
   }
   
-  // exports.forgotLoad =async(req,res)=>{
-  //   try{
-  //       res.render('forgot');
-  //   }catch(error){
-  //       res.status(404),json({message:error.message});
-  //   }
-  // }
+
   
   exports.forgetpaswordload = async (req, res) => {
     try {
   
-      const forget_token = req.query.forget_token;
-      const tokendata = await User.findOne({forget_token});
-      console.log(forget_token);
+      const forgot_token = req.query.email;
+      console.log("Recieved token:", forgot_token);
+      const tokendata = await User.findOne({ email: forgot_token });
       if(!tokendata)  return res.status(401).send("token is invalid");
      
       res.render('forget-password',{user_id:tokendata._id});
@@ -121,7 +107,7 @@ exports.resetpassword = async (req, res) => {
     const passwordHash = await bcrypt.hash(password, salt);
 
     // Update the password in the database
-    await User.findByIdAndUpdate(user._id,{$set:{password:passwordHash, forget_token:''}});
+    await User.findByIdAndUpdate(_id,{$set:{password:passwordHash, forget_token:''}});
 
           
      res.redirect("/");
@@ -131,3 +117,5 @@ exports.resetpassword = async (req, res) => {
     
   }
 }
+
+

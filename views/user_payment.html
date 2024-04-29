@@ -3,38 +3,56 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Service Center</title>
-    <link rel="stylesheet" href="/CSS/user_got_centers.css" />
+    <title>ReServe</title>
+    <link rel="stylesheet" href="./CSS/user_payment.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&family=Baloo+Bhai+2&family=Poppins&display=swap"
-      rel="stylesheet"
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./assets/favicon_io (2)/apple-touch-icon.png"
     />
     <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon_io (2)/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./assets/favicon_io (2)/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
-    <!-- Start of soidebar  -->
-    <div class="sc-part1">
-      <!-- logo part -->
-      <div class="sc-web-logo">
-        <img src="/Images/finallogo.png" alt="" />
-      </div>
+    <div id="content">
+      <div id="sidebar">
+        <div id="colflex">
+          <!-- <div id="site"> -->
+          <div id="logo">
+            <img id="logoimg" src="./Images/logo_orange.webp" alt="" />
+          </div>
 
-      <!-- profile_part -->
-      <div class="sc-profile-part1">
-        <div class="sc-profile-part1-pic">
-          <img src="/Images/Uploads/<%= user.profile_pic %>" alt="" />
+          <!-- </div> -->
+          <div id="optionprofile">
+            <div style="position: relative;">
+              <div style="width: 4rem; height: 4rem; border-radius: 9999px; background-color: #fff; overflow: hidden;">
+                  <img style="width: 100%; height: 100%; object-fit: cover;" src="./Images/Uploads/<%= user.profile_pic %>" alt="">
+              </div>
+           </div>
+            <div class="pk-profile-part1-name"><%= user.name %></div>
+          </div>
         </div>
-        <div class="sc-profile-part1-name"><%= user.name %></div>
-      </div>
 
-      <!-- oprtions_part -->
-      <div class="sc-options-part1">
         <div id="options">
-          <div class="sc-selected sc-elewrap">
-            <div class="sc-element">
+          <div class="elewrap">
+            <div class="element">
               <svg
                 height="30px"
                 width="30px"
@@ -84,13 +102,16 @@
                     stroke-linecap="round"
                     stroke-linejoin="round"
                   ></path>
-                </g>
-              </svg>
-              <div>Services</div>
+                </g></svg
+              ><a
+                style="text-decoration: none; color: white"
+                href="/users/profile"
+                ><div>Services</div></a
+              >
             </div>
           </div>
-          <div class="sc-elewrap">
-            <div class="sc-element">
+          <div class="elewrap">
+            <div class="element">
               <svg
                 height="30px"
                 width="30px"
@@ -110,13 +131,16 @@
                     fill-rule="evenodd"
                     d="M19,2 C20.6568542,2 22,3.34314575 22,5 L22,19 C22,20.6568542 20.6568542,22 19,22 L5,22 C3.34314575,22 2,20.6568542 2,19 L2,5 C2,3.34314575 3.34314575,2 5,2 L19,2 Z M19,4 L5,4 C4.44771525,4 4,4.44771525 4,5 L4,19 C4,19.5522847 4.44771525,20 5,20 L19,20 C19.5522847,20 20,19.5522847 20,19 L20,5 C20,4.44771525 19.5522847,4 19,4 Z M9,6 L12,6 C14.209139,6 16,7.790861 16,10 C16,12.1421954 14.3160315,13.8910789 12.1996403,13.9951047 L12,14 L10,14 L10,17 C10,17.5522847 9.55228475,18 9,18 C8.44771525,18 8,17.5522847 8,17 L8,7 C8,6.44771525 8.44771525,6 9,6 L12,6 L9,6 Z M12,8 L10,8 L10,12 L12,12 L12.1492623,11.9945143 C13.1841222,11.9181651 14,11.0543618 14,10 C14,8.8954305 13.1045695,8 12,8 Z"
                   ></path>
-                </g>
-              </svg>
-              <div><a href="/users/user_park">Parking</a></div>
+                </g></svg
+              ><a
+                style="text-decoration: none; color: white"
+                href="/users/user_park"
+                ><div>Parking</div></a
+              >
             </div>
           </div>
-          <div class="sc-elewrap">
-            <div class="sc-element">
+          <div class="elewrap">
+            <div class="element">
               <svg
                 height="30px"
                 width="30px"
@@ -145,13 +169,16 @@
                     stroke-linecap="round"
                     stroke-linejoin="round"
                   ></path>
-                </g>
-              </svg>
-              <div><a href="/users/user_current_bookings">Current Bookings</a></div>
+                </g></svg
+              ><a
+                style="text-decoration: none; color: white"
+                href="/users/user_current_bookings"
+                ><div>Current Bookings</div></a
+              >
             </div>
           </div>
-          <div class="sc-elewrap">
-            <div class="sc-element">
+          <div class="selected elewrap">
+            <div class="element">
               <svg
                 height="30px"
                 width="30px"
@@ -173,13 +200,14 @@
                     stroke-linecap="round"
                     stroke-linejoin="round"
                   ></path>
-                </g>
-              </svg>
-              <div><a href="/users/user_wallet">Wallet</a></div>
+                </g></svg
+              ><a style="text-decoration: none; color: white" href="#"
+                ><div>Wallet</div></a
+              >
             </div>
           </div>
-          <div class="sc-elewrap">
-            <div class="sc-element">
+          <div class="elewrap">
+            <div class="element">
               <svg
                 height="30px"
                 width="30px"
@@ -215,76 +243,58 @@
                     stroke-linecap="round"
                     stroke-linejoin="round"
                   ></path>
-                </g>
-              </svg>
-              <div>Logout</div>
+                </g></svg
+              ><a
+                style="text-decoration: none; color: white"
+                href="../../Landing Page/index.html"
+                ><div>Logout</div></a
+              >
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="sc-part2">
-      <!-- uppar navvbar -->
-      <nav>
-        <div class="sc-profile-part1">
-          <div class="sc-profile-part1-pic">
-            <img src="/Images/Uploads/<%= user.profile_pic %>" alt="" />
+      <div id="bod">
+        <div id="profile">
+          <div style="width: 3rem; height: 3rem; border-radius: 9999px; background-color: #fff; overflow: hidden;">
+            <img style="width: 100%; height: 100%; object-fit: cover;" src="./Images/Uploads/<%= user.profile_pic %>" alt="">
           </div>
-          <div class="sc-profile-part1-name"><%= user.name %></div>
+          <div class="pk-profile-part1-name"><%= user.name %></div>
         </div>
-      </nav>
+       <div id="pay">
+        <h1 >₹450</h1>
+        <hr/>
 
-      <div class="sc-heading-part">Select a Service Center</div>
-
-      <!-- this one like container -->
-      <div class="sc-container-array">
-
-        <!-- this one like card -->
-        <div class="sc-card-center">
-          <div class="sc-center-image">
-            <img src="/Images/center_img2.jpg" alt="" />
-          </div>
-
-          <div class="sc-center-text">
-            <h3 class="sc-center-heading">CarRepairs Pvt.Ltd.</h3>
-            <div class="sc-center-location">
-              Location : Gnan Circle,Sricity-5674244
-            </div>
-            <div class="sc-center-logos">
-              <div class="sc-center-logos-phno">
-                <div style="margin-top: px">
-                  <i class="material-icons">&#xe0b0;</i>
-                </div>
-                <span>9768976751</span>
-              </div>
-              <div class="sc-center-logos-email">
-                <div style="margin-top: px">
-                  <i class="material-icons">&#xe0be;</i>
-                </div>
-                <span>carrepair@gmail.com</span>
-              </div>
-            </div>
-            <div class="sc-center-price">₹360 - ₹428</div>
-            <div class="sc-center-booknow">
-              <button>Book Now</button>
-            </div>
-          </div>
-        </div>
+        <div id="to">
+          <div> To: CarRepair pvt.ltd</div> 
+          
         
-      </div>
+        <div>Username: carrot_123</div>
 
+        <div  class="rowflex"id="contact">
+            <div class="rowflex-center"><div ><svg  margin-top="1vh" viewBox="0 0 24 24"  height="23px" width="23px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21 8L17.4392 9.97822C15.454 11.0811 14.4614 11.6326 13.4102 11.8488C12.4798 12.0401 11.5202 12.0401 10.5898 11.8488C9.53864 11.6326 8.54603 11.0811 6.5608 9.97822L3 8M6.2 19H17.8C18.9201 19 19.4802 19 19.908 18.782C20.2843 18.5903 20.5903 18.2843 20.782 17.908C21 17.4802 21 16.9201 21 15.8V8.2C21 7.0799 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V15.8C3 16.9201 3 17.4802 3.21799 17.908C3.40973 18.2843 3.71569 18.5903 4.09202 18.782C4.51984 19 5.07989 19 6.2 19Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></div> <div>carrepair@exampl.com</div></div>
+            <div class="rowflex-center"><div><svg viewBox="0 0 24 24" height="23px" width="23px"fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 5.5C3 14.0604 9.93959 21 18.5 21C18.8862 21 19.2691 20.9859 19.6483 20.9581C20.0834 20.9262 20.3009 20.9103 20.499 20.7963C20.663 20.7019 20.8185 20.5345 20.9007 20.364C21 20.1582 21 19.9181 21 19.438V16.6207C21 16.2169 21 16.015 20.9335 15.842C20.8749 15.6891 20.7795 15.553 20.6559 15.4456C20.516 15.324 20.3262 15.255 19.9468 15.117L16.74 13.9509C16.2985 13.7904 16.0777 13.7101 15.8683 13.7237C15.6836 13.7357 15.5059 13.7988 15.3549 13.9058C15.1837 14.0271 15.0629 14.2285 14.8212 14.6314L14 16C11.3501 14.7999 9.2019 12.6489 8 10L9.36863 9.17882C9.77145 8.93713 9.97286 8.81628 10.0942 8.64506C10.2012 8.49408 10.2643 8.31637 10.2763 8.1317C10.2899 7.92227 10.2096 7.70153 10.0491 7.26005L8.88299 4.05321C8.745 3.67376 8.67601 3.48403 8.55442 3.3441C8.44701 3.22049 8.31089 3.12515 8.15802 3.06645C7.98496 3 7.78308 3 7.37932 3H4.56201C4.08188 3 3.84181 3 3.63598 3.09925C3.4655 3.18146 3.29814 3.33701 3.2037 3.50103C3.08968 3.69907 3.07375 3.91662 3.04189 4.35173C3.01413 4.73086 3 5.11378 3 5.5Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></div><div>9342900832</div></div>
+            
+        </div>
+        <div>Service : EV Charging</div>
+        <div  class="rowflex"id="contact">
+           <div>From: 9 hrs.</div>
+           <div>To: 12 hrs.</div>
+        </div>
 
-      <footer>
-        <div id="sc-footer">
-          <div id="sc-gen">
-            <div class="sc-colfoot">
-              <img id="sc-logofoot" src="/Images/finallogo.png" alt="" />
-              <div class="sc-foottext">
+        <button id="paybutton">Confirm payment</button>
+    </div>
+       </div>
+
+        <div id="footer">
+          <div id="gen">
+            <div class="colfoot">
+              <img id="logofoot" src="./Images/logo_orange.webp" alt="" />
+              <div class="foottext">
                 Curious about new developments and updates?<br />Follow us on
-                socail media
+                social media.
               </div>
-              <div id="sc-social">
+              <div id="social">
                 <a
                   ><svg
                     height="30px"
@@ -413,20 +423,20 @@
               </div>
             </div>
           </div>
-          <div id="sc-address">
-            <div class="sc-colfoot">
-              <div class="sc-foothead">ADDRESS</div>
-              <div id="sc-foottext">
+          <div id="address">
+            <div class="colfoot">
+              <div class="foothead">ADDRESS</div>
+              <div id="foottext">
                 Indian Institue of Information Technology Sricity,<br />
                 630, Gnan Marg Sri City, Sathyavedu,<br />
                 Andhra Pradesh, India-517646
               </div>
             </div>
           </div>
-          <div id="sc-contact">
-            <div class="sc-colfoot">
-              <div class="sc-foothead sc-line-space">CONTACT US</div>
-              <div id="sc-foottext" class="sc-cont">
+          <div id="contact">
+            <div class="colfoot">
+              <div class="foothead line-space">CONTACT US</div>
+              <div id="foottext" class="cont">
                 <svg
                   viewBox="0 0 24 24"
                   height="20px"
@@ -452,7 +462,7 @@
                 </svg>
                 <div>976522XXX9</div>
               </div>
-              <div id="sc-foottext" class="sc-cont">
+              <div id="foottext" class="cont">
                 <svg
                   viewBox="0 0 24 24"
                   height="20px"
@@ -478,7 +488,7 @@
                 </svg>
                 <div>922522XXX9</div>
               </div>
-              <div id="sc-foottext" class="sc-cont">
+              <div id="foottext" class="cont">
                 <svg
                   viewBox="0 0 24 24"
                   height="20px"
@@ -507,9 +517,8 @@
             </div>
           </div>
         </div>
-      </footer>
+      </div>
     </div>
-
-    <script src="/JS/user_got_centers"></script>
   </body>
+  <script src="/JS/user_wallet.js"></script>
 </html>
