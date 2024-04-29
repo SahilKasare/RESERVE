@@ -5,7 +5,7 @@ body {
     margin: 0px;
     font-family: "Poppins", sans-serif;
     color: white;
-    background-image: url('./assets/bkg2.png');
+    background-image: url("/Images/Frame\ 24updatedbg.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover; /* or contain, depending on your preference */
@@ -683,4 +683,5 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#050505",endCo
         height:4vh;
         width:4vh;
         border-radius: 5px;
+       
     }
