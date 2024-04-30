@@ -350,13 +350,14 @@ align-items: center;
 }
 
 
-#paybutton{
+#paybutton > a{
     background-color: aliceblue;
     color: green;
     height:7vh;
     width:14vw;
     font-size: 24px;
     border-radius: 4vh;
+    text-decoration: none;
  
 }
 

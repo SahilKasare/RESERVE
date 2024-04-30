@@ -87,12 +87,6 @@ router.get("/got_centers",verifyToken, getusers, async function(req,res){
   res.render("user_got_centers",{user:req.user, managers :managers, service: service} );
 });
 
-//routes for payment
-// router.get("/payment",verifyToken, getusers,async function(req,res){
-//   const managers = req.session.managers;
-//   const servicecentre = req.session.servicecentre;
-//   res.render("user_payment",{managers, servicecentre});
-// });
 
 router.get("/payment", verifyToken, getusers, async function(req, res) {
   const managerId = req.query.managerId;
@@ -116,6 +110,10 @@ router.get("/payment", verifyToken, getusers, async function(req, res) {
   }
 });
 
+router.get("/paymentSuccessful",verifyToken, getusers, async function(req,res){
+  
+  res.render("success",{user:req.user} );
+});
 
 router.get("/user_preview",verifyToken,async function(req,res){
   const token = req.cookies.authorization;

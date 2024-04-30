@@ -118,17 +118,12 @@ app.post('/adminLogin',adminLogin);
 
 
 
-//temp manager_dashboard
-app.get('/managerProfile', (req, res)=>{
-    res.render('manager_dashboard');
-})
-
-app.get('/removeSession', function(req, res){
-    req.session.destroy(function(err){
-      if (err) throw err;
-      res.send("Session Destroyed");
-    });
-  })
+// app.get('/removeSession', function(req, res){
+//     req.session.destroy(function(err){
+//       if (err) throw err;
+//       res.send("Session Destroyed");
+//     });
+//   })
 
 // Guest routes
 app.get('/service1', (req, res)=>{
