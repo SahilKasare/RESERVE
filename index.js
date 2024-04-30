@@ -20,6 +20,13 @@ const {forgetverify} = require('./controllers/User');
 const {forgetpaswordload} = require('./controllers/User');
 const {resetpassword} = require('./controllers/User');
 const cookieParser = require('cookie-parser');
+const session = require('express-session');
+
+app.use(session({
+    secret: 'your-secret-key',
+    resave: false,
+    saveUninitialized: true
+}));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -115,3 +122,11 @@ app.post('/adminLogin',adminLogin);
 app.get('/managerProfile', (req, res)=>{
     res.render('manager_dashboard');
 })
+
+app.get('/removeSession', function(req, res){
+    req.session.destroy(function(err){
+      if (err) throw err;
+      res.send("Session Destroyed");
+    });
+  })
+

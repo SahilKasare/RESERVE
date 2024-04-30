@@ -62,9 +62,7 @@ const managerSchema = new mongoose.Schema({
             price_carwash:{
                 type: Number
             },
-            price_full:{
-                type: Number
-            }
+          
         },
         charging:{
             charging_price:{
