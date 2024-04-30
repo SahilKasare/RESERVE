@@ -244,3 +244,48 @@ body {
     display: flex;
     flex-direction: column;
   }
+
+.heading{
+  margin-left: 300px;
+  color: white;
+  font-size: 40px;
+}
+
+  table {
+    width: 80%;
+    margin-left: 290px;
+    border-collapse: separate;
+    border-spacing: 8px;
+  }
+  th, td {
+    border: 1px solid #ffffff;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 5%;
+    padding: 18px;
+  }
+  th {
+    background-color: #ffaa18;
+    
+  }
+  tr:nth-child(even) {
+    background-color: #232836;
+  }
+
+  th.name { width: 250px; }
+  th.contact { width: 150px; }
+  th.date { width: 150px; }
+  th.arrival { width: 100px; }
+  th.departure { width: 100px; }
+  th.service { width: 250px; }
+  th.cancel { width: 100px; }
+
+  .cancel-button {
+    width: 100%;
+    padding: 8px; 
+    font-size: 16px; 
+    background-color: red;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 5%;
+  }
