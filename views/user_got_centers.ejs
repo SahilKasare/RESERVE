@@ -279,9 +279,13 @@
                       <div class="sc-center-price"><%= manager.services.painting.painting_price %></div>
                   <% } %>
                   </div>
+                  <!-- <div class="sc-center-booknow">
+                      <button type="submit">Book Now</button>
+                  </div> -->
                   <div class="sc-center-booknow">
-                      <button>Book Now</button>
-                  </div>
+                    <a href="/users/payment?managerId=<%= manager._id %>">Book Now</a>
+                </div>
+                
               </div>
           </div>
       <% }); %>

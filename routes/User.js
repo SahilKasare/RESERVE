@@ -48,7 +48,7 @@ router.get("/user_wallet",verifyToken, getusers, async function(req,res){
   res.render("user_wallet",{user: req.user});
 });
 
-
+// routes for services
 router.get("/carwash",verifyToken, getusers, async function(req,res){
   const locations = await Manager.distinct('location');
   res.render("searcwash",{user: req.user, locations});
@@ -84,12 +84,34 @@ router.get("/got_centers",verifyToken, getusers, async function(req,res){
   const service = req.session.service;
   res.render("user_got_centers",{user:req.user, managers :managers, service: service} );
 });
-// router.get("/got_centers",verifyToken, getusers, async function(req,res){
-//   const managers = req.session.managers || [];
 
-//   res.render("user_got_centers",{user:req.user, managers :managers} );
+//routes for payment
+// router.get("/payment",verifyToken, getusers,async function(req,res){
+//   const managers = req.session.managers;
+//   const servicecentre = req.session.servicecentre;
+//   res.render("user_payment",{managers, servicecentre});
 // });
 
+router.get("/payment", verifyToken, getusers, async function(req, res) {
+  const managerId = req.query.managerId;
+  
+  try {
+      // Assuming Manager.findById is a function to find a manager by their ID
+      const selectedManager = await Manager.findById(managerId);
+      const servicecentre = req.session.servicecentre;
+      if (!selectedManager) {
+          // Handle case where manager with given ID is not found
+          return res.status(404).send("Manager not found");
+      }
+      
+      // Render the payment page with the selected manager's data
+      res.render("user_payment", { user: req.user, selectedManager, servicecentre });
+  } catch (error) {
+      // Handle errors
+      console.error("Error fetching manager:", error);
+      res.status(500).send("Error fetching manager");
+  }
+});
 
 
 router.get("/user_preview",verifyToken,async function(req,res){
