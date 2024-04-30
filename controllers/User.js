@@ -126,12 +126,17 @@ exports.resetpassword = async (req, res) => {
 
 exports.getcarwashService= async (req, res) => {
   const servicecentre=req.body;
-  let Managers = await Manager.find(servicecentre);
+  const { location, address } = req.body;
+  // let Managers = await Manager.find();
+  let Managers = await Manager.find({
+    'location': location,
+    'address': address
+  });
   Managers = Managers.filter(manager => manager.services.cleaning && manager.services.cleaning.price_carwash !== undefined && manager.services.cleaning.price_carwash !== null);
   req.session.servicecentre = servicecentre;
   req.session.managers = Managers;
   req.session.service = "wash";
-
+  console.log(Managers);
   res.redirect("/users/got_centers");
 }
 exports.getcarparkService= async (req, res) => {

@@ -274,7 +274,7 @@
                 <!-- Your Wallet content goes here -->
                 <div class="flex-col" id="bal">
                   <h1>Balance</h1>
-                  <h1 id="am">₹ <span id="money">15000</span></h1>
+                  <h1 id="am">₹ <span id="money"><%= user.wallet%></span></h1>
                   <button>+</button>
                 </div>
                 <img
@@ -301,12 +301,14 @@
                     "
                     >₹</element
                   >
-                  <input type="number" id="entam" placeholder="Amount" />
+                  <form style="display:inline-flex" action="/users/user_wallet" method="post">
+                  <input type="number" name="amount" id="entam" placeholder="Amount" />
                 </div>
-                <button>+</button>
+                <button type="'submit">+</button>
+              </form>
               </div>
               <div class="slidetext" style="margin-left: 4vw; margin-top: 9vh">
-                Deposit upto ₹ 25,000 in<br />
+                Deposit virtual currency in<br/>
                 our electronic wallet.
               </div>
             </div>

@@ -268,15 +268,15 @@
                   </div>
                   <div class="sc-center-price">
                     <% if (service == "park") { %>
-                      <div class="sc-center-price"><%= manager.services.parking.parking_price %></div>
+                      <div class="sc-center-price">₹<%= manager.services.parking.parking_price %></div>
                   <% } else if (service == "wash") { %>
-                      <div class="sc-center-price"><%= manager.services.cleaning.price_carwash %></div>
+                      <div class="sc-center-price">₹<%= manager.services.cleaning.price_carwash %></div>
                   <% } else if (service == "charge") { %>
-                      <div class="sc-center-price"><%= manager.services.charging.charging_price %></div>
+                      <div class="sc-center-price">₹<%= manager.services.charging.charging_price %></div>
                   <% } else if (service == "inspection") { %>
-                      <div class="sc-center-price"><%= manager.services.inspection.inspection_price %></div>
+                      <div class="sc-center-price">₹<%= manager.services.inspection.inspection_price %></div>
                   <% } else if (service == "painting") { %>
-                      <div class="sc-center-price"><%= manager.services.painting.painting_price %></div>
+                      <div class="sc-center-price">₹<%= manager.services.painting.painting_price %></div>
                   <% } %>
                   </div>
                   <!-- <div class="sc-center-booknow">

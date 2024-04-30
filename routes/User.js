@@ -101,13 +101,14 @@ router.get("/payment", verifyToken, getusers, async function(req, res) {
       // Assuming Manager.findById is a function to find a manager by their ID
       const selectedManager = await Manager.findById(managerId);
       const servicecentre = req.session.servicecentre;
+      const service = req.session.service;
       if (!selectedManager) {
           // Handle case where manager with given ID is not found
           return res.status(404).send("Manager not found");
       }
       
       // Render the payment page with the selected manager's data
-      res.render("user_payment", { user: req.user, selectedManager, servicecentre });
+      res.render("user_payment", { user: req.user, selectedManager, servicecentre, service });
   } catch (error) {
       // Handle errors
       console.error("Error fetching manager:", error);
