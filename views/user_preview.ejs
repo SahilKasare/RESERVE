@@ -4,24 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Preview</title>
-    <link rel="stylesheet" href="./CSS/user_preview.css" />
+    <link rel="stylesheet" href="/CSS/user_preview.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&family=Baloo+Bhai+2&family=Poppins&display=swap"
       rel="stylesheet"
     />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
   <body>
     <main>
       <div class="fullpage">
         <div class="part1">
           <div class="web-logo">
-            <img src="./Images/finallogo.png" alt="" />
+            <img src="/Images/finallogo.png" alt="" />
           </div>
           <div class="profile-part1">
             <div class="profile-part1-pic">
-              <img src="./Images/profilepic.png" alt="" />
+              <img src="/Images/Uploads/<%= user.profile_pic %>" alt="" />
             </div>
-            <div class="profile-part1-name">Hrishikesh Dongre</div>
+            <div class="profile-part1-name"><%= user.name %></div>
           </div>
 
           <div class="options-part1">
@@ -105,7 +106,7 @@
                       ></path>
                     </g>
                   </svg>
-                  <div><a href="user_parking.html">Parking</a></div>
+                  <div><a href="/users/user_park">Parking</a></div>
                 </div>
               </div>
               <div class="elewrap">
@@ -141,7 +142,7 @@
                     </g>
                   </svg>
                   <div>
-                    <a href="user_current-bookings.html">Current-Bookings</a>
+                    <a href="/users/user_current_bookings">Current-Bookings</a>
                   </div>
                 </div>
               </div>
@@ -170,7 +171,7 @@
                       ></path>
                     </g>
                   </svg>
-                  <div><a href="user_wallet.html">Wallet</a></div>
+                  <div><a href="/users/user_wallet">Wallet</a></div>
                 </div>
               </div>
               <div class="elewrap">
@@ -212,7 +213,7 @@
                       ></path>
                     </g>
                   </svg>
-                  <div><a href="../../Landing Page/index.html">Logout </a></div>
+                  <div><a href="/">Logout </a></div>
                 </div>
               </div>
             </div>
@@ -224,9 +225,9 @@
           <nav>
             <div class="profile-part1">
               <div class="profile-part1-pic">
-                <img src="./Images/profilepic.png" alt="" />
+                <img src="/Images/Uploads/<%= user.profile_pic %>" alt="" />
               </div>
-              <div class="profile-part1-name">Hrishikesh Dongre</div>
+              <div class="profile-part1-name"><%= user.name %></div>
             </div>
           </nav>
 
@@ -236,11 +237,30 @@
             </div>
 
             <div class="review-box">
-
+              <form action="/users/user_preview" method="post">
+                <div style="display: flex; justify-content: center; align-items: center; width: 50vw;">
+                  <textarea name="review" placeholder="Write Your Review....." id="" cols="100" rows="10" style="color: black;"></textarea>
+                </div>
+                <div class="starsclass">
+                  <input type="hidden" name="stars" id="stars">
+                  <i class="material-icons star" style="font-size:36px" data-value="1">star</i>
+                  <i class="material-icons star" style="font-size:36px" data-value="2">star</i>
+                  <i class="material-icons star" style="font-size:36px" data-value="3">star</i>
+                  <i class="material-icons star" style="font-size:36px" data-value="4">star</i>
+                  <i class="material-icons star" style="font-size:36px" data-value="5">star</i>
+                </div>
+                <div style="display: flex; justify-content: center; align-items: center; width: 50vw;">
+                  <input type="submit" value="Submit" class="star-submit">
+                </div>
+                
+              </form>
             </div>
+
+
           </div>
         </div>
       </div>
     </main>
   </body>
+  <script src="/JS/user_preview.js"></script>
 </html>

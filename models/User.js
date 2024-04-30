@@ -58,7 +58,15 @@ const userSchema = new mongoose.Schema({
     forgot_token: {
         type: String,
         default: ''
-    }
+    },
+    allreview : [{
+        review:{
+            type : String,
+        },
+        stars:{
+            type : Number,
+        }
+    }]   
 });
 
 const User = mongoose.model('User', userSchema);

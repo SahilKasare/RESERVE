@@ -5,7 +5,7 @@ body {
     margin: 0px;
     font-family: "Poppins", sans-serif;
     color: white;
-    background-image: url('./assets/bkg2.png');
+    background-image: url('/Images/Frame\ 24updatedbg.jpg');
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover; /* or contain, depending on your preference */
@@ -24,7 +24,7 @@ text-align:center;
     
     flex-direction: row;
     gap: 0px;
-   padding-bottom: ;
+   /* padding-bottom: ; */
     margin: 0px;
 }
 
