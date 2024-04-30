@@ -18,6 +18,7 @@ a{
 }
 
 .sc-part1{
+    position:sticky;
     height: 100.5vh;
     width: 14vw;
     border: 1px solid black;
@@ -25,12 +26,13 @@ a{
     box-shadow: 0px 0px 90px 1px #1c5978e9;
     z-index: 0;
     /* margin-top: -600px; */
-    position:sticky;
+    
     top: 0;
 }
 
 
 .sc-part2{
+    position: sticky;
     height: 100%;
     width: 86vw;
     background-color: #141820;
@@ -46,6 +48,7 @@ a{
 
 /* css of  sidebar part start */
 .sc-web-logo{
+    position: sticky;
     height: 4rem;
     width: 15vw;
     margin-left: 2px;
@@ -57,11 +60,13 @@ a{
 }
 
 .sc-web-logo > img{
+    position: sticky;
     height: 3rem;
     width: 12vw;
 }
 
 .sc-profile-part1{
+    position: sticky;
     height: 5rem;
     width: 15vw;
     /* border: 1px solid white; */
@@ -75,12 +80,14 @@ a{
 }
 
 .sc-profile-part1-pic > img{
+    position: sticky;
     height: 3rem;
     /* border: 1px solid white; */
 }
 
 
 .sc-options-part1{
+    position: sticky;
     margin-top: 2rem;
     /* border: 1px solid white; */
     height: 50vh;
@@ -92,6 +99,7 @@ a{
 
 
 .sc-element{
+    position: sticky;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -102,11 +110,13 @@ a{
 }
 
 .sc-element:hover{
+    position: sticky;
     background-color: #141820;
     border-radius: 20px;
 }
 
 .sc-selected{
+    position: sticky;
     background-color: #262939;
     border-radius: 20px;
 }
@@ -118,6 +128,7 @@ a{
 
 
 .sc-part2>nav{
+    position: sticky;
     display: flex;
     align-items: center;
     justify-content: flex-end;
