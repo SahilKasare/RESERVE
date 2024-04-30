@@ -173,3 +173,11 @@ exports.getcarpaintingService= async (req, res) => {
   res.redirect("/users/got_centers");
 }
 
+
+exports.addmoney=async (req, res) => {
+const user=req.user;
+const amount=req.body.amount;
+user.wallet+=amount;
+user.save();
+res.redirect('/users/user_wallet/');
+}
