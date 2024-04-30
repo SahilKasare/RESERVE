@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ReServe</title>
-    <link rel="stylesheet" href="./CSS/user_payment.css" />
+    <link rel="stylesheet" href="/CSS/user_payment.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       rel="apple-touch-icon"
@@ -36,14 +36,14 @@
         <div id="colflex">
           <!-- <div id="site"> -->
           <div id="logo">
-            <img id="logoimg" src="./Images/logo_orange.webp" alt="" />
+            <img id="logoimg" src="/Images/logo_orange.webp" alt="" />
           </div>
 
           <!-- </div> -->
           <div id="optionprofile">
             <div style="position: relative;">
               <div style="width: 4rem; height: 4rem; border-radius: 9999px; background-color: #fff; overflow: hidden;">
-                  <img style="width: 100%; height: 100%; object-fit: cover;" src="./Images/Uploads/<%= user.profile_pic %>" alt="">
+                  <img style="width: 100%; height: 100%; object-fit: cover;" src="/Images/Uploads/<%= user.profile_pic %>" alt="">
               </div>
            </div>
             <div class="pk-profile-part1-name"><%= user.name %></div>
@@ -257,29 +257,63 @@
       <div id="bod">
         <div id="profile">
           <div style="width: 3rem; height: 3rem; border-radius: 9999px; background-color: #fff; overflow: hidden;">
-            <img style="width: 100%; height: 100%; object-fit: cover;" src="./Images/Uploads/<%= user.profile_pic %>" alt="">
+            <img style="width: 100%; height: 100%; object-fit: cover;" src="/Images/Uploads/<%= user.profile_pic %>" alt="">
           </div>
           <div class="pk-profile-part1-name"><%= user.name %></div>
         </div>
        <div id="pay">
-        <h1 >₹450</h1>
+        <h1 >₹
+          <% if (service == "park") { %>
+            <%= selectedManager.services.parking.parking_price %>
+        <% } else if (service == "wash") { %>
+            <%= selectedManager.services.cleaning.price_carwash %>
+        <% } else if (service == "charge") { %>
+            <%= selectedManager.services.charging.charging_price %>
+        <% } else if (service == "inspection") { %>
+            <%= selectedManager.services.inspection.inspection_price %>
+        <% } else if (service == "painting") { %>
+            <%= selectedManager.services.painting.painting_price %>
+        <% } %>
+        </h1>
         <hr/>
 
         <div id="to">
-          <div> To: CarRepair pvt.ltd</div> 
+          <div><%= selectedManager.companyName%></div> 
           
         
-        <div>Username: carrot_123</div>
+        <div>Username: <%= selectedManager.username%></div>
 
         <div  class="rowflex"id="contact">
-            <div class="rowflex-center"><div ><svg  margin-top="1vh" viewBox="0 0 24 24"  height="23px" width="23px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21 8L17.4392 9.97822C15.454 11.0811 14.4614 11.6326 13.4102 11.8488C12.4798 12.0401 11.5202 12.0401 10.5898 11.8488C9.53864 11.6326 8.54603 11.0811 6.5608 9.97822L3 8M6.2 19H17.8C18.9201 19 19.4802 19 19.908 18.782C20.2843 18.5903 20.5903 18.2843 20.782 17.908C21 17.4802 21 16.9201 21 15.8V8.2C21 7.0799 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V15.8C3 16.9201 3 17.4802 3.21799 17.908C3.40973 18.2843 3.71569 18.5903 4.09202 18.782C4.51984 19 5.07989 19 6.2 19Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></div> <div>carrepair@exampl.com</div></div>
-            <div class="rowflex-center"><div><svg viewBox="0 0 24 24" height="23px" width="23px"fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 5.5C3 14.0604 9.93959 21 18.5 21C18.8862 21 19.2691 20.9859 19.6483 20.9581C20.0834 20.9262 20.3009 20.9103 20.499 20.7963C20.663 20.7019 20.8185 20.5345 20.9007 20.364C21 20.1582 21 19.9181 21 19.438V16.6207C21 16.2169 21 16.015 20.9335 15.842C20.8749 15.6891 20.7795 15.553 20.6559 15.4456C20.516 15.324 20.3262 15.255 19.9468 15.117L16.74 13.9509C16.2985 13.7904 16.0777 13.7101 15.8683 13.7237C15.6836 13.7357 15.5059 13.7988 15.3549 13.9058C15.1837 14.0271 15.0629 14.2285 14.8212 14.6314L14 16C11.3501 14.7999 9.2019 12.6489 8 10L9.36863 9.17882C9.77145 8.93713 9.97286 8.81628 10.0942 8.64506C10.2012 8.49408 10.2643 8.31637 10.2763 8.1317C10.2899 7.92227 10.2096 7.70153 10.0491 7.26005L8.88299 4.05321C8.745 3.67376 8.67601 3.48403 8.55442 3.3441C8.44701 3.22049 8.31089 3.12515 8.15802 3.06645C7.98496 3 7.78308 3 7.37932 3H4.56201C4.08188 3 3.84181 3 3.63598 3.09925C3.4655 3.18146 3.29814 3.33701 3.2037 3.50103C3.08968 3.69907 3.07375 3.91662 3.04189 4.35173C3.01413 4.73086 3 5.11378 3 5.5Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></div><div>9342900832</div></div>
+            <div class="rowflex-center"><div ><svg  margin-top="1vh" viewBox="0 0 24 24"  height="23px" width="23px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21 8L17.4392 9.97822C15.454 11.0811 14.4614 11.6326 13.4102 11.8488C12.4798 12.0401 11.5202 12.0401 10.5898 11.8488C9.53864 11.6326 8.54603 11.0811 6.5608 9.97822L3 8M6.2 19H17.8C18.9201 19 19.4802 19 19.908 18.782C20.2843 18.5903 20.5903 18.2843 20.782 17.908C21 17.4802 21 16.9201 21 15.8V8.2C21 7.0799 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V15.8C3 16.9201 3 17.4802 3.21799 17.908C3.40973 18.2843 3.71569 18.5903 4.09202 18.782C4.51984 19 5.07989 19 6.2 19Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></div> <div><%= selectedManager.email %></div></div>
+            <div class="rowflex-center"><div><svg viewBox="0 0 24 24" height="23px" width="23px"fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 5.5C3 14.0604 9.93959 21 18.5 21C18.8862 21 19.2691 20.9859 19.6483 20.9581C20.0834 20.9262 20.3009 20.9103 20.499 20.7963C20.663 20.7019 20.8185 20.5345 20.9007 20.364C21 20.1582 21 19.9181 21 19.438V16.6207C21 16.2169 21 16.015 20.9335 15.842C20.8749 15.6891 20.7795 15.553 20.6559 15.4456C20.516 15.324 20.3262 15.255 19.9468 15.117L16.74 13.9509C16.2985 13.7904 16.0777 13.7101 15.8683 13.7237C15.6836 13.7357 15.5059 13.7988 15.3549 13.9058C15.1837 14.0271 15.0629 14.2285 14.8212 14.6314L14 16C11.3501 14.7999 9.2019 12.6489 8 10L9.36863 9.17882C9.77145 8.93713 9.97286 8.81628 10.0942 8.64506C10.2012 8.49408 10.2643 8.31637 10.2763 8.1317C10.2899 7.92227 10.2096 7.70153 10.0491 7.26005L8.88299 4.05321C8.745 3.67376 8.67601 3.48403 8.55442 3.3441C8.44701 3.22049 8.31089 3.12515 8.15802 3.06645C7.98496 3 7.78308 3 7.37932 3H4.56201C4.08188 3 3.84181 3 3.63598 3.09925C3.4655 3.18146 3.29814 3.33701 3.2037 3.50103C3.08968 3.69907 3.07375 3.91662 3.04189 4.35173C3.01413 4.73086 3 5.11378 3 5.5Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg></div><div><%= selectedManager.contact%></div></div>
             
         </div>
-        <div>Service : EV Charging</div>
+        <div>Service : 
+          <% if (service == "park") { %>
+            Parking
+        <% } else if (service == "wash") { %>
+            Car Wash
+        <% } else if (service == "charge") { %>
+            EV Charging
+        <% } else if (service == "inspection") { %>
+          Car Inspection
+        <% } else if (service == "painting") { %>
+          Denting and Painting
+        <% } %>
+        </div>
         <div  class="rowflex"id="contact">
-           <div>From: 9 hrs.</div>
-           <div>To: 12 hrs.</div>
+          <div>
+              <div>Date: <%=servicecentre.date%></div>
+          </div>
+        </div>
+        <div  class="rowflex"id="contact">
+          <div>
+            <% if (service == "park" || service == "charge") { %>
+              <div>From: <%=servicecentre.from%></div>
+              <div>To: <%=servicecentre.to%></div>
+            <% } else if (service == "wash" || service == "inspection" || service == "painting")%>
+              <div>Time: <%=servicecentre.time%></div>
+          </div>
         </div>
 
         <button id="paybutton">Confirm payment</button>
@@ -289,7 +323,7 @@
         <div id="footer">
           <div id="gen">
             <div class="colfoot">
-              <img id="logofoot" src="./Images/logo_orange.webp" alt="" />
+              <img id="logofoot" src="/Images/logo_orange.webp" alt="" />
               <div class="foottext">
                 Curious about new developments and updates?<br />Follow us on
                 social media.

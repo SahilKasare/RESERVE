@@ -123,29 +123,27 @@ exports.resetpassword = async (req, res) => {
 
 //Function for providing servicecenters
 
-// exports.getServicecenters = async (req, res) => {
-//   const servicecentre=req.body;
-//   const Managers = await Manager.find(servicecentre);
-//   // req.managers = Managers;
-//   // console.log(req.managers);
-//   // Store managers data in session
-//   req.session.managers = Managers;
-//   res.redirect("/users/got_centers");
-// }
+
 exports.getcarwashService= async (req, res) => {
   const servicecentre=req.body;
-  let Managers = await Manager.find(servicecentre);
+  const { location, address } = req.body;
+  // let Managers = await Manager.find();
+  let Managers = await Manager.find({
+    'location': location,
+    'address': address
+  });
   Managers = Managers.filter(manager => manager.services.cleaning && manager.services.cleaning.price_carwash !== undefined && manager.services.cleaning.price_carwash !== null);
-  console.log(Managers);
+  req.session.servicecentre = servicecentre;
   req.session.managers = Managers;
   req.session.service = "wash";
-
+  console.log(Managers);
   res.redirect("/users/got_centers");
 }
 exports.getcarparkService= async (req, res) => {
   const servicecentre=req.body;
   let Managers = await Manager.find(servicecentre);
   Managers = Managers.filter(manager => manager.services.parking && manager.services.parking.parking_price !== undefined && manager.services.parking.parking_price !== null);
+  req.session.servicecentre = servicecentre;
   req.session.managers = Managers;
   req.session.service = "park";
   res.redirect("/users/got_centers");
@@ -154,6 +152,7 @@ exports.getcarchargeService= async (req, res) => {
   const servicecentre=req.body;
   let Managers = await Manager.find(servicecentre);
   Managers = Managers.filter(manager => manager.services.charging && manager.services.charging.charging_price !== undefined && manager.services.charging.charging_price !== null);
+  req.session.servicecentre = servicecentre;
   req.session.managers = Managers;
   req.session.service = "charge";
   res.redirect("/users/got_centers");
@@ -162,6 +161,7 @@ exports.getcarinspectionService= async (req, res) => {
   const servicecentre=req.body;
   let Managers = await Manager.find(servicecentre);
   Managers = Managers.filter(manager => manager.services.inspection && manager.services.inspection.inspection_price !== undefined && manager.services.inspection.inspection_price !== null);
+  req.session.servicecentre = servicecentre;
   req.session.managers = Managers;
   req.session.service = "inspection";
 
@@ -171,6 +171,7 @@ exports.getcarpaintingService= async (req, res) => {
   const servicecentre=req.body;
   let Managers = await Manager.find(servicecentre);
   Managers = Managers.filter(manager => manager.services.painting && manager.services.painting.painting_price !== undefined && manager.services.painting.painting_price !== null);
+  req.session.servicecentre = servicecentre;
   req.session.managers = Managers;
   req.session.service = "painting";
 

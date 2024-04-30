@@ -130,3 +130,7 @@ app.get('/removeSession', function(req, res){
     });
   })
 
+// Guest routes
+app.get('/service1', (req, res)=>{
+    res.render('guest1');
+})

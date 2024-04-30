@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Service Center</title>
-    <link rel="stylesheet" href="/CSS/user_got_centers.css" />
+    <link rel="stylesheet" href="./CSS/user_got_centers.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&family=Baloo+Bhai+2&family=Poppins&display=swap"
       rel="stylesheet"
@@ -241,55 +241,38 @@
       <div class="sc-container-array">
 
         <!-- this one like card -->
-        <% managers.forEach(function(manager) { %>
-          <div class="sc-card-center">
-              <div class="sc-center-image">
-                  <img src="/Images/Uploads/<%= manager.profile_pic %>" alt="">
-              </div>
-      
-              <div class="sc-center-text">
-                  <h3 class="sc-center-heading"><%= manager.name %></h3> <!-- Assuming manager has a name property -->
-                  <div class="sc-center-location">
-                      <%= manager.location %>
-                  </div>
-                  <div class="sc-center-logos">
-                      <div class="sc-center-logos-phno">
-                          <div style="margin-top: px">
-                              <i class="material-icons">&#xe0b0;</i>
-                          </div>
-                          <span><%= manager.contact %></span>
-                      </div>
-                      <div class="sc-center-logos-email">
-                          <div style="margin-top: px">
-                              <i class="material-icons">&#xe0be;</i>
-                          </div>
-                          <span><%= manager.email %></span>
-                      </div>
-                  </div>
-                  <div class="sc-center-price">
-                    <% if (service == "park") { %>
-                      <div class="sc-center-price">₹<%= manager.services.parking.parking_price %></div>
-                  <% } else if (service == "wash") { %>
-                      <div class="sc-center-price">₹<%= manager.services.cleaning.price_carwash %></div>
-                  <% } else if (service == "charge") { %>
-                      <div class="sc-center-price">₹<%= manager.services.charging.charging_price %></div>
-                  <% } else if (service == "inspection") { %>
-                      <div class="sc-center-price">₹<%= manager.services.inspection.inspection_price %></div>
-                  <% } else if (service == "painting") { %>
-                      <div class="sc-center-price">₹<%= manager.services.painting.painting_price %></div>
-                  <% } %>
-                  </div>
-                  <!-- <div class="sc-center-booknow">
-                      <button type="submit">Book Now</button>
-                  </div> -->
-                  <div class="sc-center-booknow">
-                    <a href="/users/payment?managerId=<%= manager._id %>">Book Now</a>
-                </div>
-                
-              </div>
+        <div class="sc-card-center">
+          <div class="sc-center-image">
+            <img src="/Images/center_img2.jpg" alt="" />
           </div>
-      <% }); %>
-      
+
+          <div class="sc-center-text">
+            <h3 class="sc-center-heading">CarRepairs Pvt.Ltd.</h3>
+            <div class="sc-center-location">
+              Location : Gnan Circle,Sricity-5674244
+            </div>
+            <div class="sc-center-logos">
+              <div class="sc-center-logos-phno">
+                <div style="margin-top: px">
+                  <i class="material-icons">&#xe0b0;</i>
+                </div>
+                <span>9768976751</span>
+              </div>
+              <div class="sc-center-logos-email">
+                <div style="margin-top: px">
+                  <i class="material-icons">&#xe0be;</i>
+                </div>
+                <span>carrepair@gmail.com</span>
+              </div>
+            </div>
+            <div class="sc-center-price">₹360 - ₹428</div>
+            <div class="sc-center-booknow">
+              <button>Book Now</button>
+            </div>
+          </div>
+        </div>
+        
+      </div>
 
 
       <footer>
