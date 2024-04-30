@@ -9,6 +9,7 @@ const upload = require("./multer.js");
 const { decode } = require('punycode');
 const {getusers}=require('../middleware/User');
 const user =require('../controllers/User');
+const {addmoney}=require('../controllers/User.js')
 router.get("/profile",verifyToken,getusers,async(req, res) => {
 
    
@@ -48,6 +49,7 @@ router.get("/user_wallet",verifyToken, getusers, async function(req,res){
   res.render("user_wallet",{user: req.user});
 });
 
+router.post("/user_wallet",getusers,addmoney)
 
 router.get("/carwash",verifyToken, getusers, async function(req,res){
   const locations = await Manager.distinct('location');
