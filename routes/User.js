@@ -92,4 +92,38 @@ router.get("/got_centers",verifyToken, getusers, async function(req,res){
 
 
 
+router.get("/user_preview",verifyToken,async function(req,res){
+  const token = req.cookies.authorization;
+  const decoded = jwt.verify(token,process.env.JWT_SECRET);
+
+  const user = await User.findById(decoded.id).select("-password");
+
+  if(!user){
+    return res.status(404).json({error : "User not found"});
+  }
+  res.render("user_preview",{user});
+});
+
+
+router.post("/user_preview",verifyToken,async function(req,res){
+  const token = req.cookies.authorization;
+  const decoded = jwt.verify(token,process.env.JWT_SECRET);
+
+  const user = await User.findById(decoded.id).select("-password");
+
+  if(!user){
+    return res.status(404).json({error : "User not found"});
+  }
+  const {review , stars} = req.body;
+
+  user.allreview.push({review,stars}) 
+  await user.save();
+
+  res.redirect("/users/profile");
+
+})
+
+
+
+
 module.exports = router;
