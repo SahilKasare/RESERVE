@@ -14,11 +14,7 @@ const transactionSchema = new mongoose.Schema({
         ref: 'Manager',
         required: false
       },
- admin: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Admin',
-        required: false
-      },
+
  transaction_id:{
   type:String,
   required:true,

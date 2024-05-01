@@ -96,7 +96,7 @@ const managerSchema = new mongoose.Schema({
       },
       wallet:{
         type:Number,
-        default: 0
+        default: 0,
       },
       transactions: [{
         type: mongoose.Schema.Types.ObjectId,

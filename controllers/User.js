@@ -141,7 +141,12 @@ exports.getcarwashService= async (req, res) => {
 }
 exports.getcarparkService= async (req, res) => {
   const servicecentre=req.body;
-  let Managers = await Manager.find(servicecentre);
+  const { location, address } = req.body;
+  // let Managers = await Manager.find();
+  let Managers = await Manager.find({
+    'location': location,
+    'address': address
+  });
   Managers = Managers.filter(manager => manager.services.parking && manager.services.parking.parking_price !== undefined && manager.services.parking.parking_price !== null);
   req.session.servicecentre = servicecentre;
   req.session.managers = Managers;
@@ -150,7 +155,12 @@ exports.getcarparkService= async (req, res) => {
 }
 exports.getcarchargeService= async (req, res) => {
   const servicecentre=req.body;
-  let Managers = await Manager.find(servicecentre);
+  const { location, address } = req.body;
+  // let Managers = await Manager.find();
+  let Managers = await Manager.find({
+    'location': location,
+    'address': address
+  });
   Managers = Managers.filter(manager => manager.services.charging && manager.services.charging.charging_price !== undefined && manager.services.charging.charging_price !== null);
   req.session.servicecentre = servicecentre;
   req.session.managers = Managers;
@@ -159,7 +169,12 @@ exports.getcarchargeService= async (req, res) => {
 }
 exports.getcarinspectionService= async (req, res) => {
   const servicecentre=req.body;
-  let Managers = await Manager.find(servicecentre);
+  const { location, address } = req.body;
+  // let Managers = await Manager.find();
+  let Managers = await Manager.find({
+    'location': location,
+    'address': address
+  });
   Managers = Managers.filter(manager => manager.services.inspection && manager.services.inspection.inspection_price !== undefined && manager.services.inspection.inspection_price !== null);
   req.session.servicecentre = servicecentre;
   req.session.managers = Managers;
@@ -169,7 +184,12 @@ exports.getcarinspectionService= async (req, res) => {
 }
 exports.getcarpaintingService= async (req, res) => {
   const servicecentre=req.body;
-  let Managers = await Manager.find(servicecentre);
+  const { location, address } = req.body;
+  // let Managers = await Manager.find();
+  let Managers = await Manager.find({
+    'location': location,
+    'address': address
+  });
   Managers = Managers.filter(manager => manager.services.painting && manager.services.painting.painting_price !== undefined && manager.services.painting.painting_price !== null);
   req.session.servicecentre = servicecentre;
   req.session.managers = Managers;
