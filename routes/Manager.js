@@ -13,9 +13,42 @@ const Manager=require('../models/Manager');
 const {updateinfo}=require('../controllers/Manager')
 const {addmoney}=require('../controllers/Manager.js')
 
-router.get("/dashboard",verifyToken, getmanagers, async(req, res) => {
-    
-      res.render('manager_dashboard', {manager: req.manager});
+// In your routes/Manager.js file
+
+const Transaction = require('../models/Transaction');
+
+router.get("/dashboard", verifyToken, getmanagers, async (req, res) => {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // Set hours, minutes, seconds, and milliseconds to 0 for comparison
+  const tomorrow = new Date(today);
+  tomorrow.setDate(today.getDate() + 1); // Get tomorrow's date
+
+  try {
+      // Fetch user registrations today
+      const userRegistrationsToday = await Transaction.countDocuments({
+          incoming_user: true,
+          registration_date: { $gte: today, $lt: tomorrow }
+      });
+
+      // Fetch transactions where registration date is today and incoming manager ID matches
+      const transactionsToday = await Transaction.find({
+          incoming_manager: true,
+          registration_date: { $gte: today, $lt: tomorrow },
+          manager: req.manager._id // Assuming req.manager contains the current manager's details
+      });
+
+      // Calculate total amount
+      const totalAmountToday = transactionsToday.reduce((total, transaction) => total + transaction.amount, 0);
+
+      res.render('manager_dashboard', {
+          manager: req.manager,
+          userRegistrationsToday,
+          totalAmountToday
+      });
+  } catch (error) {
+      console.error("Error fetching data:", error);
+      res.status(500).json({ error: 'Internal server error' });
+  }
 });
   
 router.get("/bookings",verifyToken,async(req, res) => {
