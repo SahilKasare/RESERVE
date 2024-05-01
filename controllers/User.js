@@ -174,7 +174,7 @@ exports.getcarinspectionService= async (req, res) => {
 console.log(req.body);
   let Managers = await Manager.find({
     'location': location,
-    // 'address': address
+    'address': address
   });
   Managers = Managers.filter(manager => manager.services.inspection && manager.services.inspection.inspection_price !== undefined && manager.services.inspection.inspection_price !== null);
   req.session.servicecentre = servicecentre;
