@@ -101,7 +101,11 @@ const managerSchema = new mongoose.Schema({
       transactions: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Transaction'
-    }]
+    }],
+    registrationDate: {
+        type: Date,
+        default: Date.now
+    }
 
 });
 
