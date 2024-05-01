@@ -34,13 +34,13 @@ text-align:center;
    
     background-color: #000000;
    /* margin-top: -10%; */
-    top: 0;
+    top: 0px;
     position:sticky;
-   display:flex;
-   justify-content: flex-start;
-   flex-direction: column;
-   align-items: center;
-   box-shadow: 0 0 90px 1px #1c5978b1; /* Adjust shadow color and size as needed */
+    display:flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 90px 1px #1c5978b1; /* Adjust shadow color and size as needed */
   /* Adjust border radius to control the shape of the highlight */
     
     

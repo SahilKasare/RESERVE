@@ -23,7 +23,11 @@ router.get("/profile", verifyToken, getusers, async (req, res) => {
   res.render("user_service", { user: req.user });
 });
 
-router.post("/fileupload",verifyToken,upload.single("image"),async function (req, res) {
+router.post(
+  "/fileupload",
+  verifyToken,
+  upload.single("image"),
+  async function (req, res) {
     const token = req.cookies.authorization;
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const userobj = await User.findById(decoded.id).select("-password");
@@ -41,42 +45,47 @@ router.get("/user_park", verifyToken, getusers, async function (req, res) {
 });
 
 router.get("/user_current_bookings",verifyToken,getusers,async function (req, res) {
-    const bookingsarr = await BookingsModel.find().populate(["user","manager"]);
+    const bookingsarr = await BookingsModel.find().populate(["user","manager",]);
     const currentDate = new Date();
     const user = req.user;
-    const currentbookings = [];    
+    const currentbookings = [];
 
-    bookingsarr.forEach(function(booking){
-        const bookingdate = new Date(booking.date);   // so need to convert into js object 
-        const onlyyear = currentDate.getFullYear();   // year of current date
-        const onlymonth = currentDate.getMonth();
-        const onlydate = currentDate.getDate();
+    bookingsarr.forEach(function (booking) {
+      const bookingdate = new Date(booking.date); // so need to convert into js object
+      const onlyyear = currentDate.getFullYear(); // year of current date
+      const onlymonth = currentDate.getMonth();
+      const onlydate = currentDate.getDate();
 
-        if(user._id.toString === booking.user._id.toString ){
-          console.log("true");
-        }
-        else{
-          console.log("false");
-        }
+      // if(user._id.toString === booking.user._id.toString ){
+      //   console.log("true");
+      // }
+      // else{
+      //   console.log("false");
+      // }
 
-        if(user._id.equals(booking.user._id)){
-          if(onlyyear <= bookingdate.getFullYear()){
-            if(onlymonth <= bookingdate.getMonth()){
-              if(onlydate <= bookingdate.getDate()){
-                  currentbookings.push(booking);
-              }
+      if (user._id.equals(booking.user._id)) {
+        if (onlyyear <= bookingdate.getFullYear()) {
+          if (onlymonth <= bookingdate.getMonth()) {
+            if (onlydate <= bookingdate.getDate()) {
+              currentbookings.push(booking);
             }
           }
         }
-        // console.log(booking);
-    })
+      }
+      // console.log(booking);
+    });
     console.log(currentbookings.length);
 
-    // res.render("user_current-bookings", {user: user , currentbookings : currentbookings});
-});
+    res.render("user_current-bookings", {
+      user: user,
+      currentbookings: currentbookings,
+    });
+  }
+);
 
 router.get("/user_wallet", verifyToken, getusers, async function (req, res) {
-  res.render("user_wallet", { user: req.user });
+  const transactions = await TransactionModel.find().populate(["user","manager",]);
+  res.render("user_wallet", { user: req.user , transactions : transactions});
 });
 
 router.post("/user_wallet", getusers, addmoney);
@@ -200,7 +209,7 @@ router.get("/paymentSuccessful",verifyToken,getusers,async function (req, res) {
     // booking between any
     const bookingobj = await BookingsModel.create({
       booking_id: booking_id,
-      user : user._id,
+      user: user._id,
       manager: manager._id,
       service: service,
       cost: price,
@@ -251,10 +260,53 @@ router.get("/paymentSuccessful",verifyToken,getusers,async function (req, res) {
   }
 );
 
+router.post("/paymentrefund", verifyToken, getusers, async function (req, res) {
+  const getuser = await User.findById(req.body.userid);
+  const getmanager = await Manager.findById(req.body.managerid);
 
-router.get("/paymentrefund",verifyToken,getusers,async function (req, res){
-   
+  const another_transaction_id = nanoid(6); //creating another trans id
+  const another_booking_id = nanoid(6); // creating another booking ud
+
+  console.log(getmanager);
+  const before_trans_obj = await TransactionModel.findOne({
+    user: getuser,
+    manager: getmanager,
+    booking_id: req.body.bookingid,
+    incoming_manager: true,
+  });
+  console.log(before_trans_obj);
+  const price_reduction = before_trans_obj.amount;
+
+  const transobj = await TransactionModel.create({
+    user: getuser,
+    manager: getmanager,
+    transaction_id: another_transaction_id,
+    amount: price_reduction,
+    from: getmanager.companyName,
+    to: getuser.username,
+    booking_id: another_booking_id,
+    incoming_user: true,
+    incoming_manager: false,
+    incoming_admin: false,
+    manager_refund: false,
+    user_refund: true,
+  });
+
+  getuser.wallet = getuser.wallet + price_reduction;
+  getmanager.wallet = getmanager.wallet - price_reduction;
+
+  await transobj.save();
+  await getuser.save();
+  await getmanager.save();
+
+  let deletedBooking = await Booking.findOneAndDelete({
+    booking_id: req.body.bookingid,
+  });
+  res.redirect("/users/user_current_bookings");
 });
+
+
+
 router.get("/user_preview", verifyToken, async function (req, res) {
   const token = req.cookies.authorization;
   const decoded = jwt.verify(token, process.env.JWT_SECRET);
@@ -266,6 +318,9 @@ router.get("/user_preview", verifyToken, async function (req, res) {
   }
   res.render("user_preview", { user });
 });
+
+
+
 
 router.post("/user_preview", verifyToken, async function (req, res) {
   const token = req.cookies.authorization;
@@ -283,6 +338,5 @@ router.post("/user_preview", verifyToken, async function (req, res) {
 
   res.redirect("/users/profile");
 });
-
 
 module.exports = router;
