@@ -199,7 +199,7 @@
             </li>
           </a>
           
-          <a href="/" style="text-decoration: none"
+          <a href="/managers/logout" style="text-decoration: none"
             ><li class="sidebar-4">
               <svg
                 height="30px"
@@ -238,7 +238,7 @@
                   ></path>
                 </g>
               </svg>
-              <form action="/managers/logout" method="post"><div style="margin-left: 22px" >Logout</div></form>
+              <div style="margin-left: 22px" >Logout</div>
             </li></a
           >
         </ul>
@@ -257,6 +257,8 @@
               name="name"
               id="name"
               placeholder="Your Full Name"
+             value= <%= manager.name %>
+              
             />
           </div>
           <div class="info">
@@ -267,6 +269,7 @@
               name="email"
               id="email"
               placeholder="Office Email ID"
+              value= <%= manager.email %>
             />
           </div>
           <div class="info">
@@ -277,6 +280,7 @@
               name="phone"
               id="phone"
               placeholder="Office Contact"
+              value= <%= manager.contact %>
             />
           </div>
           <div class="info">
@@ -287,18 +291,10 @@
               name="address"
               id="address"
               placeholder="Service Centre Name"
+              value= <%= manager.address %>
             />
           </div>
-          <div class="info">
-            <label for="address">Office Address</label><br />
-            <input
-              style="background-color: transparent; border: none; width: 25vw"
-              type="text"
-              name="address"
-              id="address"
-              placeholder="Your Address"
-            />
-          </div>
+          
           <div class="info">
             <label for="location">Location</label><br />
             <input
@@ -306,7 +302,9 @@
               type="text"
               name="address"
               id="address"
+              
               placeholder="Your Address"
+              value= <%= manager.location %>
             />
           </div>
         </div>
@@ -327,23 +325,23 @@
           for="heading"
           >Car Parking</label
         >
-        <br />
-        <label>Number of slots</label><br />
+          <br />
+          <label>Number of slots</label><br />
         <input
           style="background-color: transparent; border: none"
           type="number"
           name="option1Label5"
           placeholder="Number of parking slots"
         />
-        <br />
-        <label>Price (per hour)</label><br />
+          <br />
+          <label>Price (per hour)</label><br />
         <input
           style="background-color: transparent; border: none"
           type="number"
           name="option1Label6"
           placeholder="Price per hour in rupees"
         />
-        <br />
+          <br />
         <label>Price (per day)</label><br />
         <input
           style="background-color: transparent; border: none"
@@ -351,7 +349,7 @@
           name="option1Label7"
           placeholder="Price per day in rupees"
         />
-      </form>
+        </form>
 
       <form id="clean" class="hidden">
         <label
@@ -359,15 +357,15 @@
           for="heading"
           >Car Cleaning</label
         >
-        <br />
-        <label>Price (only car wash)</label><br />
+          <br />
+          <label>Price (only car wash)</label><br />
         <input
           style="background-color: transparent; border: none"
           type="number"
           name="option1Label5"
           placeholder="Price for carwash in rupees"
         />
-        <br />
+          <br />
         <label>Price (complete cleaning)</label><br />
         <input
           style="background-color: transparent; border: none; width: 25vw"
@@ -375,7 +373,7 @@
           name="option1Label6"
           placeholder="Price for complete cleaning in rupees"
         />
-      </form>
+        </form>
 
       <form id="charge" class="hidden">
         <label
@@ -383,15 +381,15 @@
           for="heading"
           >EV Charging</label
         >
-        <br />
-        <label>Price (per hour)</label><br />
+          <br />
+          <label>Price (per hour)</label><br />
         <input
           style="background-color: transparent; border: none"
           type="number"
           name="option1Label5"
           placeholder="Price per hour in rupees"
         />
-      </form>
+        </form>
 
       <form id="inspection" class="hidden">
         <label
@@ -399,15 +397,15 @@
           for="heading"
           >Vehicle Inspection</label
         >
-        <br />
-        <label>Price (base price)</label><br />
+          <br />
+          <label>Price (base price)</label><br />
         <input
           style="background-color: transparent; border: none; width: 23vw"
           type="number"
           name="option1Label5"
           placeholder="Base price for inspection in rupees"
         />
-      </form>
+        </form>
 
       <form id="paint" class="hidden">
         <label
@@ -415,21 +413,23 @@
           for="heading"
           >Painting & Denting</label
         >
-        <br />
-        <label>Price (painting)</label><br />
+          <br />
+          <label>Price (painting)</label><br />
         <input
           style="background-color: transparent; border: none; width: 28vw"
           type="number"
           name="option1Label5"
           placeholder="Price for complete car painting in rupees"
         />
-        <br />
+          <br />
         <label>Denting Service provided</label><br />
         <select class="denting" name="option1Label6" id="">
           <option value="yes">YES</option>
           <option value="no">NO</option>
         </select>
-      </form>
+        </form>
+      <% } %>
+      
 
       <button id="update" type="submit">
         <a
