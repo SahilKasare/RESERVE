@@ -279,13 +279,14 @@ margin-left: 2vw;
         display: flex;
         background-color: #191C24;
         height: 56vh;
-        width: 100vh;
+        width: 80vh;
         /* background-image: url(./graph.png);  */
      
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
-        margin-right: 8vw;
+        margin:0 5vw;
+        padding: 20px;
         
     }
     

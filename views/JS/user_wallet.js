@@ -228,32 +228,6 @@ head2.onclick=function(){
 
 
 
-depindep.addEventListener("click", function() {
-    head1.classList.add('headsel');
-    head2.classList.remove('headsel');
-    head3.classList.remove('headsel');
-    
-    showWalletContent();
-    var enteredAmount = document.getElementById("entam").value;
-
-  
-    var amountToAdd = parseFloat(enteredAmount);
-
-   
-    var currentMoney = parseFloat(document.getElementById("money").innerText);
-
-    
-    if (!isNaN(amountToAdd) && amountToAdd > 0) {
-        
-        var newMoney = currentMoney + amountToAdd;
-
-        
-        document.getElementById("money").innerText = newMoney.toFixed(2); 
-    } else {
-        
-        alert("Please enter a valid amount.");
-    }
-});
 
 
 // transactions.forEach(function(transaction) {
