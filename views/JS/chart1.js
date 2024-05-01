@@ -8,8 +8,9 @@ new Chart(ctx, {
     datasets: [{
       label: 'Sales in ₹',
       data: [2200,4300,1100,7280,4238,9248,2685],
-      borderWidth: 1,
-      pointHoverRadius: 10 // Increase the size of the point on hover
+      borderWidth: 1.5,
+      pointHoverRadius: 10, // Increase the size of the point on hover
+      tension: 0.26
     }]
   },
   options: {
