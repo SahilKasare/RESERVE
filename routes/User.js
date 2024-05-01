@@ -113,7 +113,8 @@ router.get("/payment", verifyToken, getusers, async function(req, res) {
 });
 
 router.get("/paymentSuccessful",verifyToken, getusers, async function(req,res){
-
+  const service = req.session.service;
+  const manager = req.session.managers;
   res.render("success",{user:req.user} );
 });
 
