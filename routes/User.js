@@ -40,8 +40,12 @@ router.post(
   }
 );
 
-router.get("/user_park", verifyToken, getusers, async function (req, res) {
-  res.render("user_parking", { user: req.user });
+router.get("/user_park/", verifyToken, getusers, async function (req, res) {
+  const managerId = req.query.managerId;
+  const manager=await Manager.findById(managerId);
+ 
+  res.render("user_parking", { user: req.user,manager:manager });
+ 
 });
 
 router.get("/user_current_bookings",verifyToken,getusers,async function (req, res) {
