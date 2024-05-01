@@ -45,17 +45,26 @@ const transactionSchema = new mongoose.Schema({
    required:true,
  },
 
-incoming:{
+  incoming_user:{
     type:Boolean,
     required:true,
-
-refund:{
+  },
+  incoming_manager:{
+    type:Boolean,
+    required:true,
+  },
+  incoming_admin:{
+    type:Boolean,
+    required:true,
+  },
+  manager_refund:{
     type:Boolean,
     required:false,
-    }
-
-
- }
+  },
+  user_refund:{
+    type:Boolean,
+    required:false,
+  }
 
 });
 
