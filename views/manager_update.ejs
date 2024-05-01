@@ -257,6 +257,8 @@
               name="name"
               id="name"
               placeholder="Your Full Name"
+             value= <%= manager.name %>
+              
             />
           </div>
           <div class="info">
@@ -267,6 +269,7 @@
               name="email"
               id="email"
               placeholder="Office Email ID"
+              value= <%= manager.email %>
             />
           </div>
           <div class="info">
@@ -277,6 +280,7 @@
               name="phone"
               id="phone"
               placeholder="Office Contact"
+              value= <%= manager.contact %>
             />
           </div>
           <div class="info">
@@ -289,16 +293,7 @@
               placeholder="Service Centre Name"
             />
           </div>
-          <div class="info">
-            <label for="address">Office Address</label><br />
-            <input
-              style="background-color: transparent; border: none; width: 25vw"
-              type="text"
-              name="address"
-              id="address"
-              placeholder="Your Address"
-            />
-          </div>
+          
           <div class="info">
             <label for="location">Location</label><br />
             <input
@@ -306,7 +301,9 @@
               type="text"
               name="address"
               id="address"
+              
               placeholder="Your Address"
+              value= <%= manager.location %>
             />
           </div>
         </div>
