@@ -153,3 +153,8 @@ app.get('/service4', (req, res)=>{
 app.get('/service5', (req, res)=>{
     res.render('guest5paint');
 })
+
+
+app.post('/failure', (req, res)=>{
+    res.render('fail');
+})
