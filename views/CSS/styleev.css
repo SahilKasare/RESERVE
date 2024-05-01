@@ -220,6 +220,25 @@ margin-top: -20px;
     margin-top: -5px;
 }
 
+#address{
+    background-color:#d9d9d900 ;
+    border: none;
+    font-size:25px;
+    color:black;
+    font-weight: 500;
+    height: 24px;
+    width: 13vw;
+}
+
+#address::placeholder{
+    color: black;
+}
+
+form{
+    display: flex; 
+    align-items: center;
+}
+
 .timeinp{
     background-color:#d9d9d900 ;
     border:none;
