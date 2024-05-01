@@ -151,6 +151,7 @@ exports.getcarparkService= async (req, res) => {
   req.session.servicecentre = servicecentre;
   req.session.managers = Managers;
   req.session.service = "park";
+  console.log(req.session.Managers)
   res.redirect("/users/got_centers");
 }
 exports.getcarchargeService= async (req, res) => {
@@ -187,6 +188,7 @@ exports.getcarpaintingService= async (req, res) => {
   const servicecentre=req.body;
   const { location, address } = req.body;
   // let Managers = await Manager.find();
+
   let Managers = await Manager.find({
     'location': location,
     'address': address
