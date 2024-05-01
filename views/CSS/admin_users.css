@@ -101,7 +101,18 @@ gap:8px;
 background-color: #191c24;
 margin-top: 2vw;
  
+}
 
+#searchbtn{
+    border: none;
+    background: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    /* Optionally, you can add other styles like text color */
+    color: inherit;
+    /* Optionally, remove any text-decoration */
+    text-decoration: none;
 }
 #colflex{
 display: flex;
@@ -242,6 +253,7 @@ justify-content: center;
     .box3{
         display: flex;
         height: 20vh;
+        width: 78vw;
         margin-top: 3vw;
         margin-left: 3vw;
         margin-right: 3vw;
@@ -254,6 +266,7 @@ justify-content: center;
   
     .downpage{
         margin-top: 2vw;
+        height: 100%;
         
     }
 
