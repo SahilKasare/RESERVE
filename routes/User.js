@@ -23,11 +23,7 @@ router.get("/profile", verifyToken, getusers, async (req, res) => {
   res.render("user_service", { user: req.user });
 });
 
-router.post(
-  "/fileupload",
-  verifyToken,
-  upload.single("image"),
-  async function (req, res) {
+router.post("/fileupload",verifyToken,upload.single("image"),async function (req, res) {
     const token = req.cookies.authorization;
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const userobj = await User.findById(decoded.id).select("-password");
@@ -44,14 +40,40 @@ router.get("/user_park", verifyToken, getusers, async function (req, res) {
   res.render("user_parking", { user: req.user });
 });
 
-router.get(
-  "/user_current_bookings",
-  verifyToken,
-  getusers,
-  async function (req, res) {
-    res.render("user_current-bookings", { user: req.user });
-  }
-);
+router.get("/user_current_bookings",verifyToken,getusers,async function (req, res) {
+    const bookingsarr = await BookingsModel.find().populate(["user","manager"]);
+    const currentDate = new Date();
+    const user = req.user;
+    const currentbookings = [];    
+
+    bookingsarr.forEach(function(booking){
+        const bookingdate = new Date(booking.date);   // so need to convert into js object 
+        const onlyyear = currentDate.getFullYear();   // year of current date
+        const onlymonth = currentDate.getMonth();
+        const onlydate = currentDate.getDate();
+
+        if(user._id.toString === booking.user._id.toString ){
+          console.log("true");
+        }
+        else{
+          console.log("false");
+        }
+
+        if(user._id.equals(booking.user._id)){
+          if(onlyyear <= bookingdate.getFullYear()){
+            if(onlymonth <= bookingdate.getMonth()){
+              if(onlydate <= bookingdate.getDate()){
+                  currentbookings.push(booking);
+              }
+            }
+          }
+        }
+        // console.log(booking);
+    })
+    console.log(currentbookings.length);
+
+    // res.render("user_current-bookings", {user: user , currentbookings : currentbookings});
+});
 
 router.get("/user_wallet", verifyToken, getusers, async function (req, res) {
   res.render("user_wallet", { user: req.user });
@@ -127,11 +149,7 @@ router.get("/payment", verifyToken, getusers, async function (req, res) {
   }
 });
 
-router.get(
-  "/paymentSuccessful",
-  verifyToken,
-  getusers,
-  async function (req, res) {
+router.get("/paymentSuccessful",verifyToken,getusers,async function (req, res) {
     let service = req.session.service; // parking
     const manager = await Manager.findById(req.session.selectedManager);
     const servicecentre = req.session.servicecentre; // address location date park&evcharge ->from and to time  baki time
@@ -182,6 +200,7 @@ router.get(
     // booking between any
     const bookingobj = await BookingsModel.create({
       booking_id: booking_id,
+      user : user._id,
       manager: manager._id,
       service: service,
       cost: price,
@@ -232,6 +251,10 @@ router.get(
   }
 );
 
+
+router.get("/paymentrefund",verifyToken,getusers,async function (req, res){
+   
+});
 router.get("/user_preview", verifyToken, async function (req, res) {
   const token = req.cookies.authorization;
   const decoded = jwt.verify(token, process.env.JWT_SECRET);
@@ -260,5 +283,6 @@ router.post("/user_preview", verifyToken, async function (req, res) {
 
   res.redirect("/users/profile");
 });
+
 
 module.exports = router;

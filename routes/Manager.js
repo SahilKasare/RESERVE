@@ -9,7 +9,8 @@ const upload = require("./multer.js");
 const { decode } = require('punycode');
 const {managerLogout}=require('../controllers/auth.js')
 const Manager=require('../models/Manager');
-
+const {updateinfo}=require('../controllers/Manager')
+const {addmoney}=require('../controllers/Manager.js')
 router.get("/dashboard",verifyToken, getmanagers, async(req, res) => {
     
       res.render('manager_dashboard', {manager: req.manager});
@@ -55,6 +56,7 @@ router.get("/update",verifyToken,async(req, res) => {
     if (!manager) {
       return res.status(404).json({ error: "Manager not found" });
     }
+    console.log(manager.services.cleaning);
     res.render('manager_update', {manager});
 });
 
@@ -81,5 +83,8 @@ router.post("/fileupload",verifyToken,upload.single("image"), async function(req
   res.redirect("/managers/dashboard");
 });
 
+
+router.post("/update",getmanagers,updateinfo);
+router.post("/wallet",getmanagers,addmoney)
 module.exports = router;
 

@@ -151,6 +151,7 @@ exports.getcarparkService= async (req, res) => {
   req.session.servicecentre = servicecentre;
   req.session.managers = Managers;
   req.session.service = "park";
+  console.log(req.session.Managers)
   res.redirect("/users/got_centers");
 }
 exports.getcarchargeService= async (req, res) => {
@@ -171,6 +172,7 @@ exports.getcarinspectionService= async (req, res) => {
   const servicecentre=req.body;
   const { location, address } = req.body;
   // let Managers = await Manager.find();
+console.log(req.body);
   let Managers = await Manager.find({
     'location': location,
     'address': address
@@ -186,6 +188,7 @@ exports.getcarpaintingService= async (req, res) => {
   const servicecentre=req.body;
   const { location, address } = req.body;
   // let Managers = await Manager.find();
+
   let Managers = await Manager.find({
     'location': location,
     'address': address
@@ -200,9 +203,15 @@ exports.getcarpaintingService= async (req, res) => {
 
 
 exports.addmoney=async (req, res) => {
-const user=req.user;
-const amount=req.body.amount;
-user.wallet+=amount;
-user.save();
+  const user= req.user;
+  const amount = parseFloat(req.body.amount); 
+
+
+  if (isNaN(amount)) {
+      return res.status(400).json({ error: 'Invalid amount' });
+  }
+
+user.wallet += amount;
+  await user.save();
 res.redirect('/users/user_wallet/');
 }

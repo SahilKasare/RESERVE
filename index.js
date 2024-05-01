@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const path = require('path');
+const bodyparser=require('body-parser')
 const app=express();
 const UserRoutes=require('./routes/User')
 const ManagerRoutes=require('./routes/Manager')
@@ -37,6 +38,7 @@ app.use('/Fonts', express.static(path.join(__dirname, 'views', 'Fonts')));
 app.use('/Images', express.static(path.join(__dirname, 'views', 'Images')));
 app.use('/JS', express.static(path.join(__dirname, 'views', 'JS')));
 dotenv.config();
+
 app.use(cookieParser());
 const port= process.env.PORT ||3001;
 mongoose.connect(process.env.MONGOURL).then(()=>{
@@ -150,4 +152,9 @@ app.get('/service4', (req, res)=>{
 
 app.get('/service5', (req, res)=>{
     res.render('guest5paint');
+})
+
+
+app.post('/failure', (req, res)=>{
+    res.render('fail');
 })

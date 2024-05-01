@@ -16,16 +16,31 @@ router.get("/profile",verifyToken, getadmins, async(req, res) => {
 
     const usersToday = await adminFunc.getTodaysUsers();
     const managersToday = await adminFunc.getTodaysManagers();
-    const todaysProfit = await adminFunc.getTodaysProfit();
+    const deci = await adminFunc.getTodaysProfit();
+    const todaysProfit = deci.toFixed(2);
     const totalUsers = await User.countDocuments();
       res.render('admin_dashboard', {admin: req.admin, usersToday: usersToday, managersToday: managersToday, todaysProfit: todaysProfit, totalUsers: totalUsers});
 });
 
 router.get("/totalUsers",verifyToken, getadmins, async(req, res) => {
-  res.render('admin_users', {admin: req.admin});
+
+  const totalUsers = await User.countDocuments();
+  const users = await User.find({}, 'name email contact username address car_description license');
+  res.render('admin_users', {admin: req.admin, totalUsers: totalUsers, users: users});
 });
+router.post('/totalUsers/userByID',verifyToken, getadmins, async(req, res) => {
+  const search = req.body.search;
+  const user = await User.findOne({ username: search });
+  req.session.userbyUsername = user;
+})
+
+router.get("/totalUsers/userByID",verifyToken, getadmins, async(req, res) => {
+  
+  res.render('admin_users_search', {admin: req.admin});
+})
 router.get("/totalManagers",verifyToken, getadmins, async(req, res) => {
-  res.render('admin_manager', {admin: req.admin});
+  const totalManagers = await Managers.countDocuments();
+  res.render('admin_manager', {admin: req.admin, totalManagers: totalManagers});
 });
 router.get("/totalTransactions",verifyToken, getadmins, async(req, res) => {
   res.render('admin_users', {admin: req.admin});

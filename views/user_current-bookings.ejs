@@ -240,40 +240,48 @@
           <div style="width: 3rem; height: 3rem; border-radius: 9999px; background-color: #fff; overflow: hidden;">
             <img style="width: 100%; height: 100%; object-fit: cover;" src="/Images/Uploads/<%= user.profile_pic %>" alt="">
           </div>
-          <div class="pk-profile-part1-name"><%= user.name %></div>
+          <div class="pk-profile-part1-name"><%=user.name %></div>
         </div>
       </nav>
 
       <div class="cb-heading-part">Current Bookings</div>
 
       <div class="cb-container-array">
-        <div class="cb-card">
-          <div class="cb-date-time">
-            <div class="cb-date">
-              <i class="material-icons">&#xe8df;</i>
-              <span>17/03/2024</span>
+        <% currentbookings.forEach(function(booking){   %>
+          <div class="cb-card">
+            <div class="cb-date-time">
+              <div class="cb-date">
+                <i class="material-icons">&#xe8df;</i>
+                <% 
+                  // Get the booking date
+                  const bookingDate = new Date(booking.date);
+                  // Format the date to dd/mm/yyyy format
+                  const formattedDate = bookingDate.toLocaleDateString('en-GB');
+                %>
+                <span><%= formattedDate %></span>
+              </div>
+              <div class="cb-time">
+                <i class="material-icons">&#xe192;</i>
+                <span><%=  booking.from_time + ":00" %></span>
+              </div>
             </div>
-            <div class="cb-time">
-              <i class="material-icons">&#xe192;</i>
-              <span>12:00pm</span>
+            <hr />
+            <div class="cb-center-title"> <%= booking.manager.companyName %></div>
+            <div class="cb-phone-and-email">
+              <div class="cb-phone">
+                <i class="material-icons">&#xe0b0;</i>
+                <span><%= booking.manager.contact %></span>
+              </div>
+              <div class="cb-email">
+                <i class="material-icons">&#xe0be;</i>
+                <span><%= booking.manager.email %></span>
+              </div>
+            </div>
+            <div class="cb-cancel">
+              <button><a href="/users/paymentrefund">Cancel</a></button>
             </div>
           </div>
-          <hr />
-          <div class="cb-center-title">CarRepair.pvt</div>
-          <div class="cb-phone-and-email">
-            <div class="cb-phone">
-              <i class="material-icons">&#xe0b0;</i>
-              <span>9768976751</span>
-            </div>
-            <div class="cb-email">
-              <i class="material-icons">&#xe0be;</i>
-              <span>carrepair@gmail.com</span>
-            </div>
-          </div>
-          <div class="cb-cancel">
-            <button>Cancel</button>
-          </div>
-        </div>
+      <%  }) %>
       </div>
 
       <footer>
