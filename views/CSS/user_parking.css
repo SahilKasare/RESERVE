@@ -17,6 +17,50 @@ a{
     text-decoration: none;
 }
 
+header {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+
+header {
+    background-color: #191c24;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    margin-left: -100px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.402);
+    animation: fadeIn 0.3s ease-in-out forwards;
+  }
+
+  
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .profile {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-left: 1250px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.402);
+  }
 
 .pk-part1{
 height: 100%;
@@ -123,54 +167,178 @@ border-radius: 20px;
 }
 
 
-.pk-heading-part{
-    text-align: center;
-    color: white;
-    margin: 0.5rem;
-    font-size: 3rem;
-    /* border: 1px solid white; */
-}
 
-.pk-searching-part{
+#service-main {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-}
-
-.pk-searchbar{
-    color: black;
-}
-
-.pk-searchbutton{
-    background-color: rgb(255, 117, 5);
-    height: 2rem;
-    width: 5rem;
+    flex-direction: row;
+  }
+  
+  .search-container {
+    display: inline-block;
+    margin-left: 85px;
+    margin-top: 35px;
+  }
+  
+  .search-bar {
+    padding: 10px;
+    border: 1px solid #ccc;
     border-radius: 5px;
-}
-
-.pk-searchbutton:hover{
-    background-color: rgb(220, 114, 28);
-}
-
-
-.pk-services-table{
-    margin-left: 330px;
+    outline: none;
+    background-color: white;
+    color: black;
+    font-weight: 600;
+  }
+  
+  .search-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .search-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .services-table {
+    margin-left: 40px;
     border-spacing: 45px;
     width: 550px;
     border-collapse: separate;
-    /* border: 10px solid white; */
-}
-
-td{
-    border: 1px solid white;
+  }
+  
+  .services-table td {
+    border: 1px solid rgb(255, 255, 255);
+    padding: 8px;
     text-align: center;
-    border-radius: 1rem;
-    box-shadow: 5px 3px 17px 6px rgba(0,0,0,0.75);
-    padding: 0.2rem;
-    min-width: 85px;
-}
-
-.pk-table-selected{
-    background-color: green;
-}
+    border-radius: 15%;
+    border-bottom: 5px solid rgb(255, 255, 255);
+    border-left: 1px solid rgb(255, 255, 255);
+    border-right: 1px solid rgb(255, 255, 255);
+    height: 65px;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .services-table .table-selected {
+    border-bottom: 5px solid rgb(34, 255, 0);
+    border-left: 1px solid rgb(34, 255, 0);
+    border-right: 1px solid rgb(34, 255, 0);
+  }
+  
+  .lot-details {
+    margin-left: 340px;
+    width: 400px;
+    background-color: #191c24;
+    transform: translateX(50px);
+    animation: fadeInRight 0.3s ease-in-out forwards;
+    height: 98.1vh;
+  }
+  
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .lot-details img {
+    width: 334px;
+    margin: 20px 30px;
+    border: 3px solid #fff;
+  }
+  
+  .lot-details h1 {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .location {
+    display: flex;
+  }
+  
+  .lot-details .location-svg {
+    margin-left: 20px;
+    display: inline-block;
+    background-color: #0f1015;
+    border-radius: 50%;
+    margin-top: 10px;
+    padding: 5px 5px 5px 5px;
+    box-shadow: 0px 0px 4px rgba(255, 255, 255, 0.402);
+  }
+  
+  .lot-details p {
+    font-size: 20px;
+    text-align: center;
+    margin-left: 8px;
+  }
+  
+  .phoneno {
+    display: flex;
+  }
+  
+  .lot-details .phone {
+    margin-top: 10px;
+    margin-left: 20px;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: #0f1015;
+    padding: 5px 5px 5px 5px;
+    box-shadow: 0px 0px 4px rgba(255, 255, 255, 0.402);
+  }
+  
+  .mail {
+    display: flex;
+  }
+  
+  .mail .mail-svg {
+    margin-left: 20px;
+    margin-top: 10px;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: #0f1015;
+    padding: 5px 5px 5px 5px;
+    box-shadow: 0px 0px 4px rgba(255, 255, 255, 0.402);
+  }
+  
+  .lot-no h2 {
+    text-align: center;
+    display: inline-block;
+    margin-top: 20px;
+    margin-left: 80px;
+    background-color: #0f1015;
+    padding: 15px 20px 15px 20px;
+    border-radius: 10%;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    box-shadow: 0px 0px 4px rgba(255, 255, 255, 0.402);
+  }
+  
+  .book-now h2 {
+    text-align: center;
+    display: inline-block;
+    margin-top: 12px;
+    margin-left: 88px;
+    background-color: #007bff;
+    padding: 15px 20px 15px 20px;
+    border-radius: 10%;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    box-shadow: 0px 0px 2px rgba(255, 255, 255, 0.402);
+  }
+  
+  
+  
