@@ -106,3 +106,5 @@ exports.getTodaysProfit = async () => {
         throw error; // Rethrow the error to be caught where this function is called
     }
 };
+
+

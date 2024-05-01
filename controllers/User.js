@@ -136,7 +136,6 @@ exports.getcarwashService= async (req, res) => {
   req.session.servicecentre = servicecentre;
   req.session.managers = Managers;
   req.session.service = "wash";
-  console.log(Managers);
   res.redirect("/users/got_centers");
 }
 exports.getcarparkService= async (req, res) => {

@@ -28,19 +28,33 @@ router.get("/totalUsers",verifyToken, getadmins, async(req, res) => {
   const users = await User.find({}, 'name email contact username address car_description license');
   res.render('admin_users', {admin: req.admin, totalUsers: totalUsers, users: users});
 });
-router.post('/totalUsers/userByID',verifyToken, getadmins, async(req, res) => {
-  const search = req.body.search;
-  const user = await User.findOne({ username: search });
-  req.session.userbyUsername = user;
-})
 
-router.get("/totalUsers/userByID",verifyToken, getadmins, async(req, res) => {
+
+router.delete("/admin/:username", verifyToken, async (req, res) => {
+  const userId = req.params.userId;
+  try {
+    await User.findByIdAndDelete(userId);
+    res.status(200).send("User deleted successfully");
+  } catch (error) {
+    res.status(500).send("Error deleting user");
+  }
+});
+
+
+// router.post('/totalUsers/userByID',verifyToken, getadmins, async(req, res) => {
+//   const search = req.body.search;
+//   const user = await User.findOne({ username: search });
+//   req.session.userbyUsername = user;
+// })
+
+// router.get("/totalUsers/userByID",verifyToken, getadmins, async(req, res) => {
   
-  res.render('admin_users_search', {admin: req.admin});
-})
+//   res.render('admin_users_search', {admin: req.admin});
+// })
 router.get("/totalManagers",verifyToken, getadmins, async(req, res) => {
   const totalManagers = await Managers.countDocuments();
-  res.render('admin_manager', {admin: req.admin, totalManagers: totalManagers});
+  const managers = await Managers.find({}, 'name email contact username location companyName');
+  res.render('admin_manager', {admin: req.admin, totalManagers: totalManagers, managers: managers});
 });
 router.get("/totalTransactions",verifyToken, getadmins, async(req, res) => {
   res.render('admin_users', {admin: req.admin});

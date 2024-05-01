@@ -254,6 +254,7 @@ justify-content: center;
   
     .downpage{
         margin-top: 2vw;
+        height: 100%;
         
     }
 
@@ -269,6 +270,8 @@ justify-content: center;
     .box3{
         display: flex;
         flex-direction: column;
+        width: 75vw;
+        height: 42vh;
         
 
     }
