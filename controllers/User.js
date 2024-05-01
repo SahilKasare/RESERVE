@@ -215,3 +215,8 @@ user.wallet += amount;
   await user.save();
 res.redirect('/users/user_wallet/');
 }
+
+exports.book_park=async (req, res) => {
+
+}
+

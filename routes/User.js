@@ -14,7 +14,7 @@ const { addmoney } = require("../controllers/User.js");
 const { userLogout } = require("../controllers/auth.js");
 const TransactionModel = require("../models/Transaction.js");
 const BookingsModel = require("../models/Booking.js");
-
+const {book_park}=require("../controllers/User")
 router.get("/profile", verifyToken, getusers, async (req, res) => {
   req.session.destroy(function (err) {
     if (err) throw err;
@@ -120,7 +120,7 @@ router.get("/got_centers", verifyToken, getusers, async function (req, res) {
     service: service,
   });
 });
-
+router.post('/book_park',book_park);
 router.get("/logout", userLogout);
 router.get("/payment", verifyToken, getusers, async function (req, res) {
   const managerId = req.query.managerId;
@@ -175,7 +175,7 @@ router.get("/paymentSuccessful",verifyToken,getusers,async function (req, res) {
       price = manager.services.cleaning.price_carwash;
       fromtime = servicecentre.time;
     } else if (service === "charge") {
-      service = "ev charging";
+      service = "charging";
       price = manager.services.charging.charging_price;
       totime = servicecentre.to;
       fromtime = servicecentre.from;
