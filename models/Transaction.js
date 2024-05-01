@@ -60,6 +60,10 @@ const transactionSchema = new mongoose.Schema({
   user_refund:{
     type:Boolean,
     required:false,
+  },
+  registration_date : {
+    type:Date,
+    default : Date.now,
   }
 
 });
