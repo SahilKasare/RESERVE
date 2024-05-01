@@ -278,7 +278,14 @@
               </div>
             </div>
             <div class="cb-cancel">
-              <button><a href="/users/paymentrefund">Cancel</a></button>
+              <form action="/users/paymentrefund" method="post">
+
+                <input type="hidden" name="bookingid" value="<%= booking.booking_id%>" >
+                <input type="hidden" name="userid" value="<%= booking.user._id%>" >
+                <input type="hidden" name="managerid" value="<%= booking.manager._id%>" >
+                <input type="submit" value="Cancel">
+              </form>
+              
             </div>
           </div>
       <%  }) %>
