@@ -91,3 +91,20 @@ exports.addmoney=async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 };
+
+// Assuming you have already imported your Booking model
+const Booking = require('../models/Booking');
+
+// Controller function to fetch bookings data for the manager
+exports.getManagerBookings = (req, res) => {
+    const managerId = req.user.id; // Assuming you have access to the manager's ID through authentication
+
+    Booking.find({ managerId: managerId })
+        .then(bookings => {
+            res.render('bookings', { bookings: bookings });
+        })
+        .catch(err => {
+            console.error('Error fetching bookings:', err);
+            res.status(500).send('Internal Server Error');
+        });
+};

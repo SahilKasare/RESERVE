@@ -236,49 +236,24 @@
         </thead>
         <tbody>
           <tr>
-            <td>Yadnyesh Badgujar</td>
-            <td>1234567890</td>
-            <td>2024-04-27</td>
-            <td>09:00</td>
-            <td>11:00</td>
-            <td>Parking</td>
-            <td><button class="cancel-button">Cancel</button></td>
-          </tr>
-          <tr>
-            <td>Yadnyesh</td>
-            <td>1234567890</td>
-            <td>2024-04-27</td>
-            <td>09:00</td>
-            <td>11:00</td>
-            <td>Parking+ev</td>
-            <td><button class="cancel-button">Cancel</button></td>
-          </tr>
-          <tr>
-            <td>Yadnyesh</td>
-            <td>1234567890</td>
-            <td>2024-04-27</td>
-            <td>09:00</td>
-            <td>11:00</td>
-            <td>Parking</td>
-            <td><button class="cancel-button">Cancel</button></td>
-          </tr>
-          <tr>
-            <td>Yadnyesh</td>
-            <td>1234567890</td>
-            <td>2024-04-27</td>
-            <td>09:00</td>
-            <td>11:00</td>
-            <td>Parking</td>
-            <td><button class="cancel-button">Cancel</button></td>
-          </tr>
-          <tr>
-            <td>Yadnyesh</td>
-            <td>1234567890</td>
-            <td>2024-04-27</td>
-            <td>09:00</td>
-            <td>11:00</td>
-            <td>Parking</td>
-            <td><button class="cancel-button">Cancel</button></td>
+            <% bookings.forEach(booking => { %>
+              <tr>
+                  <td><%= booking.user.username %></td>
+                  <td><%= booking.user.contact %></td>
+                  <td><%= booking.date.toLocaleDateString() %></td>
+                  <% if (booking.service === 'parking' || booking.service === 'ev charging') { %>
+                      <td><%= booking.from_time %>:00</td>
+                      <td><%= booking.to_time %>:00</td>
+                  <% } else { %>
+                      <td><%= booking.from_time %>:00</td>
+                      <td><%=2 + booking.from_time%>:00</td>
+                  <% } %>
+                  <td><%= booking.service %></td>
+                  <td><button class="cancel-button">Cancel</button></td>
+              </tr>
+          <% }); %>
+          
+                
           </tr>
         </tbody>
       </table>
