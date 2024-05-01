@@ -12,8 +12,10 @@ const user =require('../controllers/User');
 const {addmoney}=require('../controllers/User.js')
 const {userLogout}=require('../controllers/auth.js')
 router.get("/profile",verifyToken,getusers,async(req, res) => {
-
-   
+  req.session.destroy(function(err){
+    if (err) throw err;
+    console.log("Session completed successfully");
+  });
     res.render('user_service', {user: req.user});
   });
 
@@ -112,9 +114,11 @@ router.get("/payment", verifyToken, getusers, async function(req, res) {
 });
 
 router.get("/paymentSuccessful",verifyToken, getusers, async function(req,res){
-  
+
   res.render("success",{user:req.user} );
 });
+
+
 
 router.get("/user_preview",verifyToken,async function(req,res){
   const token = req.cookies.authorization;

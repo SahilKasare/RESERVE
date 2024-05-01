@@ -118,12 +118,12 @@ app.post('/adminLogin',adminLogin);
 
 
 
-// app.get('/removeSession', function(req, res){
-//     req.session.destroy(function(err){
-//       if (err) throw err;
-//       res.send("Session Destroyed");
-//     });
-//   })
+app.get('/removeSession', function(req, res){
+    req.session.destroy(function(err){
+      if (err) throw err;
+      res.send("Session Destroyed");
+    });
+  })
 
 // Guest routes
 

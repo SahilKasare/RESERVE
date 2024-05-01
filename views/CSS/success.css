@@ -141,6 +141,8 @@ border-radius: 20px;
   }
   .profile-pic{
       background-color: #191c24;
+      height: 2vh;
+      width: 4vh;
   }
 
   #card {
