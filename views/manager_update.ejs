@@ -291,6 +291,7 @@
               name="address"
               id="address"
               placeholder="Service Centre Name"
+              value= <%= manager.address %>
             />
           </div>
           
@@ -324,23 +325,23 @@
           for="heading"
           >Car Parking</label
         >
-        <br />
-        <label>Number of slots</label><br />
+          <br />
+          <label>Number of slots</label><br />
         <input
           style="background-color: transparent; border: none"
           type="number"
           name="option1Label5"
           placeholder="Number of parking slots"
         />
-        <br />
-        <label>Price (per hour)</label><br />
+          <br />
+          <label>Price (per hour)</label><br />
         <input
           style="background-color: transparent; border: none"
           type="number"
           name="option1Label6"
           placeholder="Price per hour in rupees"
         />
-        <br />
+          <br />
         <label>Price (per day)</label><br />
         <input
           style="background-color: transparent; border: none"
@@ -348,7 +349,7 @@
           name="option1Label7"
           placeholder="Price per day in rupees"
         />
-      </form>
+        </form>
 
       <form id="clean" class="hidden">
         <label
@@ -356,15 +357,15 @@
           for="heading"
           >Car Cleaning</label
         >
-        <br />
-        <label>Price (only car wash)</label><br />
+          <br />
+          <label>Price (only car wash)</label><br />
         <input
           style="background-color: transparent; border: none"
           type="number"
           name="option1Label5"
           placeholder="Price for carwash in rupees"
         />
-        <br />
+          <br />
         <label>Price (complete cleaning)</label><br />
         <input
           style="background-color: transparent; border: none; width: 25vw"
@@ -372,7 +373,7 @@
           name="option1Label6"
           placeholder="Price for complete cleaning in rupees"
         />
-      </form>
+        </form>
 
       <form id="charge" class="hidden">
         <label
@@ -380,15 +381,15 @@
           for="heading"
           >EV Charging</label
         >
-        <br />
-        <label>Price (per hour)</label><br />
+          <br />
+          <label>Price (per hour)</label><br />
         <input
           style="background-color: transparent; border: none"
           type="number"
           name="option1Label5"
           placeholder="Price per hour in rupees"
         />
-      </form>
+        </form>
 
       <form id="inspection" class="hidden">
         <label
@@ -396,15 +397,15 @@
           for="heading"
           >Vehicle Inspection</label
         >
-        <br />
-        <label>Price (base price)</label><br />
+          <br />
+          <label>Price (base price)</label><br />
         <input
           style="background-color: transparent; border: none; width: 23vw"
           type="number"
           name="option1Label5"
           placeholder="Base price for inspection in rupees"
         />
-      </form>
+        </form>
 
       <form id="paint" class="hidden">
         <label
@@ -412,21 +413,23 @@
           for="heading"
           >Painting & Denting</label
         >
-        <br />
-        <label>Price (painting)</label><br />
+          <br />
+          <label>Price (painting)</label><br />
         <input
           style="background-color: transparent; border: none; width: 28vw"
           type="number"
           name="option1Label5"
           placeholder="Price for complete car painting in rupees"
         />
-        <br />
+          <br />
         <label>Denting Service provided</label><br />
         <select class="denting" name="option1Label6" id="">
           <option value="yes">YES</option>
           <option value="no">NO</option>
         </select>
-      </form>
+        </form>
+      <% } %>
+      
 
       <button id="update" type="submit">
         <a
