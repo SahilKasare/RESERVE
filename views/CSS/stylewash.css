@@ -123,6 +123,10 @@ gap:8px;
   
    
 }
+#options > a{
+    text-decoration: none;
+    color: white;
+}
 #optionprofile{
 display: flex;
 flex-direction: row;
