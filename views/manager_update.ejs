@@ -245,12 +245,12 @@
       </div>
     <div class="mainpage">
 
-<form action="/managerDetails" method="POST">
+<form action="/managers/update" method="POST">
         <div class="part1">
         <div class="heading">Business Info</div>
         <div class="info1">
           <div class="info">
-            <label for="Name">Name</label><br />
+            <label for="name">Name</label><br />
             <input
               style="background-color: transparent; border: none"
               type="text"
@@ -300,142 +300,159 @@
             <input
               style="background-color: transparent; border: none; width: 25vw"
               type="text"
-              name="address"
+              name="location"
               id="address"
               
               placeholder="Your Address"
               value= <%= manager.location %>
             />
           </div>
+
+          <% if (manager.services.hasOwnProperty('parking') && typeof manager.services.parking === 'object' && Object.keys(manager.services.parking).length > 1) { %>
+              <label
+            style="color: rgb(0, 186, 0); font-size: 30px; margin-left: 17vw"
+            for="heading"
+            >Car Parking</label
+          >
+              <div class="info">
+                <label for="parking_price">Parking price per hour</label><br />
+                <input
+              style="background-color: transparent; border: none; width: 25vw"
+              type="number"
+              name="parking_price"
+              id="parking_price"
+              
+              placeholder="Price of parking"
+              value= <%= manager.services.parking.parking_price %>
+            />
+              </div>
+
+              <div class="info">
+                <label for="parking_slots">Number of slots</label><br />
+                <input
+              style="background-color: transparent; border: none; width: 25vw"
+              type="number"
+              name="parking_slots"
+              id="address"
+              
+              placeholder="Number of slots"
+              value= <%= manager.services.parking.parking_slots %>
+            />
+              </div>
+              
+              <% } %>
+              
+              <% if (manager.services.hasOwnProperty('cleaning') && typeof manager.services.cleaning === 'object' && Object.keys(manager.services.cleaning).length > 1) { %>
+              <label
+            style="color: rgb(0, 186, 0); font-size: 30px; margin-left: 17vw"
+            for="heading"
+            >Car Cleaning</label
+          >
+              <div class="info">
+                <label for="price_carwash">Carwash Price</label><br />
+                <input
+              style="background-color: transparent; border: none; width: 25vw"
+              type="number"
+              name="price_carwash"
+              id="price_carwash"
+              
+              placeholder="cleaning price"
+              value= <%= manager.services.cleaning.price_carwash %>
+            />
+              </div>
+              <% } %>
+
+              <% if (manager.services.hasOwnProperty('charging') && typeof manager.services.charging === 'object' && Object.keys(manager.services.charging).length > 1) { %>
+                <!-- Your code for EV Car Charging service here -->
+      
+            
+              <label
+            style="color: rgb(0, 186, 0); font-size: 30px; margin-left: 17vw"
+            for="heading"
+            >EV Car Charging</label
+          >
+              <div class="info">
+                <label for="charging_price">Charging price per hour</label><br />
+                <input
+              style="background-color: transparent; border: none; width: 25vw"
+              type="number"
+              name="charging_price"
+              id="charging_price"
+              
+              placeholder="Price of charging"
+              value= <%= manager.services.charging.charging_price %>
+            />
+              </div>
+      
+              <div class="info">
+                <label for="charging_slots">Number of slots</label><br />
+                <input
+              style="background-color: transparent; border: none; width: 25vw"
+              type="number"
+              name="charging_slots"
+              id="address"
+              
+              placeholder="Number of slots"
+              value= <%= manager.services.charging.charging_slots %>
+            />
+              </div>
+              
+              <% } %>
+
+              <% if (manager.services.hasOwnProperty('inspection') && typeof manager.services.inspection === 'object' && Object.keys(manager.services.inspection).length > 0) { %>
+              <label
+            style="color: rgb(0, 186, 0); font-size: 30px; margin-left: 17vw"
+            for="heading"
+            >Car Inspection</label
+          >
+              <div class="info">
+                <label for="inspection_price"> Inspection price</label><br />
+                <input
+              style="background-color: transparent; border: none; width: 25vw"
+              type="number"
+              name="inspection_price"
+              id="inspection_price"
+              
+              placeholder="Inpection Price"
+              value= <%= manager.services.inspection.inspection_price %>
+            />
+              </div>
+              <% } %>
+
+              <% if (manager.services.hasOwnProperty('painting') && typeof manager.services.painting === 'object' && Object.keys(manager.services.painting).length > 0) { %>
+            
+              <label
+            style="color: rgb(0, 186, 0); font-size: 30px; margin-left: 17vw"
+            for="heading"
+            >Car Painting</label
+          >
+              <div class="info">
+                <label for="painting_price">Painting price</label><br />
+                <input
+              style="background-color: transparent; border: none; width: 25vw"
+              type="number"
+              name="painting_price"
+              id="painting_price"
+              
+              placeholder="painting price"
+              value= <%= manager.services.painting.painting_price %>
+            />
+              </div>
+              <% } %>
         </div>
       </div>
-      <div id="form-container">
-        <div class="heading">Service Info</div>
-        <div id="updateService"></div>
-        <button id="add-service-btn">Add Service</button>
-      </div>
+     
+          
+     
 
-      <!-- <form id="Select" class="hidden">
-        <label>Choose the Service from above</label>
-      </form> -->
 
-      <form id="park" class="hidden">
-        <label
-          style="color: rgb(0, 186, 0); font-size: 30px; margin-left: 18vw"
-          for="heading"
-          >Car Parking</label
-        >
-          <br />
-          <label>Number of slots</label><br />
-        <input
-          style="background-color: transparent; border: none"
-          type="number"
-          name="option1Label5"
-          placeholder="Number of parking slots"
-        />
-          <br />
-          <label>Price (per hour)</label><br />
-        <input
-          style="background-color: transparent; border: none"
-          type="number"
-          name="option1Label6"
-          placeholder="Price per hour in rupees"
-        />
-          <br />
-        <label>Price (per day)</label><br />
-        <input
-          style="background-color: transparent; border: none"
-          type="number"
-          name="option1Label7"
-          placeholder="Price per day in rupees"
-        />
-        </form>
 
-      <form id="clean" class="hidden">
-        <label
-          style="color: rgb(0, 186, 0); font-size: 30px; margin-left: 17vw"
-          for="heading"
-          >Car Cleaning</label
-        >
-          <br />
-          <label>Price (only car wash)</label><br />
-        <input
-          style="background-color: transparent; border: none"
-          type="number"
-          name="option1Label5"
-          placeholder="Price for carwash in rupees"
-        />
-          <br />
-        <label>Price (complete cleaning)</label><br />
-        <input
-          style="background-color: transparent; border: none; width: 25vw"
-          type="number"
-          name="option1Label6"
-          placeholder="Price for complete cleaning in rupees"
-        />
-        </form>
-
-      <form id="charge" class="hidden">
-        <label
-          style="color: rgb(0, 186, 0); font-size: 30px; margin-left: 17vw"
-          for="heading"
-          >EV Charging</label
-        >
-          <br />
-          <label>Price (per hour)</label><br />
-        <input
-          style="background-color: transparent; border: none"
-          type="number"
-          name="option1Label5"
-          placeholder="Price per hour in rupees"
-        />
-        </form>
-
-      <form id="inspection" class="hidden">
-        <label
-          style="color: rgb(0, 186, 0); font-size: 30px; margin-left: 15vw"
-          for="heading"
-          >Vehicle Inspection</label
-        >
-          <br />
-          <label>Price (base price)</label><br />
-        <input
-          style="background-color: transparent; border: none; width: 23vw"
-          type="number"
-          name="option1Label5"
-          placeholder="Base price for inspection in rupees"
-        />
-        </form>
-
-      <form id="paint" class="hidden">
-        <label
-          style="color: rgb(0, 186, 0); font-size: 30px; margin-left: 14vw"
-          for="heading"
-          >Painting & Denting</label
-        >
-          <br />
-          <label>Price (painting)</label><br />
-        <input
-          style="background-color: transparent; border: none; width: 28vw"
-          type="number"
-          name="option1Label5"
-          placeholder="Price for complete car painting in rupees"
-        />
-          <br />
-        <label>Denting Service provided</label><br />
-        <select class="denting" name="option1Label6" id="">
-          <option value="yes">YES</option>
-          <option value="no">NO</option>
-        </select>
-        </form>
-      <% } %>
-      
-
-      <button id="update" type="submit">
+           
+      <button id="update" type="submit" >
         <a
           style="text-decoration: none; color: white"
 
-          >Submit</a
+          >Update</a
         >
       </button>
     </form> 

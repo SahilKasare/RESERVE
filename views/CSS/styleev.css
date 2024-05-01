@@ -155,7 +155,7 @@ flex-direction:column;
  
 }
 .elewrap:hover{
-    background-color: #141820;
+    background-color: #141820; 
     border-radius: 20px;
 }
 
@@ -474,6 +474,7 @@ font-size:30px;
 font-weight: 600;
 margin-left:70px;
 margin-top:20px;
+font-color: white;
 }
 
 #foottext{
