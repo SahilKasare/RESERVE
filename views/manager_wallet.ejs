@@ -21,7 +21,7 @@
         <div class="profile-sidebar">
             <img src="/Images/profile face.jpg" alt="Profile Picture">
             <div class="pmanager">
-                <span style="font-size: 20px; padding-left: 10px; padding-bottom: 3px;">Yadnyesh</span>
+                <span style="font-size: 20px; padding-left: 10px; padding-bottom: 3px;"><%= manager.name %></span>
             <span style="font-size: 14px; padding-left: 12px; margin-bottom: 12px; color: #6C7293;">Manager</span>
             </div>
         </div>
@@ -113,7 +113,7 @@
             <!-- Your Wallet content goes here -->
             <div class="flex-col" id="bal">
             <h1>Balance</h1>
-            <h1 id="am">₹ <span id="money">15000</span></h1>
+            <h1 id="am">₹ <span id="money"><%= manager.wallet %></span></h1>
             <button>+</button>
         </div>
         <img src="../Images/wallet.png" alt="" style="  margin-left: 50px; margin-right: 10px;">
@@ -123,8 +123,10 @@
         <div id="depositContent" class=" content display-none" > <!-- Content for Deposit (hidden by default) -->
             <div class="flex-col" id="dep">
                 <h1>Enter amount to deposit</h1>
-              <div id="rup"><element style="font-size: x-large;font-weight:500px; margin-right:0.4vw;">₹</element> <input type="number" id="entam"placeholder="Amount"></div> 
-                <button>+</button>
+                
+              <div id="rup"><element style="font-size: x-large;font-weight:500px; margin-right:0.4vw;">₹</element><form action="/managers/wallet" method="post" style="display:inline-flex"> <input type="number" name="amount"id="entam"placeholder="Amount"></div> 
+                <button type="submit">+</button>
+              </form>
             </div>
             <div class="slidetext" style="margin-left: 4vw; margin-top: 9vh;"> Deposit upto ₹ 25,000 in<br> our electronic wallet.</div>
         </div>
