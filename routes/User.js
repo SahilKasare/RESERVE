@@ -10,6 +10,7 @@ const { decode } = require('punycode');
 const {getusers}=require('../middleware/User');
 const user =require('../controllers/User');
 const {addmoney}=require('../controllers/User.js')
+const {userLogout}=require('../controllers/auth.js')
 router.get("/profile",verifyToken,getusers,async(req, res) => {
 
    
@@ -87,7 +88,7 @@ router.get("/got_centers",verifyToken, getusers, async function(req,res){
   res.render("user_got_centers",{user:req.user, managers :managers, service: service} );
 });
 
-
+router.get("/logout",userLogout);
 router.get("/payment", verifyToken, getusers, async function(req, res) {
   const managerId = req.query.managerId;
   

@@ -35,7 +35,7 @@ router.get("/schedule",verifyToken,async(req, res) => {
     res.render('manager_schedule', {manager});
 });
 
-router.post("/logout",managerLogout)
+router.get("/logout",managerLogout)
  
 
 router.get("/services",verifyToken,async(req, res) => {
