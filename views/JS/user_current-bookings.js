@@ -36,8 +36,8 @@ function cbcreatecard(date,time,title,ph,contact){
     document.querySelector(".cb-container-array").innerHTML = document.querySelector(".cb-container-array").innerHTML + html;
 }
 
-cbcreatecard("18/05/2024" , "02:05pm" , "CarRepair.pvt" , "9768976751", "carrepair@gmail.com");
-cbcreatecard("18/05/2024" , "02:05pm" , "CarRepair.pvt" , "9768976751", "carrepair@gmail.com");
-cbcreatecard("18/05/2024" , "02:05pm" , "CarRepair.pvt" , "9768976751", "carrepair@gmail.com");
-cbcreatecard("18/05/2024" , "02:05pm" , "CarRepair.pvt" , "9768976751", "carrepair@gmail.com");
-cbcreatecard("18/05/2024" , "02:05pm" , "CarRepair.pvt" , "9768976751", "carrepair@gmail.com");
+// cbcreatecard("18/05/2024" , "02:05pm" , "CarRepair.pvt" , "9768976751", "carrepair@gmail.com");
+// cbcreatecard("18/05/2024" , "02:05pm" , "CarRepair.pvt" , "9768976751", "carrepair@gmail.com");
+// cbcreatecard("18/05/2024" , "02:05pm" , "CarRepair.pvt" , "9768976751", "carrepair@gmail.com");
+// cbcreatecard("18/05/2024" , "02:05pm" , "CarRepair.pvt" , "9768976751", "carrepair@gmail.com");
+// cbcreatecard("18/05/2024" , "02:05pm" , "CarRepair.pvt" , "9768976751", "carrepair@gmail.com");

@@ -8,7 +8,7 @@ const transactionSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: false
-      },
+  },
  manager: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Manager',
@@ -29,12 +29,10 @@ const transactionSchema = new mongoose.Schema({
     type:String,
   required:true,
  },
-
- to:{
+  to:{
     type:String,
-    required:true,
- },
-
+    crequired:true,
+  },
 
  booking_id:{
    type:String,
