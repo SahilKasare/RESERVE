@@ -10,12 +10,16 @@ const upload = require("./multer.js");
 const { decode } = require('punycode');
 const {managerLogout}=require('../controllers/auth.js')
 const Manager=require('../models/Manager');
+const Transaction =require('../models/Transaction');
 const {updateinfo}=require('../controllers/Manager')
 const {addmoney}=require('../controllers/Manager.js')
+const managers =require('../controllers/Manager')
 
 router.get("/dashboard",verifyToken, getmanagers, async(req, res) => {
     
-      res.render('manager_dashboard', {manager: req.manager});
+      const weeklyProfit = await managers.calculateWeeklyProfit(req.manager._id);
+      const totalBookings = await managers.calculateDailyBookings(req.manager._id);
+      res.render('manager_dashboard', {manager: req.manager, weeklyProfit: weeklyProfit, totalBookings: totalBookings});
 });
   
 router.get("/bookings",verifyToken,async(req, res) => {
