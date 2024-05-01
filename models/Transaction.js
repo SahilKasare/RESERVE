@@ -14,11 +14,7 @@ const transactionSchema = new mongoose.Schema({
         ref: 'Manager',
         required: false
       },
- admin: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Admin',
-        required: false
-      },
+
  transaction_id:{
   type:String,
   required:true,
@@ -36,7 +32,7 @@ const transactionSchema = new mongoose.Schema({
 
  to:{
     type:String,
-  required:true,
+    required:true,
  },
 
 
@@ -45,17 +41,30 @@ const transactionSchema = new mongoose.Schema({
    required:true,
  },
 
-incoming:{
+  incoming_user:{
     type:Boolean,
     required:true,
-
-refund:{
+  },
+  incoming_manager:{
+    type:Boolean,
+    required:true,
+  },
+  incoming_admin:{
+    type:Boolean,
+    required:true,
+  },
+  manager_refund:{
     type:Boolean,
     required:false,
-    }
-
-
- }
+  },
+  user_refund:{
+    type:Boolean,
+    required:false,
+  },
+  registration_date : {
+    type:Date,
+    default : Date.now,
+  }
 
 });
 

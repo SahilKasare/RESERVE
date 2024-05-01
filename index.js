@@ -69,6 +69,9 @@ app.get('/FAQs', (req, res) => {
 app.get('/feedback', (req, res) => {
     res.render('feedback');
 })
+app.get('/aboutUs', (req, res) => {
+    res.render('aboutus');
+})
 
 app.post('/feedback', feedbackSent);
 

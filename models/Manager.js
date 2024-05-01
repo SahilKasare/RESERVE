@@ -10,6 +10,7 @@ const managerSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    
 
     name:{
         type: String,
@@ -96,12 +97,16 @@ const managerSchema = new mongoose.Schema({
       },
       wallet:{
         type:Number,
-        default: 0
+        default: 0,
       },
       transactions: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Transaction'
-    }]
+    }],
+    registrationDate: {
+        type: Date,
+        default: Date.now
+    }
 
 });
 

@@ -36,7 +36,7 @@ exports.registerUser = async (req, res) => {
 
     const salt = await bcrypt.genSalt();
     const passwordHash = await bcrypt.hash(password, salt);
-   
+    const today = new Date();
     const newUser = new User({
       username,
       password: passwordHash,
@@ -47,7 +47,7 @@ exports.registerUser = async (req, res) => {
       email,
       address,
       car_description,
-      
+      registrationDate: today
     });
 
     const savedUser = await newUser.save();
@@ -183,7 +183,7 @@ exports.userLogout = async (req, res) => {
   
       const salt = await bcrypt.genSalt();
       const passwordHash = await bcrypt.hash(password, salt);
-      
+      const today = new Date();
       const newManager = new Manager({
         username,
         password: passwordHash,
@@ -195,7 +195,7 @@ exports.userLogout = async (req, res) => {
         email,
         services,
         service_pic,
-        
+        registrationDate: today
       });
   
       const savedManager = await newManager.save();
@@ -292,7 +292,7 @@ exports.userLogout = async (req, res) => {
             maxAge: 24 * 60 * 60 * 1000,
           });
       
-          res.redirect('/admin/dashboard');
+          res.redirect('/admin/profile');
       
         } catch (error) {
           console.error('Login Error:', error);

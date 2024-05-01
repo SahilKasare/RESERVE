@@ -112,11 +112,14 @@ nav h4:hover a {
   margin-top: 10px;
 }
 #page1 .info, #page2 .info {
-  margin-left: 14vw;
+  margin-left: 16vw;
   text-align: left;
   font-size: 25px;
 }
 
+#page2  .info{
+  margin-left: 15.5vw;
+}
 .rotate{
   background-color: none;
   height: 40px;
