@@ -11,7 +11,7 @@ const User =require('../models/User.js')
 const Transaction =require('../models/Transaction.js')
 const {getadmins}=require('../middleware/Admin');
 const adminFunc =require('../controllers/Admin');
-
+const {adminLogout}=require('../controllers/auth')
 router.get("/profile",verifyToken, getadmins, async(req, res) => {
 
     const usersToday = await adminFunc.getTodaysUsers();
@@ -59,5 +59,6 @@ router.post("/fileupload",verifyToken,upload.single("image"), async function(req
   res.redirect("/admin/dashboard");
 });
   
+router.get('/logout',adminLogout)
 
 module.exports = router;
