@@ -283,7 +283,11 @@
                       <button type="submit">Book Now</button>
                   </div> -->
                   <div class="sc-center-booknow">
-                    <a href="/users/payment?managerId=<%= manager._id %>">Book Now</a>
+                    <% if (service === 'park') { %>
+                      <a href="/users/user_park?managerId=<%= manager._id %>">Book Now</a>
+                    <% } else { %>
+                      <a href="/users/payment?managerId=<%= manager._id %>">Book Now</a>
+                    <% } %>
                 </div>
                 
               </div>

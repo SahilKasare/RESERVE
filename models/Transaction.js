@@ -3,7 +3,6 @@ const User=require('./User');
 const Manager=require('./Manager')
 const Admin=require('./Admin')
 const transactionSchema = new mongoose.Schema({
-
  user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
@@ -27,7 +26,7 @@ const transactionSchema = new mongoose.Schema({
 
  from:{
     type:String,
-  required:true,
+    required:true,
  },
   to:{
     type:String,

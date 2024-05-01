@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const BookingSchema = new mongoose.Schema({
   booking_id: {
     type: String,
-
     unique: true
   },
   manager: {

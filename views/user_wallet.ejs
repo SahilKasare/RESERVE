@@ -271,7 +271,7 @@
                 <!-- Your Wallet content goes here -->
                 <div class="flex-col" id="bal">
                   <h1>Balance</h1>
-                  <h1 id="am">₹ <span id="money"><%= user.wallet%></span></h1>
+                  <h1 id="am">₹ <span id="money"><%= Math.trunc(user.wallet) %></span></h1>
                   <button>+</button>
                 </div>
                 <img
@@ -301,7 +301,7 @@
                   <form style="display:inline-flex" action="/users/user_wallet" method="post">
                   <input type="number" name="amount" id="entam" placeholder="Amount" />
                 </div>
-                <button type="'submit">+</button>
+                <button type="submit">+</button>
               </form>
               </div>
               <div class="slidetext" style="margin-left: 4vw; margin-top: 9vh">
@@ -350,8 +350,39 @@
         </div>
 
         <div class="flex-col" id="searches">
-          <!-- <div class="transaction"></div> -->
+          <% transactions.forEach(function(transaction){   %>
+            <div class="transaction">
+              <div class="flex-row">
+                  <div class="inc">
+                      <!-- Icon for income -->
+                      <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none">
+                          <path stroke="#00D25B" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.343 4.343l11.314 11.314m0 0h-9.9m9.9 0v-9.9"></path>
+                      </svg>
+                  </div>
+                  <span class="label">Amount:</span>
+                  <div class="amount"><%= transaction.amount %></div>
+              </div>
+              <div class="flex-row"`>
+                  <span class="label">Transaction Id:</span>
+                  <div class="transaction-id"><%= transaction.transaction_id %></div>
+              </div>
+              <div class="flex-row">
+                  <span class="label">From:</span>
+                  <div class="from"><%= transaction.from %></div>
+              </div>
+              <div class="flex-row">
+                  <span class="label">Manager Id:</span>
+                  <div class="manager-id"><%= transaction.manager._id %></div>
+              </div>
+              <div class="flex-row">
+                  <span class="label">Booking Id:</span>
+                  <div class="booking-id"><%= transaction.booking_id %></div>
+              </div>
+          </div>->
         </div>
+
+          <% }) %>
+          
 
         <div id="footer">
           <div id="gen">

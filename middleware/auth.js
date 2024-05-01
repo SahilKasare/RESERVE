@@ -8,7 +8,7 @@ exports.verifyToken=async(req,res,next)=>{
         let token=req.cookies.authorization;
         
         if(!token){
-            res.redirect('/failure');
+            res.status(403).json("Access Denied");
         } 
 
       if(token.startsWith("Bearer ")){

@@ -3,6 +3,7 @@ const router=express.Router();
 const {verifyToken}=require('../middleware/auth.js');
 const {getmanagers}=require('../middleware/Manager.js');
 const User =require('../models/User.js')
+const Booking =require('../models/Booking.js')
 const jwt=require('jsonwebtoken')
 const path = require('path');
 const upload = require("./multer.js");
@@ -11,6 +12,7 @@ const {managerLogout}=require('../controllers/auth.js')
 const Manager=require('../models/Manager');
 const {updateinfo}=require('../controllers/Manager')
 const {addmoney}=require('../controllers/Manager.js')
+
 router.get("/dashboard",verifyToken, getmanagers, async(req, res) => {
     
       res.render('manager_dashboard', {manager: req.manager});
@@ -23,7 +25,12 @@ router.get("/bookings",verifyToken,async(req, res) => {
     if (!manager) {
       return res.status(404).json({ error: "Manager not found" });
     }
-    res.render('manager_bookings', {manager});
+
+    Booking.find({ manager: manager._id })
+        .populate('user') // Populate the user field to get user details
+        .then(bookings => {
+            res.render('manager_bookings', {manager: manager, bookings: bookings});
+        })
 });
 
 router.get("/schedule",verifyToken,async(req, res) => {
