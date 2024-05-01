@@ -66,7 +66,11 @@ const userSchema = new mongoose.Schema({
         stars:{
             type : Number,
         }
-    }]   
+    }],
+    registrationDate: {
+        type: Date,
+        default: Date.now
+    } 
 });
 
 const User = mongoose.model('User', userSchema);
