@@ -126,6 +126,25 @@ app.post('/adminLogin',adminLogin);
 //   })
 
 // Guest routes
+
+
+//guest pages
 app.get('/service1', (req, res)=>{
-    res.render('guest1');
+    res.render('guest1park');
+})
+
+app.get('/service2', (req, res)=>{
+    res.render('guest2wash');
+})
+
+app.get('/service3', (req, res)=>{
+    res.render('guest3EV');
+})
+
+app.get('/service4', (req, res)=>{
+    res.render('guest4interior');
+})
+
+app.get('/service5', (req, res)=>{
+    res.render('guest5paint');
 })
