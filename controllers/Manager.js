@@ -75,11 +75,18 @@ exports.updateinfo = async (req, res) => {
 
 exports.addmoney=async (req, res) => {
     try {
-        const manager=req.manager;
-const amount=req.body.amount;
-manager.wallet+=amount;
-manager.save();
-res.redirect('/managers/wallet')
+        const manager = req.manager;
+        const amount = parseFloat(req.body.amount); 
+
+      
+        if (isNaN(amount)) {
+            return res.status(400).json({ error: 'Invalid amount' });
+        }
+
+        manager.wallet += amount;
+
+        
+        await manager.save();
     } catch (error) {
         res.status(500).json({ error: 'Internal server error' });
     }

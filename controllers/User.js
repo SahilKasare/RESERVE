@@ -201,9 +201,15 @@ exports.getcarpaintingService= async (req, res) => {
 
 
 exports.addmoney=async (req, res) => {
-const user=req.user;
-const amount=req.body.amount;
-user.wallet+=amount;
-user.save();
+  const user= req.user;
+  const amount = parseFloat(req.body.amount); 
+
+
+  if (isNaN(amount)) {
+      return res.status(400).json({ error: 'Invalid amount' });
+  }
+
+user.wallet += amount;
+  await user.save();
 res.redirect('/users/user_wallet/');
 }
