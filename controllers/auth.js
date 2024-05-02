@@ -4,6 +4,9 @@ const Manager = require('../models/Manager.js');
 const Admin = require('../models/Admin.js');
 
 const bcrypt = require('bcrypt');
+
+const path = require("path");
+const upload = require("../routes/multer.js");
 //USER AUTH 
 
 //USER SIGNUP
@@ -131,13 +134,11 @@ exports.userLogout = async (req, res) => {
         parking_slots,
         parking_price,
         price_carwash,
-        price_full,
         charging_price,
         charging_slots,
         inspection_price,
         painting_price,
         denting,
-        service_pic
       } = req.body;
   
 
@@ -152,10 +153,9 @@ exports.userLogout = async (req, res) => {
       }
   
 
-      if (price_carwash && price_full) {
+      if (price_carwash) {
         services.cleaning = {
           price_carwash: parseFloat(price_carwash),
-          price_full: parseFloat(price_full)
         };
       }
   
@@ -194,9 +194,10 @@ exports.userLogout = async (req, res) => {
         contact,
         email,
         services,
-        service_pic,
         registrationDate: today
       });
+
+      newManager.service_pic = req.file.filename;
   
       const savedManager = await newManager.save();
       res.redirect('/managerLogin');
