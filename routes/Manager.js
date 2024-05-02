@@ -110,7 +110,14 @@ router.get("/wallet",verifyToken,async(req, res) => {
       return res.status(404).json({ error: "Manager not found" });
     }
     const transactions = await Transaction.find().populate(["user","manager"]);
-    res.render('manager_wallet', {manager:manager, transactions : transactions});
+    const finaltransactions = [];
+
+    transactions.forEach(function(transaction){
+      if(transaction.user!==null && transaction.manager!==null){
+        finaltransactions.push(transaction);
+      }
+    });
+    res.render('manager_wallet', {manager:manager, transactions : finaltransactions});
 });
 
 router.post("/fileupload",verifyToken,upload.single("image"), async function(req,res){
