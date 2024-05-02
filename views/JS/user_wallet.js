@@ -243,7 +243,7 @@ head2.onclick=function(){
 //     }
 //     else{
 //         incDiv.className = "dec";
-//     incDiv.innerHTML = '<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path stroke="#FC424A" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.657 15.657L4.343 4.343m0 0h9.9m-9.9 0v9.9"></path> </g></svg>';
+//         incDiv.innerHTML = '<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path stroke="#FC424A" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.657 15.657L4.343 4.343m0 0h9.9m-9.9 0v9.9"></path> </g></svg>';
 //     }
 //     div.appendChild(incDiv);
 //     var amountLabelSpan = document.createElement("span");
