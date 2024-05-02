@@ -207,7 +207,7 @@ router.get("/paymentSuccessful",verifyToken,getusers,async function (req, res) {
       price = manager.services.inspection.inspection_price;
       fromtime = servicecentre.time;
     } else if (service === "painting") {
-      price = manager.services.paiting.painting_price;
+      price = manager.services.painting.painting_price;
       fromtime = servicecentre.time;
     }
     const admingettingmoney = 0.15 * price;
