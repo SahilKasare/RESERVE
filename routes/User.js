@@ -180,94 +180,96 @@ router.get("/paymentSuccessful",verifyToken,getusers,async function (req, res) {
     // console.log(manager);
     // console.log(servicecentre);
     // console.log(req.user);
+    if(manager!==null && user!==null){
+      let totime = 0; // var used for knowing which time the service ends
+      let fromtime = 0; // var used for knowing at which time service starts
+      let price = 0; // for getting the price of the service
+      // let parkslotnum = 0; // getting the slotting number booked when it is only parking as service
 
-    let totime = 0; // var used for knowing which time the service ends
-    let fromtime = 0; // var used for knowing at which time service starts
-    let price = 0; // for getting the price of the service
-    // let parkslotnum = 0; // getting the slotting number booked when it is only parking as service
+      if (service === "park") {
+        service = "parking";
+        price = manager.services.parking.parking_price;
+        totime = servicecentre.to;
+        fromtime = servicecentre.from;
+        // parkslotnum = manager.service.parking.parking_slot_number;
+      } else if (service === "wash") {
+        service = "cleaning";
+        price = manager.services.cleaning.price_carwash;
+        fromtime = servicecentre.time;
+      } else if (service === "charge") {
+        service = "ev charging";
+        price = manager.services.charging.charging_price;
+        totime = servicecentre.to;
+        fromtime = servicecentre.from;
+      } else if (service === "inspection") {
+        price = manager.services.inspection.inspection_price;
+        fromtime = servicecentre.time;
+      } else if (service === "painting") {
+        price = manager.services.paiting.painting_price;
+        fromtime = servicecentre.time;
+      }
+      const admingettingmoney = 0.15 * price;
+      const managergettingmoney = price - admingettingmoney;
 
-    if (service === "park") {
-      service = "parking";
-      price = manager.services.parking.parking_price;
-      totime = servicecentre.to;
-      fromtime = servicecentre.from;
-      // parkslotnum = manager.service.parking.parking_slot_number;
-    } else if (service === "wash") {
-      service = "cleaning";
-      price = manager.services.cleaning.price_carwash;
-      fromtime = servicecentre.time;
-    } else if (service === "charge") {
-      service = "charging";
-      price = manager.services.charging.charging_price;
-      totime = servicecentre.to;
-      fromtime = servicecentre.from;
-    } else if (service === "inspection") {
-      price = manager.services.inspection.inspection_price;
-      fromtime = servicecentre.time;
-    } else if (service === "painting") {
-      price = manager.services.paiting.painting_price;
-      fromtime = servicecentre.time;
+      if (user.wallet < price) {
+        res.json("Insufficient balance");
+      }
+      user.wallet = user.wallet - price;
+      manager.wallet = manager.wallet + managergettingmoney;
+
+      const booking_id = nanoid(6);
+      const transaction_id = nanoid(6);
+      // booking between any
+      const bookingobj = await BookingsModel.create({
+        booking_id: booking_id,
+        user: user._id,
+        manager: manager._id,
+        service: service,
+        cost: price,
+        date: servicecentre.date,
+        from_time: fromtime,
+        to_time: totime,
+        // parking_slot_number: parkslotnum,
+      });
+      // user to admin
+      const transactionobject = await TransactionModel.create({
+        user: user._id,
+        manager: manager._id,
+        transaction_id: transaction_id,
+        amount: admingettingmoney,
+        from: user.username,
+        to: "Admin",
+        booking_id: booking_id,
+        incoming_user: false, // user is giving
+        incoming_manager: false, // manager is not getting money
+        incoming_admin: true, // adming  getting money
+        manager_refund: false,
+        user_refund: false,
+      });
+
+      // user to manager
+      const transactionobject2 = await TransactionModel.create({
+        user: user._id,
+        manager: manager._id,
+        transaction_id: transaction_id,
+        amount: managergettingmoney,
+        from: user.username,
+        to: manager.companyName,
+        booking_id: booking_id,
+        incoming_user: false, // user is giving
+        incoming_manager: true, // manager is getting money
+        incoming_admin: false, // adming not  getting money
+        manager_refund: false,
+        user_refund: false,
+      });
+
+      await user.save();
+      await manager.save();
+      await bookingobj.save();
+      await transactionobject.save();
+      await transactionobject2.save();
     }
-    const admingettingmoney = 0.15 * price;
-    const managergettingmoney = price - admingettingmoney;
-
-    if (user.wallet < price) {
-      res.json("Insufficient balance");
-    }
-    user.wallet = user.wallet - price;
-    manager.wallet = manager.wallet + managergettingmoney;
-
-    const booking_id = nanoid(6);
-    const transaction_id = nanoid(6);
-    // booking between any
-    const bookingobj = await BookingsModel.create({
-      booking_id: booking_id,
-      user: user._id,
-      manager: manager._id,
-      service: service,
-      cost: price,
-      date: servicecentre.date,
-      from_time: fromtime,
-      to_time: totime,
-      // parking_slot_number: parkslotnum,
-    });
-    // user to admin
-    const transactionobject = await TransactionModel.create({
-      user: user._id,
-      manager: manager._id,
-      transaction_id: transaction_id,
-      amount: admingettingmoney,
-      from: user.username,
-      to: "Admin",
-      booking_id: booking_id,
-      incoming_user: false, // user is giving
-      incoming_manager: false, // manager is not getting money
-      incoming_admin: true, // adming  getting money
-      manager_refund: false,
-      user_refund: false,
-    });
-
-    // user to manager
-    const transactionobject2 = await TransactionModel.create({
-      user: user._id,
-      manager: manager._id,
-      transaction_id: transaction_id,
-      amount: managergettingmoney,
-      from: user.username,
-      to: manager.companyName,
-      booking_id: booking_id,
-      incoming_user: false, // user is giving
-      incoming_manager: true, // manager is getting money
-      incoming_admin: false, // adming not  getting money
-      manager_refund: false,
-      user_refund: false,
-    });
-
-    await user.save();
-    await manager.save();
-    await bookingobj.save();
-    await transactionobject.save();
-    await transactionobject2.save();
+    
 
     res.render("success", { user: req.user });
   }
