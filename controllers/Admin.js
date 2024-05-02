@@ -124,7 +124,7 @@ exports.Userdeleted = async (req, res) => {
        // Fetch all users after updating the role
     //    const users = await User.find();
   
-       res.render('admin_users', {admin: req.admin});
+       res.redirect('/admin/totalUsers');
   
   
     } catch (error) {
