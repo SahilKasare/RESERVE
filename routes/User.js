@@ -23,11 +23,7 @@ router.get("/profile", verifyToken, getusers, async (req, res) => {
   res.render("user_service", { user: req.user });
 });
 
-router.post(
-  "/fileupload",
-  verifyToken,
-  upload.single("image"),
-  async function (req, res) {
+router.post("/fileupload",verifyToken,upload.single("image"),async function (req, res) {
     const token = req.cookies.authorization;
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const userobj = await User.findById(decoded.id).select("-password");
@@ -90,7 +86,7 @@ router.get("/user_current_bookings",verifyToken,getusers,async function (req, re
 );
 
 router.get("/user_wallet", verifyToken, getusers, async function (req, res) {
-  const transactions = await TransactionModel.find().populate(["user","manager",]);
+  const transactions = await TransactionModel.find().populate(["user","manager"]);
   res.render("user_wallet", { user: req.user , transactions : transactions});
 });
 
@@ -137,6 +133,7 @@ router.get("/got_centers", verifyToken, getusers, async function (req, res) {
 });
 router.post('/book_park',book_park);
 router.get("/logout", userLogout);
+
 router.get("/payment", verifyToken, getusers, async function (req, res) {
   const managerId = req.query.managerId;
 
@@ -182,9 +179,9 @@ router.get("/paymentSuccessful",verifyToken,getusers,async function (req, res) {
     const servicecentre = req.session.servicecentre; // address location date park&evcharge ->from and to time  baki time
     const user = req.user;
 
-    console.log(manager);
-    console.log(servicecentre);
-    console.log(req.user);
+    // console.log(manager);
+    // console.log(servicecentre);
+    // console.log(req.user);
 
     let totime = 0; // var used for knowing which time the service ends
     let fromtime = 0; // var used for knowing at which time service starts
@@ -285,14 +282,14 @@ router.post("/paymentrefund", verifyToken, getusers, async function (req, res) {
   const another_transaction_id = nanoid(6); //creating another trans id
   const another_booking_id = nanoid(6); // creating another booking ud
 
-  console.log(getmanager);
+  console.log("Manager : ",getmanager);
   const before_trans_obj = await TransactionModel.findOne({
     user: getuser,
     manager: getmanager,
     booking_id: req.body.bookingid,
     incoming_manager: true,
   });
-  console.log(before_trans_obj);
+  console.log("before_trans:  ", before_trans_obj);
   const price_reduction = before_trans_obj.amount;
 
   const transobj = await TransactionModel.create({
@@ -309,7 +306,7 @@ router.post("/paymentrefund", verifyToken, getusers, async function (req, res) {
     manager_refund: false,
     user_refund: true,
   });
-
+  console.log("New Trans :  ",transobj);
   getuser.wallet = getuser.wallet + price_reduction;
   getmanager.wallet = getmanager.wallet - price_reduction;
 
@@ -317,9 +314,11 @@ router.post("/paymentrefund", verifyToken, getusers, async function (req, res) {
   await getuser.save();
   await getmanager.save();
 
-  let deletedBooking = await Booking.findOneAndDelete({
+  let deletedBooking = await BookingsModel.findOneAndDelete({
     booking_id: req.body.bookingid,
   });
+
+  console.log("deleted booking : ", deletedBooking);
   res.redirect("/users/user_current_bookings");
 });
 

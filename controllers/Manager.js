@@ -1,4 +1,6 @@
 const Manager = require('../models/Manager.js');
+const Transaction =require('../models/Transaction');
+const Booking =require('../models/Booking');
 
 exports.getManager=async(req,res)=>{
     try{
@@ -93,10 +95,7 @@ exports.addmoney=async (req, res) => {
     }
 };
 
-// Assuming you have already imported your Booking model
-const Booking = require('../models/Booking');
 
-// Controller function to fetch bookings data for the manager
 exports.getManagerBookings = (req, res) => {
     const managerId = req.user.id; // Assuming you have access to the manager's ID through authentication
 
@@ -109,3 +108,66 @@ exports.getManagerBookings = (req, res) => {
             res.status(500).send('Internal Server Error');
         });
 };
+
+
+exports.calculateWeeklyProfit = async (managerId) => {
+    try {
+        // Calculate the date 7 days ago
+        const sevenDaysAgo = new Date();
+        sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+
+        // Query transactions for the given manager ID within the past 7 days
+        const transactions = await Transaction.find({
+            manager: managerId,
+            registration_date: { $gte: sevenDaysAgo },
+            incoming_manager: true
+        });
+
+        // Calculate the sum of profits from the transactions
+        let weeklyProfit = 0;
+        transactions.forEach(transaction => {
+            weeklyProfit += transaction.amount;
+        });
+
+        return weeklyProfit;
+    } catch (error) {
+        console.error('Error calculating weekly profit:', error);
+        throw error;
+    }
+}
+
+exports.calculateDailyBookings = async (managerId) => {
+    try {
+        // Get today's date
+        const today = new Date();
+        today.setHours(0, 0, 0, 0); // Set hours, minutes, seconds, and milliseconds to 0 for accurate comparison
+
+        // Query bookings for the given manager ID and today's date
+        const bookings = await Booking.find({
+            manager: managerId,
+            registration_date: {
+                $gte: today,
+                $lt: new Date(today.getTime() + 24 * 60 * 60 * 1000) // End of the day
+            }
+        });
+
+        // Initialize an object to store total bookings for each service
+        const totalBookings = {
+            'parking': 0,
+            'ev charging': 0,
+            'cleaning': 0,
+            'inspection': 0,
+            'painting': 0
+        };
+
+        // Calculate total bookings for each service
+        bookings.forEach(booking => {
+            totalBookings[booking.service]++;
+        });
+
+        return totalBookings;
+    } catch (error) {
+        console.error('Error calculating daily bookings:', error);
+        throw error;
+    }
+}

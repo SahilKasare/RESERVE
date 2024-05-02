@@ -232,8 +232,7 @@
     <div id="content">
       <div class="box">
         <div id="txt1">
-          ₹2,144
-          <div class="performance">+4.2%</div>
+          ₹<%= totalAmountToday %>
           <div id="arrow">
             <svg
               viewBox="0 0 20 20"
@@ -264,8 +263,8 @@
       </div>
       <div class="box">
         <div id="txt1">
-          ₹16,783
-          <div class="performance">+7.5%</div>
+          ₹<%=weeklyProfit%>
+          <!-- <div class="performance">+7.5%</div> -->
           <div id="arrow">
             <svg
               viewBox="0 0 20 20"
@@ -296,8 +295,7 @@
       </div>
       <div class="box">
         <div id="txt1">
-          6
-          <div class="performance">+7.5%</div>
+          <%= userRegistrationsToday %>
           <div id="arrow">
             <svg
             viewBox="0 0 20 20"
@@ -324,12 +322,12 @@
           </svg>
           </div>
         </div>
-        <p>Users joined Today</p>
+        <p>Todays Bookings</p>
       </div>
       <div class="box">
         <div id="txt1">
           24
-          <div class="performance">+12.8%</div>
+          <!-- <div class="performance">+12.8%</div> -->
           <div id="arrow">
             <svg
               viewBox="0 0 20 20"
@@ -356,7 +354,7 @@
             </svg>
           </div>
         </div>
-        <p>Services Listed this week</p>
+        <p>Bookings this week</p>
       </div>
     </div>
 
@@ -370,7 +368,7 @@
       </div>
       
       <div class="services">
-        <div class="top">Recent Services</div>
+        <div class="top">Todays Services</div>
         <div class="time-ago-elements">
           <hr style="width: 90%; background-color: #2c2e33" />
           <div class="elements">
@@ -400,9 +398,9 @@
                 </g></svg></element>
             <div id="element1">
               Car Parking<br />
-              <p>For 1 hour</p>
+              <!-- <p>For 1 hour</p> -->
             </div>
-            <div class="time-ago">15 mins ago</div>
+            <div class="time-ago"><%=totalBookings.parking%></div>
           </div>
           <hr style="width: 90%; background-color: #2c2e33" />
           <div class="elements">
@@ -515,9 +513,9 @@
                 </g></svg></element>
             <div id="element1">
               Car Washing<br />
-              <p>For 1 hour</p>
+              <!-- <p>For 1 hour</p> -->
             </div>
-            <div class="time-ago">1 hours ago</div>
+            <div class="time-ago"><%=totalBookings.cleaning%></div>
           </div>
           <hr style="width: 90%; background-color: #2c2e33" />
           <div class="elements">
@@ -598,7 +596,7 @@
               Denting and Painting<br />
               <p>For 2 hour</p>
             </div>
-            <div class="time-ago">3 hours ago</div>
+            <div class="time-ago"><%=totalBookings.painting%></div>
           </div>
           <hr style="width: 90%; background-color: #2c2e33" />
           <div class="elements">
@@ -626,7 +624,7 @@
               EV Charging<br />
               <p>For 1 hour</p>
             </div>
-            <div class="time-ago">4 hours ago</div>
+            <div class="time-ago"><%= totalBookings.ev_charging %></div>
           </div>
 
           <hr style="width: 90%; background-color: #2c2e33" />
@@ -656,10 +654,10 @@
                   </g>
                 </g></svg></element>
             <div id="element1">
-              Car Parking<br />
+              Car Inspection<br />
               <p>For 1 hour</p>
             </div>
-            <div class="time-ago">5 hours ago</div>
+            <div class="time-ago"><%=totalBookings.inspection%></div>
           </div>
           <hr style="width: 90%; background-color: #2c2e33" />
           <div class="elements"></div>

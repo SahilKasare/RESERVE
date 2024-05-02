@@ -240,7 +240,11 @@
               <tr>
                   <td><%= booking.user.username %></td>
                   <td><%= booking.user.contact %></td>
-                  <td><%= booking.date.toLocaleDateString() %></td>
+                  <% if (booking.date) { %>
+                    <td><%= booking.date.toLocaleDateString() %></td>
+                <% } else { %>
+                <td>Date not available</td>
+                <% } %>
                   <% if (booking.service === 'parking' || booking.service === 'ev charging') { %>
                       <td><%= booking.from_time %>:00</td>
                       <td><%= booking.to_time %>:00</td>
