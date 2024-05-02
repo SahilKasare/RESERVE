@@ -201,8 +201,8 @@ a{
     border-bottom-left-radius: 1rem;
     color: white;
     border-bottom-right-radius: 1rem;
-    transform: translateY(100%);
-    transition: all 1s ease;
+    /* transform: translateY(100%);
+    transition: all 1s ease; */
     /* visibility: hidden; */
 }
 
@@ -218,8 +218,8 @@ a{
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
     color: white;
-    transform: translateY(100%);
-    transition: all 1s ease;
+    /* transform: translateY(100%);
+    transition: all 1s ease; */
 }
 
 .parking-price{
@@ -234,8 +234,8 @@ a{
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
     color: white;
-    transform: translateY(100%);
-    transition: all 1s ease;
+    /* transform: translateY(100%);
+    transition: all 1s ease; */
 }
 
 
@@ -266,8 +266,8 @@ a{
     border-bottom-left-radius: 1rem;
     color: white;
     border-bottom-right-radius: 1rem;
-    transform: translateY(100%);
-    transition: all 1s ease;
+    /* transform: translateY(100%);
+    transition: all 1s ease; */
 }
 
 
@@ -284,8 +284,8 @@ a{
     border-bottom-left-radius: 1rem;
     color: white;
     border-bottom-right-radius: 1rem;
-    transform: translateY(100%);
-    transition: all 1s ease;
+    /* transform: translateY(100%);
+    transition: all 1s ease; */
 }
 
 .book-now-cards1{
@@ -364,7 +364,7 @@ a{
 }
 
 
-.first-card:hover .cleaning-price{
+/* .first-card:hover .cleaning-price{
     transform: translateY(0);
 }
 
@@ -384,9 +384,9 @@ a{
 
 .first-card:hover .painting-price{
     transform: translateY(0);
-}
+} */
 
-.first-card:hover > .book-now-cards1{
+/* .first-card:hover > .book-now-cards1{
     display: none;
 }
 .first-card:hover > .book-now-cards2{
@@ -400,7 +400,7 @@ a{
 }
 .first-card:hover > .book-now-cards5{
     display: none;
-}
+} */
 
 
 
