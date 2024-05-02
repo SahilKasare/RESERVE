@@ -134,6 +134,7 @@ exports.getcarwashService= async (req, res) => {
   });
   Managers = Managers.filter(manager => manager.services.cleaning && manager.services.cleaning.price_carwash !== undefined && manager.services.cleaning.price_carwash !== null);
   req.session.servicecentre = servicecentre;
+  
   req.session.managers = Managers;
   req.session.service = "wash";
   res.redirect("/users/got_centers");
@@ -146,12 +147,12 @@ exports.getcarparkService= async (req, res) => {
     'location': location,
     'address': address
   });
+  servicecentre.amount=Math.trunc(servicecentre.amount*(servicecentre.to-servicecentre.from))
   Managers = Managers.filter(manager => manager.services.parking && manager.services.parking.parking_price !== undefined && manager.services.parking.parking_price !== null);
   req.session.servicecentre = servicecentre;
   req.session.managers = Managers;
   req.session.service = "park";
-  console.log(req.session.Managers)
-  console.log(req.session.servicecentre)
+  req.session.amount=Math.trunc(req.session.managers.services.parking.parking_price*(servicecentre.to-servicecentre.from))
   res.redirect("/users/got_centers");
 }
 exports.getcarchargeService= async (req, res) => {

@@ -66,18 +66,20 @@ router.get("/user_current_bookings",verifyToken,getusers,async function (req, re
       // else{
       //   console.log("false");
       // }
-
-      if (user._id.equals(booking.user._id)) {
-        if (onlyyear <= bookingdate.getFullYear()) {
-          if (onlymonth <= bookingdate.getMonth()) {
-            if (onlydate <= bookingdate.getDate()) {
-              currentbookings.push(booking);
+      if(booking.user !== null){
+        if (user._id.equals(booking.user._id)) {
+          if (onlyyear <= bookingdate.getFullYear()) {
+            if (onlymonth <= bookingdate.getMonth()) {
+              if (onlydate <= bookingdate.getDate()) {
+                currentbookings.push(booking);
+              }
             }
           }
         }
       }
+      
       // console.log(booking);
-    });
+});
     console.log(currentbookings.length);
 
     res.render("user_current-bookings", {
@@ -148,14 +150,26 @@ router.get("/payment", verifyToken, getusers, async function (req, res) {
       return res.status(404).send("Manager not found");
     }
     req.session.selectedManager = selectedManager;
-    // Render the payment page with the selected manager's data
+    const amount=req.session.amount;
+    if(service=='park'){
+      res.render("user_payment", {
+        user: req.user,
+        selectedManager,
+        servicecentre,
+        service,
+        lotno:req.session.lotno,
+        amount:amount
+      });
+    }
+    else{
     res.render("user_payment", {
       user: req.user,
       selectedManager,
       servicecentre,
       service,
+      lotno:req.session.lotno
     });
-  } catch (error) {
+  }} catch (error) {
     // Handle errors
     console.error("Error fetching manager:", error);
     res.status(500).send("Error fetching manager");
@@ -343,4 +357,15 @@ router.post("/user_preview", verifyToken, async function (req, res) {
   res.redirect("/users/profile");
 });
 
+router.post('/update-session-lotno', (req, res) => {
+
+  const { lotno } = req.body;
+  
+ console.log(lotno);
+  req.session.lotno = lotno;
+  console.log(lotno);
+  res.sendStatus(200); 
+});
 module.exports = router;
+
+

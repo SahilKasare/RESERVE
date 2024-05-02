@@ -87,6 +87,7 @@ exports.addmoney=async (req, res) => {
 
         
         await manager.save();
+      
     } catch (error) {
         res.status(500).json({ error: 'Internal server error' });
     }
