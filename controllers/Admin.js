@@ -1,7 +1,7 @@
 const User = require('../models/User.js');
 const Manager = require('../models/Manager.js');
 const Transaction =require('../models/Transaction.js')
-
+const Booking = require('../models/Booking.js')
 // export const getAdmin=async(req,res)=>{
 //     try{
 //      const {id}=req.params;
@@ -158,3 +158,47 @@ exports.Userdeleted = async (req, res) => {
       res.status(500).send("Internal Server Error");
     }
   }
+
+
+  exports.calculateBookingsByService = async (req,res) => {
+    try {
+      // Group bookings by service and calculate the count for each service
+    //   const bookingCounts = await Booking.aggregate([
+    //     { 
+    //       $group: {
+    //         _id: '$service',
+    //         count: { $sum: 1 }
+    //       }
+    //     }
+    //   ]);
+  
+    //   // Format the result into an object for easier access
+    //   const bookingsByService = {};
+    //   bookingCounts.forEach((item) => {
+    //     bookingsByService[item._id] = item.count;
+    //   });
+        const bookings = await Booking.find();
+    const bookingsByService = {
+        'parking': 0,
+        'ev charging': 0,
+        'cleaning': 0,
+        'inspection': 0,
+        'painting': 0
+    };
+
+    // Calculate total bookings for each service
+    bookings.forEach(booking => {
+        if(booking.service==="charging"){
+            bookingsByService["ev charging"]++;
+        }else{
+            bookingsByService[booking.service]++;
+        }
+        
+    });
+  
+      return bookingsByService;
+    } catch (error) {
+      console.error('Error calculating bookings by service:', error);
+      throw error;
+    }
+  };

@@ -182,6 +182,7 @@ justify-content: center;
         display: flex;
         flex-direction: column;
         margin-left: 15vw;
+        height: 100%;
     }
 .flex-r{
 display: flex;
@@ -416,3 +417,48 @@ margin-top:20px;
     gap:5px;
     align-items: center;
 }
+
+  
+  .top {
+    padding-left: 30px;
+    padding-top: 20px;
+    font-weight: 700;
+    font-size: 22px;
+    font-family: sans-serif;
+  }
+  
+  .time-ago-elements {
+    margin-top: 20px;
+    width: 40vw;
+  }
+  
+  .elements {
+    display: flex;
+    flex-direction: row;
+    padding-left: 30px;
+    padding-top: 1px;
+    font-weight: 300;
+    font-size: 15px;
+    font-family: sans-serif;
+    height: 50px;
+  }
+  
+  #element1 {
+    margin-top: 10px;
+    padding-left: 20px;
+    font-size: 20px;
+  }
+  
+  #element1 p {
+    margin-top: 6px;
+    font-size: 16px;
+    color: #6c7293;
+  }
+  
+  .time-ago {
+    position: absolute;
+    padding-top: 12px;
+    margin-left: 420px;
+    font-size: 22px;
+    color: #6c7293;
+  }

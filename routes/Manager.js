@@ -20,6 +20,13 @@ router.get("/dashboard",verifyToken, getmanagers, async(req, res) => {
       const weeklyProfit = await managers.calculateWeeklyProfit(req.manager._id);
       const totalBookings = await managers.calculateDailyBookings(req.manager._id);
 // In your routes/Manager.js file
+const bookingCounts = [
+  totalBookings.parking,
+  totalBookings.charging,
+  totalBookings.cleaning,
+  totalBookings.inspection,
+  totalBookings.painting
+];
 
   const today = new Date();
   today.setHours(0, 0, 0, 0); // Set hours, minutes, seconds, and milliseconds to 0 for comparison
@@ -41,13 +48,65 @@ router.get("/dashboard",verifyToken, getmanagers, async(req, res) => {
           manager: req.manager._id // Assuming req.manager contains the current manager's details
       });
 
+      const serviceRegistrations = await Booking.aggregate([
+        { 
+            $match: { 
+                manager: req.manager._id // Filter bookings by manager
+            } 
+        },
+        {
+            $group: {
+                _id: "$service",
+                count: { $sum: 1 } // Counting the number of bookings for each service
+            }
+        }
+    ]);
+
+      const serviceCounts = serviceRegistrations.map(service => ({
+        service: service._id,
+        count: service.count
+    }));
+
       // Calculate total amount
       const totalAmountToday = transactionsToday.reduce((total, transaction) => total + transaction.amount, 0);
+
+    const bookings = await Booking.find().populate(["user","manager"]);
+
+    const currbookings = [];
+
+    bookings.forEach(function(booking){
+      if(booking.manager!==null){
+        if(booking.manager._id===req.manager._id){
+          currbookings.push(booking);
+        }
+      }
+    });
+
+    const bookingsthisweek = [];
+    currbookings.forEach(function(booking){
+      const todayObj = new Date();
+      const todayDate = todayObj.getDate();
+      const todayDay = todayObj.getDay();
+      const managerdate = booking.date;
+      // get first date of week
+      const firstDayOfWeek = new Date(todayObj.setDate(todayDate - todayDay));
+
+      // get last date of week
+      const lastDayOfWeek = new Date(firstDayOfWeek);
+      lastDayOfWeek.setDate(lastDayOfWeek.getDate() + 6);
+
+      // if date is equal or within the first and last dates of the week
+      if(managerdatedate >= firstDayOfWeek && managerdate <= lastDayOfWeek){
+        bookingsthisweek.push(booking);
+      }
+    })
+    
 
       res.render('manager_dashboard', {
           manager: req.manager,
           userRegistrationsToday,
-          totalAmountToday, weeklyProfit: weeklyProfit, totalBookings: totalBookings});
+          serviceCounts: serviceCounts,
+          totalAmountToday, weeklyProfit: weeklyProfit, totalBookings: totalBookings, bookingsthisweek : bookingsthisweek} );
   } catch (error) {
       console.error("Error fetching data:", error);
       res.status(500).json({ error: 'Internal server error' });
