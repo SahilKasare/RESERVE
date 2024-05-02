@@ -197,7 +197,7 @@ router.get("/paymentSuccessful",verifyToken,getusers,async function (req, res) {
       price = manager.services.cleaning.price_carwash;
       fromtime = servicecentre.time;
     } else if (service === "charge") {
-      service = "charging";
+      service = "ev charging";
       price = manager.services.charging.charging_price;
       totime = servicecentre.to;
       fromtime = servicecentre.from;

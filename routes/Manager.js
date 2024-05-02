@@ -70,11 +70,43 @@ const bookingCounts = [
       // Calculate total amount
       const totalAmountToday = transactionsToday.reduce((total, transaction) => total + transaction.amount, 0);
 
+    const bookings = await Booking.find().populate(["user","manager"]);
+
+    const currbookings = [];
+
+    bookings.forEach(function(booking){
+      if(booking.manager!==null){
+        if(booking.manager._id===req.manager._id){
+          currbookings.push(booking);
+        }
+      }
+    });
+
+    const bookingsthisweek = [];
+    currbookings.forEach(function(booking){
+      const todayObj = new Date();
+      const todayDate = todayObj.getDate();
+      const todayDay = todayObj.getDay();
+      const managerdate = booking.date;
+      // get first date of week
+      const firstDayOfWeek = new Date(todayObj.setDate(todayDate - todayDay));
+
+      // get last date of week
+      const lastDayOfWeek = new Date(firstDayOfWeek);
+      lastDayOfWeek.setDate(lastDayOfWeek.getDate() + 6);
+
+      // if date is equal or within the first and last dates of the week
+      if(managerdatedate >= firstDayOfWeek && managerdate <= lastDayOfWeek){
+        bookingsthisweek.push(booking);
+      }
+    })
+    
+
       res.render('manager_dashboard', {
           manager: req.manager,
           userRegistrationsToday,
           serviceCounts: serviceCounts,
-          totalAmountToday, weeklyProfit: weeklyProfit, totalBookings: totalBookings});
+          totalAmountToday, weeklyProfit: weeklyProfit, totalBookings: totalBookings, bookingsthisweek : bookingsthisweek} );
   } catch (error) {
       console.error("Error fetching data:", error);
       res.status(500).json({ error: 'Internal server error' });
