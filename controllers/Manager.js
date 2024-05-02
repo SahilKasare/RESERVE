@@ -1,6 +1,7 @@
 const Manager = require('../models/Manager.js');
 const Transaction =require('../models/Transaction');
 const Booking =require('../models/Booking');
+const e = require('express');
 
 exports.getManager=async(req,res)=>{
     try{
@@ -154,7 +155,7 @@ exports.calculateDailyBookings = async (managerId) => {
         // Initialize an object to store total bookings for each service
         const totalBookings = {
             'parking': 0,
-            'ev charging': 0,
+            'charging': 0,
             'cleaning': 0,
             'inspection': 0,
             'painting': 0
@@ -162,12 +163,7 @@ exports.calculateDailyBookings = async (managerId) => {
 
         // Calculate total bookings for each service
         bookings.forEach(booking => {
-            if(booking.service==="charging"){
-                totalbookings["ev charging"]++;
-            }else{
-                totalBookings[booking.service]++;
-            }
-            
+            totalBookings[booking.service]++;
         });
 
         return totalBookings;

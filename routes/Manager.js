@@ -20,6 +20,13 @@ router.get("/dashboard",verifyToken, getmanagers, async(req, res) => {
       const weeklyProfit = await managers.calculateWeeklyProfit(req.manager._id);
       const totalBookings = await managers.calculateDailyBookings(req.manager._id);
 // In your routes/Manager.js file
+const bookingCounts = [
+  totalBookings.parking,
+  totalBookings.charging,
+  totalBookings.cleaning,
+  totalBookings.inspection,
+  totalBookings.painting
+];
 
   const today = new Date();
   today.setHours(0, 0, 0, 0); // Set hours, minutes, seconds, and milliseconds to 0 for comparison
@@ -41,12 +48,32 @@ router.get("/dashboard",verifyToken, getmanagers, async(req, res) => {
           manager: req.manager._id // Assuming req.manager contains the current manager's details
       });
 
+      const serviceRegistrations = await Booking.aggregate([
+        { 
+            $match: { 
+                manager: req.manager._id // Filter bookings by manager
+            } 
+        },
+        {
+            $group: {
+                _id: "$service",
+                count: { $sum: 1 } // Counting the number of bookings for each service
+            }
+        }
+    ]);
+
+      const serviceCounts = serviceRegistrations.map(service => ({
+        service: service._id,
+        count: service.count
+    }));
+
       // Calculate total amount
       const totalAmountToday = transactionsToday.reduce((total, transaction) => total + transaction.amount, 0);
 
       res.render('manager_dashboard', {
           manager: req.manager,
           userRegistrationsToday,
+          serviceCounts: serviceCounts,
           totalAmountToday, weeklyProfit: weeklyProfit, totalBookings: totalBookings});
   } catch (error) {
       console.error("Error fetching data:", error);
