@@ -131,11 +131,14 @@ router.post("/carpaint", user.getcarpaintingService);
 router.get("/got_centers", verifyToken, getusers, async function (req, res) {
   const managers = req.session.managers || [];
   const service = req.session.service;
+  const servicecentre = req.session.servicecentre;
   res.render("user_got_centers", {
     user: req.user,
     managers: managers,
     service: service,
+    servicecentre: servicecentre,
   });
+  // console.log(servicecentre);
 });
 router.post('/book_park',book_park);
 router.get("/logout", userLogout);
@@ -196,7 +199,7 @@ router.get("/paymentSuccessful",verifyToken,getusers,async function (req, res) {
 
     if (service === "park") {
       service = "parking";
-      price = manager.services.parking.parking_price;
+      price = manager.services.parking.parking_price * (servicecentre.to - servicecentre.from);
       totime = servicecentre.to;
       fromtime = servicecentre.from;
       parkslotnum = manager.service.parking.parking_slot_number;
@@ -206,7 +209,7 @@ router.get("/paymentSuccessful",verifyToken,getusers,async function (req, res) {
       fromtime = servicecentre.time;
     } else if (service === "charge") {
       service = "charging";
-      price = manager.services.charging.charging_price;
+      price = manager.services.charging.charging_price * (servicecentre.to - servicecentre.from);
       totime = servicecentre.to;
       fromtime = servicecentre.from;
     } else if (service === "inspection") {

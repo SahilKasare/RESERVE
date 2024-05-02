@@ -30,7 +30,8 @@ router.get("/dashboard",verifyToken, getmanagers, async(req, res) => {
       // Fetch user registrations today
       const userRegistrationsToday = await Transaction.countDocuments({
           incoming_user: true,
-          registration_date: { $gte: today, $lt: tomorrow }
+          registration_date: { $gte: today, $lt: tomorrow },
+          manager: req.manager._id
       });
 
       // Fetch transactions where registration date is today and incoming manager ID matches
@@ -67,6 +68,15 @@ router.get("/bookings",verifyToken,async(req, res) => {
             res.render('manager_bookings', {manager: manager, bookings: bookings});
         })
 });
+
+router.post('/deleteBooking', verifyToken, managers.Bookingdeleted, async(req, res) => {
+  const token = req.cookies.authorization;
+  const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const manager = await Manager.findById(decoded.id).select('-password');
+    if (!manager) {
+      return res.status(404).json({ error: "Manager not found" });
+    }
+  });
 
 router.get("/schedule",verifyToken,async(req, res) => {
   const token = req.cookies.authorization;

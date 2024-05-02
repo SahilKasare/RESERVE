@@ -23,26 +23,41 @@
       href="/Images/favicon_io/favicon-16x16.png"
     />
     <link rel="manifest" href="/Images/favicon_io/site.webmanifest" />
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+    rel="stylesheet"
+    />
   </head>
 
 
 
   <body>
     <header>
-        <div class="profile">
-          <img src="/Images/profile face.jpg" alt="Profile Picture" />
-          <span>Yadnyesh</span>
-        </div>
+      <div class="profile">
+        <img src="/Images/Uploads/<%= manager.profile_pic %>" alt="" />
+        <span> <%= manager.name %> </span>
+      </div>
       </header>
     <div id="sidebar">
         <div class="logo">
           <img src="/Images/newlogog.png" alt="Logo" />
         </div>
         <div class="profile-sidebar">
-          <img src="/Images/profile face.jpg" alt="Profile Picture" />
+          <form id="uploadform" style="display: none;" action="/managers/fileupload" method="post" enctype="multipart/form-data">
+            <input type="file" name="image" style="display: block; margin-bottom: 10px;">
+          </form>
+  
+          <div style="position: relative;">
+              <span id="uploadicon" style="width: 1.5rem; height: 1.5rem; position: absolute; bottom: 0; right: 0; display: flex; align-items: center; justify-content: center; background-color: #bfc5cd; border-radius: 9999px; cursor: pointer;">
+                  <i class="text-zinc-800 ri-edit-fill"></i>
+              </span>
+              <div style="width: 4rem; height: 4rem; border-radius: 9999px; background-color: #fff; overflow: hidden;">
+                  <img style="width: 100%; height: 100%; object-fit: cover;" src="/Images/Uploads/<%= manager.profile_pic %>" alt="">
+              </div>
+          </div>
           <div class="pmanager">
             <span style="font-size: 20px; padding-left: 10px; padding-bottom: 3px"
-              >Yadnyesh</span
+              ><%= manager.username %></span
             >
             <span
               style="
@@ -128,7 +143,7 @@
               <div class="side-align-2">Services</div>
             </li></a
           >
-          <a href="/managers/schedule" style="text-decoration: none"
+          <!-- <a href="/managers/schedule" style="text-decoration: none"
             ><li class="sidebar-3">
               <svg
                 viewBox="0 0 24 24"
@@ -155,7 +170,7 @@
               </svg>
               <div class="side-align-3">Schedule</div>
             </li></a
-          >
+          > -->
           <a href="/managers/wallet" style="text-decoration: none"
             ><li class="sidebar-4">
               <svg

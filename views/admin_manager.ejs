@@ -84,13 +84,13 @@
       </div>
       <div class="downpage">
         
-        
+        <% managers.forEach(manager => { %>
         <div class="box3">
 
 
         <div class="profpcon">
           <div style="display:flex ; align-items:centre;gap:1vw;">
-      <img id="img2"src="./profilepic.webp">
+      <img id="img2"src="/Images/managers/<%=manager.profilePic%>">
           <div style="margin-top:1.3vh;"><%=manager.name%></div></div>
          <div style="display: flex; gap:1.5vw ;margin-right:3vw"> <div class="email"><svg viewBox="0 0 24 24" height="4vh" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21 8L17.4392 9.97822C15.454 11.0811 14.4614 11.6326 13.4102 11.8488C12.4798 12.0401 11.5202 12.0401 10.5898 11.8488C9.53864 11.6326 8.54603 11.0811 6.5608 9.97822L3 8M6.2 19H17.8C18.9201 19 19.4802 19 19.908 18.782C20.2843 18.5903 20.5903 18.2843 20.782 17.908C21 17.4802 21 16.9201 21 15.8V8.2C21 7.0799 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V15.8C3 16.9201 3 17.4802 3.21799 17.908C3.40973 18.2843 3.71569 18.5903 4.09202 18.782C4.51984 19 5.07989 19 6.2 19Z" stroke="#6C7293" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg><%=manager.email%></div>
         <div class="contact"><svg viewBox="0 0 24 24" height="4vh" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 5.5C3 14.0604 9.93959 21 18.5 21C18.8862 21 19.2691 20.9859 19.6483 20.9581C20.0834 20.9262 20.3009 20.9103 20.499 20.7963C20.663 20.7019 20.8185 20.5345 20.9007 20.364C21 20.1582 21 19.9181 21 19.438V16.6207C21 16.2169 21 16.015 20.9335 15.842C20.8749 15.6891 20.7795 15.553 20.6559 15.4456C20.516 15.324 20.3262 15.255 19.9468 15.117L16.74 13.9509C16.2985 13.7904 16.0777 13.7101 15.8683 13.7237C15.6836 13.7357 15.5059 13.7988 15.3549 13.9058C15.1837 14.0271 15.0629 14.2285 14.8212 14.6314L14 16C11.3501 14.7999 9.2019 12.6489 8 10L9.36863 9.17882C9.77145 8.93713 9.97286 8.81628 10.0942 8.64506C10.2012 8.49408 10.2643 8.31637 10.2763 8.1317C10.2899 7.92227 10.2096 7.70153 10.0491 7.26005L8.88299 4.05321C8.745 3.67376 8.67601 3.48403 8.55442 3.3441C8.44701 3.22049 8.31089 3.12515 8.15802 3.06645C7.98496 3 7.78308 3 7.37932 3H4.56201C4.08188 3 3.84181 3 3.63598 3.09925C3.4655 3.18146 3.29814 3.33701 3.2037 3.50103C3.08968 3.69907 3.07375 3.91662 3.04189 4.35173C3.01413 4.73086 3 5.11378 3 5.5Z" stroke="#6C7293" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg> <%=manager.contact%></div>
@@ -100,19 +100,18 @@
         <div class="manager"><element style="color: #6C7293;"> username:</element><element><%=manager.username%></element></div>
         <div class="manager"><element style="color: #6C7293;"> Location:</element><element><%=manager.location%></element></div>
         <div class="manager"><element style="color: #6C7293;"> Company:</element><element><%=manager.companyName%></element></div>
+        <div style="display: flex; flex-direction: column;">
+          <form action="/admin/deleteManager" method="POST">
+            <input type="hidden" name="managerId" value="<%=manager._id%>">
+            <button type="submit">Delete</button>
+          </form>
+          <button>Update</button>
+        </div>
     </div>
-    <element style="color: #6C7293; font-size: large; margin-left: 8.5vh;margin-top:2.5vh;"> Services Offered</element>
+    <!-- <element style="color: #6C7293; font-size: large; margin-left: 8.5vh;margin-top:2.5vh;"> Services Offered</element> -->
 
-     <div class ="services">  
-      <div class="column1">
-        <div style="display:flex ;gap:0.7vw" ><svg height="30px"fill="#6C7293" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="#6C7293"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M12,6H9A1,1,0,0,0,8,7V17a1,1,0,0,0,2,0V14h2a4,4,0,0,0,0-8Zm0,6H10V8h2a2,2,0,0,1,0,4ZM19,2H5A3,3,0,0,0,2,5V19a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V5A3,3,0,0,0,19,2Zm1,17a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V5A1,1,0,0,1,5,4H19a1,1,0,0,1,1,1Z"></path></g></svg>Car parking</div>
-        <div  style="display:flex ;gap:0.7vw;margin-top: 7px;"><svg height="25px"fill="#6C7293" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 511.999 511.999" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <circle cx="328.647" cy="39.066" r="9.1"></circle> </g> </g> <g> <g> <circle cx="388.583" cy="9.1" r="9.1"></circle> </g> </g> <g> <g> <circle cx="388.583" cy="69.028" r="9.1"></circle> </g> </g> <g> <g> <circle cx="388.583" cy="39.066" r="9.1"></circle> </g> </g> <g> <g> <circle cx="358.62" cy="54.049" r="9.1"></circle> </g> </g> <g> <g> <circle cx="358.62" cy="24.083" r="9.1"></circle> </g> </g> <g> <g> <path d="M343.424,153.802c-1.653-41.12-35.495-73.952-77.02-73.952h-63.789c-41.525,0-75.367,32.832-77.02,73.952h-11.278v47.677 h240.385v-47.677H343.424z"></path> </g> </g> <g> <g> <rect x="203.958" y="0.019" width="61.11" height="46.434"></rect> </g> </g> <g> <g> <polygon points="343.504,266.595 343.504,234.869 125.514,234.869 125.514,430.933 343.504,430.933 343.504,399.207 234.508,399.207 234.508,266.595 "></polygon> </g> </g> <g> <g> <rect x="114.316" y="464.322" width="240.386" height="47.677"></rect> </g> </g> </g></svg>Denting & Painting</div>
-      </div>
-      <div class="column1">
-        <div  style="display:flex ;gap:0.7vw"><svg fill="#6C7293" viewBox="0 0 24 24"height="30px" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M7.5,4a1,1,0,0,0,.71-.29l1-1A1,1,0,0,0,7.79,1.29l-1,1a1,1,0,0,0,0,1.42A1,1,0,0,0,7.5,4Zm4,0a1,1,0,0,0,.71-.29l1-1a1,1,0,1,0-1.42-1.42l-1,1a1,1,0,0,0,0,1.42A1,1,0,0,0,11.5,4Zm4,0a1,1,0,0,0,.71-.29l1-1a1,1,0,1,0-1.42-1.42l-1,1a1,1,0,0,0,0,1.42A1,1,0,0,0,15.5,4Zm2.42,11.62a.76.76,0,0,0-.09-.18l-.12-.15-.15-.12a.76.76,0,0,0-.18-.09.6.6,0,0,0-.19-.06,1,1,0,0,0-.9.27,1.58,1.58,0,0,0-.12.15.76.76,0,0,0-.09.18.64.64,0,0,0-.06.18,1.36,1.36,0,0,0,0,.2,1,1,0,0,0,.29.7.91.91,0,0,0,.33.22A1,1,0,0,0,17,17a1,1,0,0,0,1-1,1.36,1.36,0,0,0,0-.2A.64.64,0,0,0,17.92,15.62Zm1.84-4.51L18.4,7.05a3,3,0,0,0-2.84-2H8.44A3,3,0,0,0,5.6,7.05L4.24,11.11A3,3,0,0,0,2,14v4a3,3,0,0,0,2,2.82V22a1,1,0,0,0,2,0V21H18v1a1,1,0,0,0,2,0V20.82A3,3,0,0,0,22,18V14A3,3,0,0,0,19.76,11.11ZM7.49,7.68A1,1,0,0,1,8.44,7h7.12a1,1,0,0,1,1,.68L17.61,11H6.39ZM20,18a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V14a1,1,0,0,1,1-1H19a1,1,0,0,1,1,1Zm-7-3H11a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Zm-5.08.62a.76.76,0,0,0-.09-.18l-.12-.15a1,1,0,0,0-1.09-.21,1,1,0,0,0-.33.21,1.58,1.58,0,0,0-.12.15.76.76,0,0,0-.09.18A.64.64,0,0,0,6,15.8,1.36,1.36,0,0,0,6,16a1,1,0,0,0,1.71.7A1,1,0,0,0,8,16a1.36,1.36,0,0,0,0-.2A.64.64,0,0,0,7.92,15.62Z"></path></g></svg> Car Washing</div>
-        <div  style="display:flex ;gap:0.7vw;margin-top: 7px;"><svg height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21 5V9" stroke="#6C7293" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M5 19V9C5 7.89543 5.89543 7 7 7H16C17.1046 7 18 7.89543 18 9V19C18 20.1046 17.1046 21 16 21H7C5.89543 21 5 20.1046 5 19Z" stroke="#6C7293" stroke-width="1.5"></path> <path d="M5 10V5C5 3.89543 5.89543 3 7 3H16C17.1046 3 18 3.89543 18 5V10" stroke="#6C7293" stroke-width="1.5"></path> <path d="M11.1667 11L9.5 14H13.5L11.8333 17" stroke="#6C7293" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>EV Charging</div>
-      </div>
-     </div>
+
+    
 
      
 
@@ -121,77 +120,7 @@
 
     </div>
 
-
-
-    <div class="box3">
-      <div class="profpcon">
-        <div style="display:flex ; align-items:centre;gap:1vw;">
-    <img id="img2"src="./profilepic.webp">
-        <div style="margin-top:1.3vh;"> Tanmay Bhat</div></div>
-       <div style="display: flex; gap:1.5vw ;margin-right:3vw"> <div class="email"><svg viewBox="0 0 24 24" height="4vh" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21 8L17.4392 9.97822C15.454 11.0811 14.4614 11.6326 13.4102 11.8488C12.4798 12.0401 11.5202 12.0401 10.5898 11.8488C9.53864 11.6326 8.54603 11.0811 6.5608 9.97822L3 8M6.2 19H17.8C18.9201 19 19.4802 19 19.908 18.782C20.2843 18.5903 20.5903 18.2843 20.782 17.908C21 17.4802 21 16.9201 21 15.8V8.2C21 7.0799 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V15.8C3 16.9201 3 17.4802 3.21799 17.908C3.40973 18.2843 3.71569 18.5903 4.09202 18.782C4.51984 19 5.07989 19 6.2 19Z" stroke="#6C7293" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>tanmay@gmail.com  </div>
-      <div class="contact"><svg viewBox="0 0 24 24" height="4vh" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 5.5C3 14.0604 9.93959 21 18.5 21C18.8862 21 19.2691 20.9859 19.6483 20.9581C20.0834 20.9262 20.3009 20.9103 20.499 20.7963C20.663 20.7019 20.8185 20.5345 20.9007 20.364C21 20.1582 21 19.9181 21 19.438V16.6207C21 16.2169 21 16.015 20.9335 15.842C20.8749 15.6891 20.7795 15.553 20.6559 15.4456C20.516 15.324 20.3262 15.255 19.9468 15.117L16.74 13.9509C16.2985 13.7904 16.0777 13.7101 15.8683 13.7237C15.6836 13.7357 15.5059 13.7988 15.3549 13.9058C15.1837 14.0271 15.0629 14.2285 14.8212 14.6314L14 16C11.3501 14.7999 9.2019 12.6489 8 10L9.36863 9.17882C9.77145 8.93713 9.97286 8.81628 10.0942 8.64506C10.2012 8.49408 10.2643 8.31637 10.2763 8.1317C10.2899 7.92227 10.2096 7.70153 10.0491 7.26005L8.88299 4.05321C8.745 3.67376 8.67601 3.48403 8.55442 3.3441C8.44701 3.22049 8.31089 3.12515 8.15802 3.06645C7.98496 3 7.78308 3 7.37932 3H4.56201C4.08188 3 3.84181 3 3.63598 3.09925C3.4655 3.18146 3.29814 3.33701 3.2037 3.50103C3.08968 3.69907 3.07375 3.91662 3.04189 4.35173C3.01413 4.73086 3 5.11378 3 5.5Z" stroke="#6C7293" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg> 98675789</div>
-    </div></div>
-    <hr style="width:90%;">
-    <div style="display: flex; align-items: center;" class="info">
-      <div class="manager"><element style="color: #6C7293;"> ManagerID:</element><element>B322</element></div>
-      <div class="manager"><element style="color: #6C7293;"> Location:</element><element>Velachary</element></div>
-      <div class="manager"><element style="color: #6C7293;"> Company:</element><element>CarMaker Pvt.Ltd</element></div>
-  </div>
-  <element style="color: #6C7293; font-size: large; margin-left: 8.5vh;margin-top:2.5vh;"> Services Offered</element>
-
-   <div class ="services">  
-    <div class="column1">
-      <div style="display:flex ;gap:0.7vw" ><svg height="30px"fill="#6C7293" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="#6C7293"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M12,6H9A1,1,0,0,0,8,7V17a1,1,0,0,0,2,0V14h2a4,4,0,0,0,0-8Zm0,6H10V8h2a2,2,0,0,1,0,4ZM19,2H5A3,3,0,0,0,2,5V19a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V5A3,3,0,0,0,19,2Zm1,17a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V5A1,1,0,0,1,5,4H19a1,1,0,0,1,1,1Z"></path></g></svg>Car parking</div>
-      <div  style="display:flex ;gap:0.7vw;margin-top: 7px;"><svg height="25px"fill="#6C7293" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 511.999 511.999" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <circle cx="328.647" cy="39.066" r="9.1"></circle> </g> </g> <g> <g> <circle cx="388.583" cy="9.1" r="9.1"></circle> </g> </g> <g> <g> <circle cx="388.583" cy="69.028" r="9.1"></circle> </g> </g> <g> <g> <circle cx="388.583" cy="39.066" r="9.1"></circle> </g> </g> <g> <g> <circle cx="358.62" cy="54.049" r="9.1"></circle> </g> </g> <g> <g> <circle cx="358.62" cy="24.083" r="9.1"></circle> </g> </g> <g> <g> <path d="M343.424,153.802c-1.653-41.12-35.495-73.952-77.02-73.952h-63.789c-41.525,0-75.367,32.832-77.02,73.952h-11.278v47.677 h240.385v-47.677H343.424z"></path> </g> </g> <g> <g> <rect x="203.958" y="0.019" width="61.11" height="46.434"></rect> </g> </g> <g> <g> <polygon points="343.504,266.595 343.504,234.869 125.514,234.869 125.514,430.933 343.504,430.933 343.504,399.207 234.508,399.207 234.508,266.595 "></polygon> </g> </g> <g> <g> <rect x="114.316" y="464.322" width="240.386" height="47.677"></rect> </g> </g> </g></svg>Denting & Painting</div>
-    </div>
-    <div class="column1">
-      <div  style="display:flex ;gap:0.7vw"><svg fill="#6C7293" viewBox="0 0 24 24"height="30px" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M7.5,4a1,1,0,0,0,.71-.29l1-1A1,1,0,0,0,7.79,1.29l-1,1a1,1,0,0,0,0,1.42A1,1,0,0,0,7.5,4Zm4,0a1,1,0,0,0,.71-.29l1-1a1,1,0,1,0-1.42-1.42l-1,1a1,1,0,0,0,0,1.42A1,1,0,0,0,11.5,4Zm4,0a1,1,0,0,0,.71-.29l1-1a1,1,0,1,0-1.42-1.42l-1,1a1,1,0,0,0,0,1.42A1,1,0,0,0,15.5,4Zm2.42,11.62a.76.76,0,0,0-.09-.18l-.12-.15-.15-.12a.76.76,0,0,0-.18-.09.6.6,0,0,0-.19-.06,1,1,0,0,0-.9.27,1.58,1.58,0,0,0-.12.15.76.76,0,0,0-.09.18.64.64,0,0,0-.06.18,1.36,1.36,0,0,0,0,.2,1,1,0,0,0,.29.7.91.91,0,0,0,.33.22A1,1,0,0,0,17,17a1,1,0,0,0,1-1,1.36,1.36,0,0,0,0-.2A.64.64,0,0,0,17.92,15.62Zm1.84-4.51L18.4,7.05a3,3,0,0,0-2.84-2H8.44A3,3,0,0,0,5.6,7.05L4.24,11.11A3,3,0,0,0,2,14v4a3,3,0,0,0,2,2.82V22a1,1,0,0,0,2,0V21H18v1a1,1,0,0,0,2,0V20.82A3,3,0,0,0,22,18V14A3,3,0,0,0,19.76,11.11ZM7.49,7.68A1,1,0,0,1,8.44,7h7.12a1,1,0,0,1,1,.68L17.61,11H6.39ZM20,18a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V14a1,1,0,0,1,1-1H19a1,1,0,0,1,1,1Zm-7-3H11a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Zm-5.08.62a.76.76,0,0,0-.09-.18l-.12-.15a1,1,0,0,0-1.09-.21,1,1,0,0,0-.33.21,1.58,1.58,0,0,0-.12.15.76.76,0,0,0-.09.18A.64.64,0,0,0,6,15.8,1.36,1.36,0,0,0,6,16a1,1,0,0,0,1.71.7A1,1,0,0,0,8,16a1.36,1.36,0,0,0,0-.2A.64.64,0,0,0,7.92,15.62Z"></path></g></svg> Car Washing</div>
-      <div  style="display:flex ;gap:0.7vw;margin-top: 7px;"><svg height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21 5V9" stroke="#6C7293" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M5 19V9C5 7.89543 5.89543 7 7 7H16C17.1046 7 18 7.89543 18 9V19C18 20.1046 17.1046 21 16 21H7C5.89543 21 5 20.1046 5 19Z" stroke="#6C7293" stroke-width="1.5"></path> <path d="M5 10V5C5 3.89543 5.89543 3 7 3H16C17.1046 3 18 3.89543 18 5V10" stroke="#6C7293" stroke-width="1.5"></path> <path d="M11.1667 11L9.5 14H13.5L11.8333 17" stroke="#6C7293" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>EV Charging</div>
-    </div>
-   </div>
-
-   
-
-   
-  
-
-  </div>
-  
-  <div class="box3">
-    <div class="profpcon">
-      <div style="display:flex ; align-items:centre;gap:1vw;">
-  <img id="img2"src="../Images/profilepic.webp">
-      <div style="margin-top:1.3vh;">Kartik Gupta</div></div>
-     <div style="display: flex; gap:1.5vw ;margin-right:3vw"> <div class="email"><svg viewBox="0 0 24 24" height="4vh" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21 8L17.4392 9.97822C15.454 11.0811 14.4614 11.6326 13.4102 11.8488C12.4798 12.0401 11.5202 12.0401 10.5898 11.8488C9.53864 11.6326 8.54603 11.0811 6.5608 9.97822L3 8M6.2 19H17.8C18.9201 19 19.4802 19 19.908 18.782C20.2843 18.5903 20.5903 18.2843 20.782 17.908C21 17.4802 21 16.9201 21 15.8V8.2C21 7.0799 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V15.8C3 16.9201 3 17.4802 3.21799 17.908C3.40973 18.2843 3.71569 18.5903 4.09202 18.782C4.51984 19 5.07989 19 6.2 19Z" stroke="#6C7293" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>kartik@gmail.com  </div>
-    <div class="contact"><svg viewBox="0 0 24 24" height="4vh" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 5.5C3 14.0604 9.93959 21 18.5 21C18.8862 21 19.2691 20.9859 19.6483 20.9581C20.0834 20.9262 20.3009 20.9103 20.499 20.7963C20.663 20.7019 20.8185 20.5345 20.9007 20.364C21 20.1582 21 19.9181 21 19.438V16.6207C21 16.2169 21 16.015 20.9335 15.842C20.8749 15.6891 20.7795 15.553 20.6559 15.4456C20.516 15.324 20.3262 15.255 19.9468 15.117L16.74 13.9509C16.2985 13.7904 16.0777 13.7101 15.8683 13.7237C15.6836 13.7357 15.5059 13.7988 15.3549 13.9058C15.1837 14.0271 15.0629 14.2285 14.8212 14.6314L14 16C11.3501 14.7999 9.2019 12.6489 8 10L9.36863 9.17882C9.77145 8.93713 9.97286 8.81628 10.0942 8.64506C10.2012 8.49408 10.2643 8.31637 10.2763 8.1317C10.2899 7.92227 10.2096 7.70153 10.0491 7.26005L8.88299 4.05321C8.745 3.67376 8.67601 3.48403 8.55442 3.3441C8.44701 3.22049 8.31089 3.12515 8.15802 3.06645C7.98496 3 7.78308 3 7.37932 3H4.56201C4.08188 3 3.84181 3 3.63598 3.09925C3.4655 3.18146 3.29814 3.33701 3.2037 3.50103C3.08968 3.69907 3.07375 3.91662 3.04189 4.35173C3.01413 4.73086 3 5.11378 3 5.5Z" stroke="#6C7293" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg> 9239475634</div>
-  </div></div>
-  <hr style="width:90%;">
-  <div style="display: flex; align-items: center;" class="info">
-    <div class="manager"><element style="color: #6C7293;"> ManagerID:</element><element>B348</element></div>
-    <div class="manager"><element style="color: #6C7293;"> Location:</element><element>Wimco Nagar</element></div>
-    <div class="manager"><element style="color: #6C7293;"> Company:</element><element>OnlyCars Pvt.Ltd</element></div>
-</div>
-<element style="color: #6C7293; font-size: large; margin-left: 8.5vh;margin-top:2.5vh;"> Services Offered</element>
-
- <div class ="services">  
-  <div class="column1">
-    <div style="display:flex ;gap:0.7vw" ><svg height="30px"fill="#6C7293" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="#6C7293"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M12,6H9A1,1,0,0,0,8,7V17a1,1,0,0,0,2,0V14h2a4,4,0,0,0,0-8Zm0,6H10V8h2a2,2,0,0,1,0,4ZM19,2H5A3,3,0,0,0,2,5V19a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V5A3,3,0,0,0,19,2Zm1,17a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V5A1,1,0,0,1,5,4H19a1,1,0,0,1,1,1Z"></path></g></svg>Car parking</div>
-    <div  style="display:flex ;gap:0.7vw;margin-top: 7px;"><svg height="25px"fill="#6C7293" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 511.999 511.999" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <circle cx="328.647" cy="39.066" r="9.1"></circle> </g> </g> <g> <g> <circle cx="388.583" cy="9.1" r="9.1"></circle> </g> </g> <g> <g> <circle cx="388.583" cy="69.028" r="9.1"></circle> </g> </g> <g> <g> <circle cx="388.583" cy="39.066" r="9.1"></circle> </g> </g> <g> <g> <circle cx="358.62" cy="54.049" r="9.1"></circle> </g> </g> <g> <g> <circle cx="358.62" cy="24.083" r="9.1"></circle> </g> </g> <g> <g> <path d="M343.424,153.802c-1.653-41.12-35.495-73.952-77.02-73.952h-63.789c-41.525,0-75.367,32.832-77.02,73.952h-11.278v47.677 h240.385v-47.677H343.424z"></path> </g> </g> <g> <g> <rect x="203.958" y="0.019" width="61.11" height="46.434"></rect> </g> </g> <g> <g> <polygon points="343.504,266.595 343.504,234.869 125.514,234.869 125.514,430.933 343.504,430.933 343.504,399.207 234.508,399.207 234.508,266.595 "></polygon> </g> </g> <g> <g> <rect x="114.316" y="464.322" width="240.386" height="47.677"></rect> </g> </g> </g></svg>Denting & Painting</div>
-  </div>
-  <div class="column1">
-    <div  style="display:flex ;gap:0.7vw"><svg fill="#6C7293" viewBox="0 0 24 24"height="30px" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M7.5,4a1,1,0,0,0,.71-.29l1-1A1,1,0,0,0,7.79,1.29l-1,1a1,1,0,0,0,0,1.42A1,1,0,0,0,7.5,4Zm4,0a1,1,0,0,0,.71-.29l1-1a1,1,0,1,0-1.42-1.42l-1,1a1,1,0,0,0,0,1.42A1,1,0,0,0,11.5,4Zm4,0a1,1,0,0,0,.71-.29l1-1a1,1,0,1,0-1.42-1.42l-1,1a1,1,0,0,0,0,1.42A1,1,0,0,0,15.5,4Zm2.42,11.62a.76.76,0,0,0-.09-.18l-.12-.15-.15-.12a.76.76,0,0,0-.18-.09.6.6,0,0,0-.19-.06,1,1,0,0,0-.9.27,1.58,1.58,0,0,0-.12.15.76.76,0,0,0-.09.18.64.64,0,0,0-.06.18,1.36,1.36,0,0,0,0,.2,1,1,0,0,0,.29.7.91.91,0,0,0,.33.22A1,1,0,0,0,17,17a1,1,0,0,0,1-1,1.36,1.36,0,0,0,0-.2A.64.64,0,0,0,17.92,15.62Zm1.84-4.51L18.4,7.05a3,3,0,0,0-2.84-2H8.44A3,3,0,0,0,5.6,7.05L4.24,11.11A3,3,0,0,0,2,14v4a3,3,0,0,0,2,2.82V22a1,1,0,0,0,2,0V21H18v1a1,1,0,0,0,2,0V20.82A3,3,0,0,0,22,18V14A3,3,0,0,0,19.76,11.11ZM7.49,7.68A1,1,0,0,1,8.44,7h7.12a1,1,0,0,1,1,.68L17.61,11H6.39ZM20,18a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V14a1,1,0,0,1,1-1H19a1,1,0,0,1,1,1Zm-7-3H11a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Zm-5.08.62a.76.76,0,0,0-.09-.18l-.12-.15a1,1,0,0,0-1.09-.21,1,1,0,0,0-.33.21,1.58,1.58,0,0,0-.12.15.76.76,0,0,0-.09.18A.64.64,0,0,0,6,15.8,1.36,1.36,0,0,0,6,16a1,1,0,0,0,1.71.7A1,1,0,0,0,8,16a1.36,1.36,0,0,0,0-.2A.64.64,0,0,0,7.92,15.62Z"></path></g></svg> Car Washing</div>
-    <div  style="display:flex ;gap:0.7vw;margin-top: 7px;"><svg height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21 5V9" stroke="#6C7293" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M5 19V9C5 7.89543 5.89543 7 7 7H16C17.1046 7 18 7.89543 18 9V19C18 20.1046 17.1046 21 16 21H7C5.89543 21 5 20.1046 5 19Z" stroke="#6C7293" stroke-width="1.5"></path> <path d="M5 10V5C5 3.89543 5.89543 3 7 3H16C17.1046 3 18 3.89543 18 5V10" stroke="#6C7293" stroke-width="1.5"></path> <path d="M11.1667 11L9.5 14H13.5L11.8333 17" stroke="#6C7293" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>EV Charging</div>
-  </div>
- </div>
-
- 
-
- 
-
-
-</div>
-
-    
+    <% }); %>
     </div>
 
     

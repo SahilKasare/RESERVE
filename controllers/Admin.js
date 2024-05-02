@@ -132,3 +132,29 @@ exports.Userdeleted = async (req, res) => {
       res.status(500).send("Internal Server Error");
     }
   }
+
+
+  exports.Managerdeleted = async (req, res) => {
+    try {
+  
+      const managerId = req.body.managerId
+  
+      const manager = await Manager.findById(managerId);
+  
+      if (!manager) {
+        return res.status(404).send('User not found');
+    }
+  
+      await Manager.findByIdAndDelete(managerId);
+  
+       // Fetch all users after updating the role
+    //    const users = await User.find();
+  
+       res.redirect('/admin/totalManagers');
+  
+  
+    } catch (error) {
+      console.error("Error updating user role:", error);
+      res.status(500).send("Internal Server Error");
+    }
+  }

@@ -6,7 +6,7 @@ const path = require('path');
 const upload = require("./multer.js");
 const { decode } = require('punycode');
 const Admin=require('../models/Admin')
-const Managers=require('../models/Admin')
+const Managers=require('../models/Manager')
 const User =require('../models/User.js')
 const Transaction =require('../models/Transaction.js')
 const {getadmins}=require('../middleware/Admin');
@@ -26,6 +26,7 @@ router.get("/totalUsers",verifyToken, getadmins, async(req, res) => {
 
   const totalUsers = await User.countDocuments();
   const users = await User.find({}, 'name email contact username address car_description license');
+  console.log(users);
   res.render('admin_users', {admin: req.admin, totalUsers: totalUsers, users: users});
 });
 
@@ -56,8 +57,14 @@ router.post('/deleteUser', verifyToken, getadmins, adminFunc.Userdeleted);
 router.get("/totalManagers",verifyToken, getadmins, async(req, res) => {
   const totalManagers = await Managers.countDocuments();
   const managers = await Managers.find({}, 'name email contact username location companyName');
+  console.log(managers);
   res.render('admin_manager', {admin: req.admin, totalManagers: totalManagers, managers: managers});
 });
+
+router.post('/deleteManager', verifyToken, getadmins, adminFunc.Managerdeleted);
+
+
+
 router.get("/totalTransactions",verifyToken, getadmins, async(req, res) => {
   res.render('admin_users', {admin: req.admin});
 });

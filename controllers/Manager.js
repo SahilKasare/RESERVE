@@ -171,3 +171,30 @@ exports.calculateDailyBookings = async (managerId) => {
         throw error;
     }
 }
+
+
+
+exports.Bookingdeleted = async (req, res) => {
+    try {
+  
+      const bookingId = req.body.bookingId
+  
+      const booking = await bookingId.findById(bookingId);
+  
+      if (!booking) {
+        return res.status(404).send('Booking not found');
+    }
+  
+      await Booking.findByIdAndDelete(bookingId);
+  
+       // Fetch all users after updating the role
+    //    const users = await User.find();
+  
+       res.redirect('/managers/bookings');
+  
+  
+    } catch (error) {
+      console.error("Error updating user role:", error);
+      res.status(500).send("Internal Server Error");
+    }
+  }
