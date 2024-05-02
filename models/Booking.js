@@ -33,12 +33,12 @@ const BookingSchema = new mongoose.Schema({
     type: Number,
     default : 0,
   },
-  parking_slot_number: {
-    type: Number,
-    required: function() {
-      return this.service === 'parking';
-    }
-  },
+  // parking_slot_number: {
+  //   type: Number,
+  //   required: function() {
+  //     return this.service === 'parking';
+  //   }
+  // },
   registration_date : {
     type:Date,
     default : Date.now,
