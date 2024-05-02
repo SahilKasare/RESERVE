@@ -68,6 +68,15 @@ router.get("/bookings",verifyToken,async(req, res) => {
         })
 });
 
+router.post('/deleteBooking', verifyToken, managers.Bookingdeleted, async(req, res) => {
+  const token = req.cookies.authorization;
+  const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const manager = await Manager.findById(decoded.id).select('-password');
+    if (!manager) {
+      return res.status(404).json({ error: "Manager not found" });
+    }
+  });
+
 router.get("/schedule",verifyToken,async(req, res) => {
   const token = req.cookies.authorization;
   const decoded = jwt.verify(token, process.env.JWT_SECRET);
