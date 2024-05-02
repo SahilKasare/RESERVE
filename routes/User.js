@@ -61,17 +61,20 @@ router.get("/user_current_bookings",verifyToken,getusers,async function (req, re
       // }
       // else{
       //   console.log("false");
-      // }
+      // }  
+      if(booking.user!==null && booking.manager!==null){
 
-      if (user._id.equals(booking.user._id)) {
-        if (onlyyear <= bookingdate.getFullYear()) {
-          if (onlymonth <= bookingdate.getMonth()) {
-            if (onlydate <= bookingdate.getDate()) {
-              currentbookings.push(booking);
+        if (user._id.equals(booking.user._id)) {
+          if (onlyyear <= bookingdate.getFullYear()) {
+            if (onlymonth <= bookingdate.getMonth()) {
+              if (onlydate <= bookingdate.getDate()) {
+                currentbookings.push(booking);
+              }
             }
           }
         }
       }
+      
       // console.log(booking);
     });
     // console.log(currentbookings.length);
@@ -85,7 +88,14 @@ router.get("/user_current_bookings",verifyToken,getusers,async function (req, re
 
 router.get("/user_wallet", verifyToken, getusers, async function (req, res) {
   const transactions = await TransactionModel.find().populate(["user","manager"]);
-  res.render("user_wallet", { user: req.user , transactions : transactions});
+
+  const finaltransactions = [];
+  transactions.forEach(function(transaction){
+    if(transaction.user!==null && transaction.manager!==null){
+      finaltransactions.push(transaction);
+    }
+  })
+  res.render("user_wallet", { user: req.user , transactions : finaltransactions});
 });
 
 router.post("/user_wallet", getusers, addmoney);
