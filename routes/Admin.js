@@ -30,15 +30,17 @@ router.get("/totalUsers",verifyToken, getadmins, async(req, res) => {
 });
 
 
-router.delete("/admin/:username", verifyToken, async (req, res) => {
-  const userId = req.params.userId;
-  try {
-    await User.findByIdAndDelete(userId);
-    res.status(200).send("User deleted successfully");
-  } catch (error) {
-    res.status(500).send("Error deleting user");
-  }
-});
+router.post('/deleteUser', verifyToken, getadmins, adminFunc.Userdeleted);
+
+// router.delete("/admin/:username", verifyToken, async (req, res) => {
+//   const userId = req.params.userId;
+//   try {
+//     await User.findByIdAndDelete(userId);
+//     res.status(200).send("User deleted successfully");
+//   } catch (error) {
+//     res.status(500).send("Error deleting user");
+//   }
+// });
 
 
 // router.post('/totalUsers/userByID',verifyToken, getadmins, async(req, res) => {

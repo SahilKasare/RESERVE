@@ -107,7 +107,10 @@
         <div class="user"><element style="color: #6C7293;">Car Info:</element><element><%=user.car_description%></element></div>
         <div class="user"><element style="color: #6C7293;"> License:</element><element><%=user.license%></element></div>
         <div style="display: flex; flex-direction: column;">
-          <button>Delete</a></button>
+          <form action="/admin/deleteUser" method="POST">
+            <input type="hidden" name="userId" value="<%=user._id%>">
+            <button type="submit">Delete</button>
+          </form>
           <button>Update</button>
         </div>
       </div>
