@@ -110,7 +110,8 @@ router.get("/wallet",verifyToken,async(req, res) => {
     if (!manager) {
       return res.status(404).json({ error: "Manager not found" });
     }
-    res.render('manager_wallet', {manager});
+    const transactions = await Transaction.find().populate(["user","manager"]);
+    res.render('manager_wallet', {manager:manager, transactions : transactions});
 });
 
 router.post("/fileupload",verifyToken,upload.single("image"), async function(req,res){

@@ -86,7 +86,7 @@
               ></path>
             </g>
           </svg>
-         <div style="margin-left: 22px" >Logout</div> </li></a
+         <div style="margin-left: 22px">Logout</div> </li></a
       >
         </ul>
     
@@ -96,7 +96,7 @@
     <header style="width: 100%;">
         <div class="profile" style="margin-left: 64px;">
             <img src="../Images/profile face.jpg" alt="Profile Picture">
-            <span>Yadnyesh</span>
+            <span><%= manager.name %></span>
         </div>
     </header>
 
@@ -140,6 +140,51 @@
     
     <div class="flex-col" id="searches">
         <!-- <div class="transaction"></div> -->
+        <% transactions.forEach(function(transaction){   %>
+          <% if((transaction.from === manager.username) || (transaction.to === manager.username) ){  %>
+
+            <div class="transaction">
+              <div class="flex-row">
+                
+                <% if(transaction.incoming_manager){ %>
+                  <div class="dec">
+                    <!-- Icon for income -->
+                    <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none">
+                      <path stroke="#00D25B" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.343 4.343l11.314 11.314m0 0h-9.9m9.9 0v-9.9"></path>
+                    </svg>
+                  </div>
+                <% }else{  %>
+                  <div class="inc">
+                    <!-- Icon for income -->
+                    <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none">
+                      <path stroke="#FC424A" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.657 15.657L4.343 4.343m0 0h9.9m-9.9 0v9.9"></path>
+                    </svg>
+                  </div>
+                <% } %>
+                  
+                  <span class="label">Amount:</span>
+                  <div class="amount"><%= (transaction.amount).toPrecision(3) %></div>
+              </div>
+              <div class="flex-row"`>
+                  <span class="label">Transaction Id:</span>
+                  <div class="transaction-id"><%= transaction.transaction_id %></div>
+              </div>
+              <div class="flex-row">
+                  <span class="label">From:</span>
+                  <div class="from"><%= transaction.from %></div>
+              </div>
+              <div class="flex-row">
+                  <span class="label">Manager Id:</span>
+                  <div class="manager-id"><%= transaction.manager._id %></div>
+              </div>
+              <div class="flex-row">
+                  <span class="label">Booking Id:</span>
+                  <div class="booking-id"><%= transaction.booking_id %></div>
+              </div>
+          </div>->
+
+          <% } %>
+        <% }) %>
     </div>
     
        <div id="footer">
