@@ -261,11 +261,11 @@
        <div id="pay">
         <h1 >₹
           <% if (service == "park") { %>
-            <%= amount %>
+            <%= selectedManager.services.parking.parking_price * (servicecentre.to - servicecentre.from) %>
         <% } else if (service == "wash") { %>
             <%= selectedManager.services.cleaning.price_carwash %>
         <% } else if (service == "charge") { %>
-            <%= selectedManager.services.charging.charging_price %>
+            <%= selectedManager.services.charging.charging_price * (servicecentre.to - servicecentre.from)%>
         <% } else if (service == "inspection") { %>
             <%= selectedManager.services.inspection.inspection_price %>
         <% } else if (service == "painting") { %>
@@ -308,14 +308,11 @@
             <% if (service == "park" || service == "charge") { %>
               <div>From: <%=servicecentre.from%></div>
               <div>To: <%=servicecentre.to%></div>
-            <% } else%>
+            <% } else {%>
               <div>Time: <%=servicecentre.time%></div>
+              <% } %>
           </div>
         </div>
-        <% if (service == "park") { %>
-          <div>Lot No: <%=lotno%></div>
-     
-        <% }
 
         <button id="paybutton"><a href="/users/paymentSuccessful">Confirm payment</a></button>
     </div>

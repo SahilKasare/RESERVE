@@ -147,12 +147,10 @@ exports.getcarparkService= async (req, res) => {
     'location': location,
     'address': address
   });
-  servicecentre.amount=Math.trunc(servicecentre.amount*(servicecentre.to-servicecentre.from))
   Managers = Managers.filter(manager => manager.services.parking && manager.services.parking.parking_price !== undefined && manager.services.parking.parking_price !== null);
   req.session.servicecentre = servicecentre;
   req.session.managers = Managers;
   req.session.service = "park";
-  req.session.amount=Math.trunc(req.session.managers.services.parking.parking_price*(servicecentre.to-servicecentre.from))
   res.redirect("/users/got_centers");
 }
 exports.getcarchargeService= async (req, res) => {

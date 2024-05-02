@@ -45,7 +45,7 @@ router.get("/user_park/", verifyToken, getusers, async function (req, res) {
 });
 
 router.get("/user_current_bookings",verifyToken,getusers,async function (req, res) {
-    const bookingsarr = await BookingsModel.find().populate(["user","manager"]);
+    const bookingsarr = await BookingsModel.find().populate(["user","manager",]);
     const currentDate = new Date();
     const user = req.user;
     const currentbookings = [];
@@ -61,8 +61,9 @@ router.get("/user_current_bookings",verifyToken,getusers,async function (req, re
       // }
       // else{
       //   console.log("false");
-      // }
-      if(booking.user !== null && booking.manager!==null){
+      // }  
+      if(booking.user!==null && booking.manager!==null){
+
         if (user._id.equals(booking.user._id)) {
           if (onlyyear <= bookingdate.getFullYear()) {
             if (onlymonth <= bookingdate.getMonth()) {
@@ -75,8 +76,8 @@ router.get("/user_current_bookings",verifyToken,getusers,async function (req, re
       }
       
       // console.log(booking);
-});
-    console.log(currentbookings);
+    });
+    // console.log(currentbookings.length);
 
     res.render("user_current-bookings", {
       user: user,
@@ -87,6 +88,7 @@ router.get("/user_current_bookings",verifyToken,getusers,async function (req, re
 
 router.get("/user_wallet", verifyToken, getusers, async function (req, res) {
   const transactions = await TransactionModel.find().populate(["user","manager"]);
+
   const finaltransactions = [];
   transactions.forEach(function(transaction){
     if(transaction.user!==null && transaction.manager!==null){
@@ -131,10 +133,12 @@ router.post("/carpaint", user.getcarpaintingService);
 router.get("/got_centers", verifyToken, getusers, async function (req, res) {
   const managers = req.session.managers || [];
   const service = req.session.service;
+  const servicecentre = req.session.servicecentre
   res.render("user_got_centers", {
     user: req.user,
     managers: managers,
     service: service,
+    servicecentre: servicecentre
   });
 });
 router.post('/book_park',book_park);
@@ -153,26 +157,14 @@ router.get("/payment", verifyToken, getusers, async function (req, res) {
       return res.status(404).send("Manager not found");
     }
     req.session.selectedManager = selectedManager;
-    const amount=req.session.amount;
-    if(service=='park'){
-      res.render("user_payment", {
-        user: req.user,
-        selectedManager,
-        servicecentre,
-        service,
-        lotno:req.session.lotno,
-        amount:amount
-      });
-    }
-    else{
+    // Render the payment page with the selected manager's data
     res.render("user_payment", {
       user: req.user,
       selectedManager,
       servicecentre,
       service,
-      lotno:req.session.lotno
     });
-  }} catch (error) {
+  } catch (error) {
     // Handle errors
     console.error("Error fetching manager:", error);
     res.status(500).send("Error fetching manager");
@@ -192,14 +184,14 @@ router.get("/paymentSuccessful",verifyToken,getusers,async function (req, res) {
     let totime = 0; // var used for knowing which time the service ends
     let fromtime = 0; // var used for knowing at which time service starts
     let price = 0; // for getting the price of the service
-    let parkslotnum = 0; // getting the slotting number booked when it is only parking as service
+    // let parkslotnum = 0; // getting the slotting number booked when it is only parking as service
 
     if (service === "park") {
       service = "parking";
       price = manager.services.parking.parking_price;
       totime = servicecentre.to;
       fromtime = servicecentre.from;
-      parkslotnum = manager.service.parking.parking_slot_number;
+      // parkslotnum = manager.service.parking.parking_slot_number;
     } else if (service === "wash") {
       service = "cleaning";
       price = manager.services.cleaning.price_carwash;
@@ -213,7 +205,7 @@ router.get("/paymentSuccessful",verifyToken,getusers,async function (req, res) {
       price = manager.services.inspection.inspection_price;
       fromtime = servicecentre.time;
     } else if (service === "painting") {
-      price = manager.services.painting.painting_price;
+      price = manager.services.paiting.painting_price;
       fromtime = servicecentre.time;
     }
     const admingettingmoney = 0.15 * price;
@@ -237,7 +229,7 @@ router.get("/paymentSuccessful",verifyToken,getusers,async function (req, res) {
       date: servicecentre.date,
       from_time: fromtime,
       to_time: totime,
-      parking_slot_number: parkslotnum,
+      // parking_slot_number: parkslotnum,
     });
     // user to admin
     const transactionobject = await TransactionModel.create({
@@ -362,15 +354,4 @@ router.post("/user_preview", verifyToken, async function (req, res) {
   res.redirect("/users/profile");
 });
 
-router.post('/update-session-lotno', (req, res) => {
-
-  const { lotno } = req.body;
-  
- console.log(lotno);
-  req.session.lotno = lotno;
-  console.log(lotno);
-  res.sendStatus(200); 
-});
 module.exports = router;
-
-
