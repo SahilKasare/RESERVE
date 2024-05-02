@@ -63,8 +63,7 @@ router.get("/user_current_bookings",verifyToken,getusers,async function (req, re
       //   console.log("false");
       // }  
       if(booking.user!==null && booking.manager!==null){
-
-        if (user._id.equals(booking.user._id)) {
+        if(user._id.equals(booking.user._id)) {
           if (onlyyear <= bookingdate.getFullYear()) {
             if (onlymonth <= bookingdate.getMonth()) {
               if (onlydate <= bookingdate.getDate()) {
@@ -100,7 +99,8 @@ router.get("/user_wallet", verifyToken, getusers, async function (req, res) {
 
 router.post("/user_wallet", getusers, addmoney);
 
-router.get("/carwash", verifyToken, getusers, async function (req, res) {
+router.g+
+et("/carwash", verifyToken, getusers, async function (req, res) {
   const locations = await Manager.distinct("location");
   res.render("searcwash", { user: req.user, locations });
 });
