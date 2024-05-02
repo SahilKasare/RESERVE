@@ -31,7 +31,7 @@ header {
     justify-content: space-between;
     align-items: center;
     height: 50px;
-    margin-left: -100px;
+    margin-left: -180px;
     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.402);
     animation: fadeIn 0.3s ease-in-out forwards;
   }
@@ -207,7 +207,7 @@ border-radius: 20px;
   .services-table {
     margin-left: 40px;
     border-spacing: 45px;
-    width: 550px;
+    width: 650px;
     border-collapse: separate;
   }
   
@@ -232,12 +232,15 @@ border-radius: 20px;
   }
   
   .lot-details {
-    margin-left: 340px;
+    position:sticky;
+   top:10px;
+    margin-left: 190px;
     width: 400px;
     background-color: #191c24;
     transform: translateX(50px);
     animation: fadeInRight 0.3s ease-in-out forwards;
-    height: 98.1vh;
+    height: 91.5vh;
+    height:100vh;
   }
   
   @keyframes fadeInRight {
@@ -341,4 +344,6 @@ border-radius: 20px;
   }
   
   
-  
+  .book-now:hover{
+    cursor: pointer;
+  }

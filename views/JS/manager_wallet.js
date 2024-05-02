@@ -256,85 +256,85 @@ depindep.addEventListener("click", function() {
 });
 
 
-transactions.forEach(function(transaction) {
-    var div = document.createElement("div");
-    div.className = "flex-col";
-    div.classList.add('transaction')
-    div.id = "searchinside";
+// transactions.forEach(function(transaction) {
+//     var div = document.createElement("div");
+//     div.className = "flex-col";
+//     div.classList.add('transaction')
+//     div.id = "searchinside";
    
-    var incDiv=document.createElement("div");
-    if(transaction.type==1){
-    incDiv.className = "inc";
-    incDiv.innerHTML = '<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path stroke="#00D25B" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.343 4.343l11.314 11.314m0 0h-9.9m9.9 0v-9.9"></path> </g></svg>';
-    }
-    else{
-        incDiv.className = "dec";
-    incDiv.innerHTML = '<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path stroke="#FC424A" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.657 15.657L4.343 4.343m0 0h9.9m-9.9 0v9.9"></path> </g></svg>';
-    }
-    div.appendChild(incDiv);
-    var amountLabelSpan = document.createElement("span");
-    amountLabelSpan.className = "label";
-    amountLabelSpan.textContent = "Amount: ";
-    div.appendChild(amountLabelSpan);
+//     var incDiv=document.createElement("div");
+//     if(transaction.type==1){
+//     incDiv.className = "inc";
+//     incDiv.innerHTML = '<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path stroke="#00D25B" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.343 4.343l11.314 11.314m0 0h-9.9m9.9 0v-9.9"></path> </g></svg>';
+//     }
+//     else{
+//         incDiv.className = "dec";
+//     incDiv.innerHTML = '<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path stroke="#FC424A" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.657 15.657L4.343 4.343m0 0h9.9m-9.9 0v9.9"></path> </g></svg>';
+//     }
+//     div.appendChild(incDiv);
+//     var amountLabelSpan = document.createElement("span");
+//     amountLabelSpan.className = "label";
+//     amountLabelSpan.textContent = "Amount: ";
+//     div.appendChild(amountLabelSpan);
 
     
-    var amountDiv = document.createElement("div");
-    amountDiv.className = "refcont";
-    amountDiv.classList.add('flex-row');
-    amountDiv.textContent = transaction.amount;
-    div.appendChild(amountDiv);
+//     var amountDiv = document.createElement("div");
+//     amountDiv.className = "refcont";
+//     amountDiv.classList.add('flex-row');
+//     amountDiv.textContent = transaction.amount;
+//     div.appendChild(amountDiv);
 
     
-    var tidLabelSpan = document.createElement("span");
-    tidLabelSpan.className = "label";
-    tidLabelSpan.textContent = "Transaction Id: ";
-    div.appendChild(tidLabelSpan);
+//     var tidLabelSpan = document.createElement("span");
+//     tidLabelSpan.className = "label";
+//     tidLabelSpan.textContent = "Transaction Id: ";
+//     div.appendChild(tidLabelSpan);
 
-    var transactionIdDiv = document.createElement("div");
-    transactionIdDiv.className = "refcont";
-    transactionIdDiv.textContent = transaction.transactionId;
-    div.appendChild(transactionIdDiv);
+//     var transactionIdDiv = document.createElement("div");
+//     transactionIdDiv.className = "refcont";
+//     transactionIdDiv.textContent = transaction.transactionId;
+//     div.appendChild(transactionIdDiv);
 
-    var fromLabelSpan = document.createElement("span");
-    fromLabelSpan.className = "label";
-    if(transaction.type==1){
-        fromLabelSpan.textContent = "From: ";
-    }
-    else{
-        fromLabelSpan.textContent = "To: ";
-    }
+//     var fromLabelSpan = document.createElement("span");
+//     fromLabelSpan.className = "label";
+//     if(transaction.type==1){
+//         fromLabelSpan.textContent = "From: ";
+//     }
+//     else{
+//         fromLabelSpan.textContent = "To: ";
+//     }
    
-    div.appendChild(fromLabelSpan);
+//     div.appendChild(fromLabelSpan);
 
-    var fromDiv = document.createElement("div");
-    fromDiv.classList.add('flex-row');
-    fromDiv.className = "refcont";
-    fromDiv.textContent = transaction.from;
-    div.appendChild(fromDiv);
+//     var fromDiv = document.createElement("div");
+//     fromDiv.classList.add('flex-row');
+//     fromDiv.className = "refcont";
+//     fromDiv.textContent = transaction.from;
+//     div.appendChild(fromDiv);
 
-    var midLabelSpan = document.createElement("span");
-    midLabelSpan.className = "label";
-    midLabelSpan.textContent = "ManagerId: ";
-    div.appendChild(midLabelSpan);
-    var midDiv = document.createElement("div");
-    midDiv.classList.add('flex-row');
-    midDiv.className = "refcont";
-    midDiv.textContent = transaction.ManagerId;
-    div.appendChild(midDiv);
+//     var midLabelSpan = document.createElement("span");
+//     midLabelSpan.className = "label";
+//     midLabelSpan.textContent = "ManagerId: ";
+//     div.appendChild(midLabelSpan);
+//     var midDiv = document.createElement("div");
+//     midDiv.classList.add('flex-row');
+//     midDiv.className = "refcont";
+//     midDiv.textContent = transaction.ManagerId;
+//     div.appendChild(midDiv);
 
     
-    var bidLabelSpan = document.createElement("span");
-    bidLabelSpan.className = "label";
-    bidLabelSpan.textContent = "Booking Id: ";
-    div.appendChild(bidLabelSpan);
+//     var bidLabelSpan = document.createElement("span");
+//     bidLabelSpan.className = "label";
+//     bidLabelSpan.textContent = "Booking Id: ";
+//     div.appendChild(bidLabelSpan);
 
-    var bookingIdDiv = document.createElement("div");
-    bookingIdDiv.className = "refcont";
-    bookingIdDiv.textContent = transaction.bookingId;
-    div.appendChild(bookingIdDiv);
+//     var bookingIdDiv = document.createElement("div");
+//     bookingIdDiv.className = "refcont";
+//     bookingIdDiv.textContent = transaction.bookingId;
+//     div.appendChild(bookingIdDiv);
 
-    searches.appendChild(div);
-});
+//     searches.appendChild(div);
+// });
 refunds=[{
     amount:'₹580',
     transactionId:'T45328',

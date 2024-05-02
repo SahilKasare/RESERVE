@@ -22,6 +22,7 @@ const {forgetpaswordload} = require('./controllers/User');
 const {resetpassword} = require('./controllers/User');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const upload = require("./routes/multer.js");
 
 app.use(session({
     secret: 'your-secret-key',
@@ -29,6 +30,7 @@ app.use(session({
     saveUninitialized: true
 }));
 
+ 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
@@ -111,7 +113,7 @@ app.get('/managerDetails',(req,res)=>{
     res.render('form_manager')
 })
 
-app.post('/managerDetails',registerManager);
+app.post('/managerDetails',upload.single("service_pic"),registerManager);
 
 app.get('/adminLogin',(req,res)=>{
     res.render('login_admin');

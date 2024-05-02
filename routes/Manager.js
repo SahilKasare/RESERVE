@@ -30,7 +30,8 @@ router.get("/dashboard",verifyToken, getmanagers, async(req, res) => {
       // Fetch user registrations today
       const userRegistrationsToday = await Transaction.countDocuments({
           incoming_user: true,
-          registration_date: { $gte: today, $lt: tomorrow }
+          registration_date: { $gte: today, $lt: tomorrow },
+          manager: req.manager._id
       });
 
       // Fetch transactions where registration date is today and incoming manager ID matches
@@ -118,7 +119,8 @@ router.get("/wallet",verifyToken,async(req, res) => {
     if (!manager) {
       return res.status(404).json({ error: "Manager not found" });
     }
-    res.render('manager_wallet', {manager});
+    const transactions = await Transaction.find().populate(["user","manager"]);
+    res.render('manager_wallet', {manager:manager, transactions : transactions});
 });
 
 router.post("/fileupload",verifyToken,upload.single("image"), async function(req,res){

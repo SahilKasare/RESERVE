@@ -12,24 +12,39 @@
   sizes="16x16"
   href="/Images/favicon_io/favicon-16x16.png"
 />
+<link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+    rel="stylesheet"
+    />
   </head>
   <body>
     <header>
       <div class="profile">
-        <img src="/Images/profile face.jpg" alt="Profile Picture" />
-        <span>Yadnyesh</span>
+        <img src="/Images/Uploads/<%= manager.profile_pic %>" alt="" />
+        <span> <%= manager.name %> </span>
       </div>
     </header>
 
     <div id="sidebar">
-      <div class="logo">
+      <div class="logo">  
         <img src="/Images/newlogog.png" alt="Logo" />
       </div>
       <div class="profile-sidebar">
-        <img src="/Images/profile face.jpg" alt="Profile Picture" />
+        <form id="uploadform" style="display: none;" action="/managers/fileupload" method="post" enctype="multipart/form-data">
+          <input type="file" name="image" style="display: block; margin-bottom: 10px;">
+        </form>
+
+        <div style="position: relative;">
+            <span id="uploadicon" style="width: 1.5rem; height: 1.5rem; position: absolute; bottom: 0; right: 0; display: flex; align-items: center; justify-content: center; background-color: #bfc5cd; border-radius: 9999px; cursor: pointer;">
+                <i class="text-zinc-800 ri-edit-fill"></i>
+            </span>
+            <div style="width: 4rem; height: 4rem; border-radius: 9999px; background-color: #fff; overflow: hidden;">
+                <img style="width: 100%; height: 100%; object-fit: cover;" src="/Images/Uploads/<%= manager.profile_pic %>" alt="">
+            </div>
+        </div>
         <div class="pmanager">
           <span style="font-size: 20px; padding-left: 10px; padding-bottom: 3px"
-            >Yadnyesh</span
+            ><%= manager.username %></span
           >
           <span
             style="
@@ -629,30 +644,9 @@
 
           <hr style="width: 90%; background-color: #2c2e33" />
           <div class="elements">
-            <element style="border: 2.5px solid #0090e7"
-              ><svg
-                viewBox="0 0 24 24"
-                height="45px"
-                width="45px"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="#0090E7"
-                stroke="#0090E7"
-              >
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g
-                  id="SVGRepo_tracerCarrier"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></g>
-                <g id="SVGRepo_iconCarrier">
-                  <g>
-                    <path fill="none" d="M0 0h24v24H0z"></path>
-                    <path
-                      fill-rule="nonzero"
-                      d="M6 3h7a6 6 0 1 1 0 12h-3v6H6V3zm4 4v4h3a2 2 0 1 0 0-4h-3z"
-                    ></path>
-                  </g>
-                </g></svg></element>
+            <element style="border: 2.5px solid #FFA000"
+              ><svg fill="#FFA000" height="40px"
+              width="40px" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg" id="car-repair"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12.6,8.7,11.5,6.5a1.05,1.05,0,0,0-.9-.5H4.4a1.05,1.05,0,0,0-.9.5L2.4,8.7,1.16,9.852a.5.5,0,0,0-.16.367V14.5a.5.5,0,0,0,.5.5h2c.2,0,.5-.2.5-.4V14h7v.5c0,.2.2.5.4.5h2.1a.5.5,0,0,0,.5-.5V10.219a.5.5,0,0,0-.16-.367ZM4.5,7h6l1,2h-8ZM5,11.6c0,.2-.3.4-.5.4H2.4c-.2,0-.4-.3-.4-.5V10.4c.1-.3.3-.5.6-.4l2,.4c.2,0,.4.3.4.5Zm8-.1c0,.2-.2.5-.4.5H10.5c-.2,0-.5-.2-.5-.4v-.7c0-.2.2-.5.4-.5l2-.4c.3-.1.5.1.6.4ZM14,2V3a1.009,1.009,0,0,1-1.017,1H5.348A2.549,2.549,0,0,1,1,3.5H3.5v-2H1A2.549,2.549,0,0,1,5.348,1h7.635A1.009,1.009,0,0,1,14,2Z"></path> </g></svg></element>
             <div id="element1">
               Car Inspection<br />
               <p>For 1 hour</p>
@@ -665,5 +659,15 @@
       </div>
       
     </div>
+    <script>
+      document.querySelector("#uploadicon").addEventListener("click",function(){
+        document.querySelector("#uploadform input").click();
+      });
+
+      document.querySelector("#uploadform input").addEventListener("change",function(){
+          document.querySelector("#uploadform").submit();
+      });
+  </script>
   </body>
+  
 </html>

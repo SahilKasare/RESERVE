@@ -45,7 +45,7 @@ router.get("/user_park/", verifyToken, getusers, async function (req, res) {
 });
 
 router.get("/user_current_bookings",verifyToken,getusers,async function (req, res) {
-    const bookingsarr = await BookingsModel.find().populate(["user","manager",]);
+    const bookingsarr = await BookingsModel.find().populate(["user","manager"]);
     const currentDate = new Date();
     const user = req.user;
     const currentbookings = [];
@@ -62,19 +62,21 @@ router.get("/user_current_bookings",verifyToken,getusers,async function (req, re
       // else{
       //   console.log("false");
       // }
-
-      if (user._id.equals(booking.user._id)) {
-        if (onlyyear <= bookingdate.getFullYear()) {
-          if (onlymonth <= bookingdate.getMonth()) {
-            if (onlydate <= bookingdate.getDate()) {
-              currentbookings.push(booking);
+      if(booking.user !== null && booking.manager!==null){
+        if (user._id.equals(booking.user._id)) {
+          if (onlyyear <= bookingdate.getFullYear()) {
+            if (onlymonth <= bookingdate.getMonth()) {
+              if (onlydate <= bookingdate.getDate()) {
+                currentbookings.push(booking);
+              }
             }
           }
         }
       }
+      
       // console.log(booking);
-    });
-    // console.log(currentbookings.length);
+});
+    console.log(currentbookings);
 
     res.render("user_current-bookings", {
       user: user,
@@ -85,7 +87,13 @@ router.get("/user_current_bookings",verifyToken,getusers,async function (req, re
 
 router.get("/user_wallet", verifyToken, getusers, async function (req, res) {
   const transactions = await TransactionModel.find().populate(["user","manager"]);
-  res.render("user_wallet", { user: req.user , transactions : transactions});
+  const finaltransactions = [];
+  transactions.forEach(function(transaction){
+    if(transaction.user!==null && transaction.manager!==null){
+      finaltransactions.push(transaction);
+    }
+  })
+  res.render("user_wallet", { user: req.user , transactions : finaltransactions});
 });
 
 router.post("/user_wallet", getusers, addmoney);
@@ -148,15 +156,26 @@ router.get("/payment", verifyToken, getusers, async function (req, res) {
       return res.status(404).send("Manager not found");
     }
     req.session.selectedManager = selectedManager;
-    // Render the payment page with the selected manager's data
+    const amount=req.session.amount;
+    if(service=='park'){
+      res.render("user_payment", {
+        user: req.user,
+        selectedManager,
+        servicecentre,
+        service,
+        lotno:req.session.lotno,
+        amount:amount
+      });
+    }
+    else{
     res.render("user_payment", {
       user: req.user,
       selectedManager,
       servicecentre,
       service,
+      lotno:req.session.lotno
     });
-    
-  } catch (error) {
+  }} catch (error) {
     // Handle errors
     console.error("Error fetching manager:", error);
     res.status(500).send("Error fetching manager");
@@ -197,7 +216,7 @@ router.get("/paymentSuccessful",verifyToken,getusers,async function (req, res) {
       price = manager.services.inspection.inspection_price;
       fromtime = servicecentre.time;
     } else if (service === "painting") {
-      price = manager.services.paiting.painting_price;
+      price = manager.services.painting.painting_price;
       fromtime = servicecentre.time;
     }
     const admingettingmoney = 0.15 * price;
@@ -346,4 +365,15 @@ router.post("/user_preview", verifyToken, async function (req, res) {
   res.redirect("/users/profile");
 });
 
+router.post('/update-session-lotno', (req, res) => {
+
+  const { lotno } = req.body;
+  
+ console.log(lotno);
+  req.session.lotno = lotno;
+  console.log(lotno);
+  res.sendStatus(200); 
+});
 module.exports = router;
+
+
