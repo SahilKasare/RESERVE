@@ -9,17 +9,19 @@ const Admin=require('../models/Admin')
 const Managers=require('../models/Manager')
 const User =require('../models/User.js')
 const Transaction =require('../models/Transaction.js')
+// const Booking = require('../models/Booking.js')
 const {getadmins}=require('../middleware/Admin');
 const adminFunc =require('../controllers/Admin');
 const {adminLogout}=require('../controllers/auth')
 router.get("/profile",verifyToken, getadmins, async(req, res) => {
 
+  const bookingsByService = await adminFunc.calculateBookingsByService();
     const usersToday = await adminFunc.getTodaysUsers();
     const managersToday = await adminFunc.getTodaysManagers();
     const deci = await adminFunc.getTodaysProfit();
     const todaysProfit = deci.toFixed(2);
     const totalUsers = await User.countDocuments();
-      res.render('admin_dashboard', {admin: req.admin, usersToday: usersToday, managersToday: managersToday, todaysProfit: todaysProfit, totalUsers: totalUsers});
+      res.render('admin_dashboard', {admin: req.admin, usersToday: usersToday, managersToday: managersToday, todaysProfit: todaysProfit, totalUsers: totalUsers, bookingsByService: bookingsByService });
 });
 
 router.get("/totalUsers",verifyToken, getadmins, async(req, res) => {

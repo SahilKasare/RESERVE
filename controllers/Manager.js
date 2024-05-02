@@ -163,14 +163,7 @@ exports.calculateDailyBookings = async (managerId) => {
 
         // Calculate total bookings for each service
         bookings.forEach(booking => {
-            
-            if(booking.service === "ev charging"){
-                let string = "charging";
-                totalBookings[string]++;
-            }
-            else{
-                totalBookings[booking.service]++;
-            }
+            totalBookings[booking.service]++;
         });
 
         return totalBookings;
