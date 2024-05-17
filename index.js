@@ -42,7 +42,7 @@ app.use('/JS', express.static(path.join(__dirname, 'views', 'JS')));
 dotenv.config();
 
 app.use(cookieParser());
-const port= process.env.PORT ||3001;
+const port= process.env.PORT ||5001;
 mongoose.connect(process.env.MONGOURL).then(()=>{
     app.listen(port,()=>console.log(`Server Port:${port}`));
 

@@ -178,16 +178,16 @@ exports.calculateDailyBookings = async (managerId) => {
 exports.Bookingdeleted = async (req, res) => {
     try {
   
-      const bookingId = req.body.bookingId
+      const bookingId = req.body.bookingId;
   
-      const booking = await bookingId.findById(bookingId);
+      const booking = await Booking.find({_id : bookingId});
   
       if (!booking) {
         return res.status(404).send('Booking not found');
     }
-  
-      await Booking.findByIdAndDelete(bookingId);
-  
+    console.log(booking);
+      await Booking.findByIdAndDelete({_id: bookingId});
+    
        // Fetch all users after updating the role
     //    const users = await User.find();
   

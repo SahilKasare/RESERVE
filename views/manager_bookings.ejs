@@ -270,7 +270,7 @@
                   <td><%= booking.service %></td>
                   <td>
                     <form action="/managers/deleteBooking" method="POST">
-                      <input type="hidden" name="bookingId" value="<%=booking.booking_id%>">
+                      <input type="hidden" name="bookingId" value="<%=booking._id%>">
                       <button class="cancel-button">Cancel</button>
                     </form>
                   </td>

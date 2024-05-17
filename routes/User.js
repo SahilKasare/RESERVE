@@ -99,8 +99,7 @@ router.get("/user_wallet", verifyToken, getusers, async function (req, res) {
 
 router.post("/user_wallet", getusers, addmoney);
 
-router.g+
-et("/carwash", verifyToken, getusers, async function (req, res) {
+router.get("/carwash", verifyToken, getusers, async function (req, res) {
   const locations = await Manager.distinct("location");
   res.render("searcwash", { user: req.user, locations });
 });
