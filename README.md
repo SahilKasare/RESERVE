@@ -70,7 +70,4 @@ Sushant Gadyal (S20220010218)
 ### Manager
 
 ![Manager_dashboard](https://github.com/SahilKasare/RESERVE/assets/119025949/7f068f87-4ed3-4a29-86df-de5ba1134e90)
-![Wallet](https://github.com/SahilKasare/RESERVE/assets/119025949/64cc2f7d-e28e-4eb4-a935-bdc8099b6ec0)
-
-
-
+![Wallet](./views/Screenshots/Wallet.png)
