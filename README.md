@@ -70,6 +70,17 @@ Sushant Gadyal (S20220010218)
 ![Wallet](https://github.com/SahilKasare/RESERVE/blob/master/views/Screenshots/manager_wallet.png)
 ![Website_Review](https://github.com/SahilKasare/RESERVE/blob/master/views/Screenshots/user_review.png)
 ### Service Center
-
 ![Manager_dashboard](https://github.com/SahilKasare/RESERVE/assets/119025949/7f068f87-4ed3-4a29-86df-de5ba1134e90)
-![Wallet](./views/Screenshots/Wallet.png)
+![Wallet](https://github.com/SahilKasare/RESERVE/blob/master/views/Screenshots/manager_wallet.png)
+![Service_center_bookings](https://github.com/SahilKasare/RESERVE/blob/master/views/Screenshots/manager_bookings.png)
+
+## Admin
+
+![Admin_dashboard](https://github.com/SahilKasare/RESERVE/blob/master/views/Screenshots/admin_dashboard.png)
+![User_details](https://github.com/SahilKasare/RESERVE/blob/master/views/Screenshots/user_details.png)
+![Manager_details](https://github.com/SahilKasare/RESERVE/blob/master/views/Screenshots/manager_details.png)
+
+
+
+
+
