@@ -11,6 +11,7 @@
 | Commit your staged content                                 | `git commit -m "[commit message]"`         |
 | View commit history                                        | `git log`                                  |
 | Restore to a previous commit                               | ` git reset [commit-hash]`                 |
+| Restore the previous commit code                           | ` git cherry-pick [commit-hash]`           |
 | Temporary Commit(save modified and staged changes)         | `git stash`                                |
 | Get stashed files back to staging area                     | `git stash pop`                            |
 | Remove stashed files                                       | `git stash clear`                          |
